@@ -1,6 +1,6 @@
 class CfgPatches {
 	class boxloader {
-		units[] = {"Land_Boxloader_Pallet_1","Land_Boxloader_Pallet_1_ed"};
+		units[] = {"Land_Boxloader_Pallet_1","Land_Boxloader_Pallet_1_ed","Land_Boxloader_Pallet_2","Land_Boxloader_Pallet_2_ed"};
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {};
@@ -44,21 +44,11 @@ class CfgVehicles {
 		class TransportItem {};
 		class Turrets {};
 		animated=false;
-	};
-	class Land_Boxloader_Pallet_1_ed: Boxloader_Pallet_base_ed {
-		editorCategory="EdCat_Supplies";
-		editorSubcategory="EdSubCat_Boxloader";
-		displayName = "Boxloader Pallet 1";
-		model = "\boxloader\mdl\boxloader_pallet1.p3d";
-		scope=2;
-		scopeCurator=2;
-		class EventHandlers {
-		init = "[_this select 0,'Land_Boxloader_Pallet_1'] call boxloader_fnc_pallet_create";	
-		};
-	};
-	class Land_Boxloader_Pallet_1: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_pallet1.p3d";
-		displayName = "Boxloader Pallet 1";
+		ace_dragging_canDrag = 1;
+		ace_dragging_dragPosition[] = {0,1.5,0};
+		ace_dragging_dragDirection = 0;
+		ace_dragging_canCarry = 0;
+		ace_cargo_canLoad = 0;
 		class VehicleTransport {
 			class Cargo {
 				parachuteClass              = B_Parachute_02_F;
@@ -80,6 +70,36 @@ class CfgVehicles {
 				parachuteHeightLimitDefault = 10000;
 			};
 		};
+	};
+	class Land_Boxloader_Pallet_1_ed: Boxloader_Pallet_base_ed {
+		editorCategory="EdCat_Supplies";
+		editorSubcategory="EdSubCat_Boxloader";
+		displayName = "Boxloader Pallet 1";
+		model = "\boxloader\mdl\boxloader_pallet1.p3d";
+		scope=2;
+		scopeCurator=2;
+		class EventHandlers {
+		init = "[_this select 0,'Land_Boxloader_Pallet_1'] call boxloader_fnc_pallet_create";	
+		};
+	};
+	class Land_Boxloader_Pallet_2_ed: Boxloader_Pallet_base_ed {
+		editorCategory="EdCat_Supplies";
+		editorSubcategory="EdSubCat_Boxloader";
+		displayName = "Boxloader EUR-1 Pallet";
+		model = "\boxloader\mdl\boxloader_pallet2.p3d";
+		scope=2;
+		scopeCurator=2;
+		class EventHandlers {
+		init = "[_this select 0,'Land_Boxloader_Pallet_2'] call boxloader_fnc_pallet_create";	
+		};
+	};
+	class Land_Boxloader_Pallet_1: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_pallet1.p3d";
+		displayName = "Boxloader Pallet 1";
+	};
+	class Land_Boxloader_Pallet_2: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_pallet2.p3d";
+		displayName = "Boxloader EUR-1 Pallet";
 	};
 };
 class CfgEditorSubcategories {
