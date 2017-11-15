@@ -1,6 +1,12 @@
 class CfgPatches {
 	class boxloader {
-		units[] = {"Land_Boxloader_Pallet_1","Land_Boxloader_Pallet_1_ed","Land_Boxloader_Pallet_2","Land_Boxloader_Pallet_2_ed","Land_Boxloader_Pallet_3","Land_Boxloader_Pallet_3_ed"};
+		units[] = {
+			"Land_Boxloader_Pallet_1","Land_Boxloader_Pallet_1_ed",
+			"Land_Boxloader_Pallet_2","Land_Boxloader_Pallet_2_ed",
+			"Land_Boxloader_Pallet_3","Land_Boxloader_Pallet_3_ed",
+			"Land_Boxloader_iso20","Land_Boxloader_iso20_ed",
+			"Land_Boxloader_Pallet_4","Land_Boxloader_Pallet_4_ed"
+		};
 		weapons[] = {};
 		requiredVersion = 0.1;
 		requiredAddons[] = {};
@@ -31,18 +37,23 @@ class CfgVehicles {
 		icon = "iconObject_1x1";
 		scope=1;
 		side=3;
+		class EventHandlers {
+		init = "_this call boxloader_fnc_pallet_create";	
+		};
 	};
 	class Boxloader_Pallet_base: StaticWeapon {
 		icon = "iconObject_1x1";
 		scope=1;
 		side=3;
-		accuracy = 1000;
+		accuracy = 0.001;
+		camouflage = 10;
 		armor = 2000;
 		destrType = "DestructNo";
 		simulation = "tankX";
 		nameSound = "";
 		class EventHandlers {
-		init = "_this call boxloader_fnc_pallet_init";	
+			init = "_this call boxloader_fnc_pallet_init";	
+			handleDamage = "0";
 		};
 		class TransportItem {};
 		class Turrets {};
@@ -62,7 +73,7 @@ class CfgVehicles {
 		   class Carrier {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner_1m"};
 				disableHeightLimit          = 0;
-				maxLoadMass                 = 200000;
+				maxLoadMass                 = 10000;
 				cargoAlignment[]            = {"front", "left"};
 				cargoSpacing[]              = {0, 0, 0};
 				exits[]                     = {"BBox_Base1"};
@@ -73,33 +84,28 @@ class CfgVehicles {
 				parachuteHeightLimitDefault = 10000;
 			};
 		};
+		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
 	};
 	class Land_Boxloader_Pallet_1_ed: Boxloader_Pallet_base_ed {
 		displayName = "Boxloader Pallet Square";
 		model = "\boxloader\mdl\boxloader_pallet1.p3d";
 		scope=2;
 		scopeCurator=2;
-		class EventHandlers {
-		init = "[_this select 0,'Land_Boxloader_Pallet_1'] call boxloader_fnc_pallet_create";	
-		};
+		BoxloaderClass = "Land_Boxloader_Pallet_1";
 	};
 	class Land_Boxloader_Pallet_2_ed: Boxloader_Pallet_base_ed {
 		displayName = "Boxloader EUR-1 Pallet";
 		model = "\boxloader\mdl\boxloader_pallet2.p3d";
 		scope=2;
 		scopeCurator=2;
-		class EventHandlers {
-		init = "[_this select 0,'Land_Boxloader_Pallet_2'] call boxloader_fnc_pallet_create";	
-		};
+		BoxloaderClass = "Land_Boxloader_Pallet_2";
 	};
 	class Land_Boxloader_Pallet_3_ed: Boxloader_Pallet_base_ed {
 		displayName = "Boxloader Pallet US";
 		model = "\boxloader\mdl\boxloader_pallet3.p3d";
 		scope=2;
 		scopeCurator=2;
-		class EventHandlers {
-		init = "[_this select 0,'Land_Boxloader_Pallet_3'] call boxloader_fnc_pallet_create";	
-		};
+		BoxloaderClass = "Land_Boxloader_Pallet_3";
 	};
 	class Land_Boxloader_iso20_ed: Land_Cargo20_military_green_F {
 		editorCategory="EdCat_Supplies";
@@ -108,12 +114,32 @@ class CfgVehicles {
 		scope=2;
 		scopeCurator=2;
 		class EventHandlers {
-		init = "[_this select 0,'Land_Boxloader_iso20',90] call boxloader_fnc_pallet_addmem";	
+		init = "[_this select 0,'Land_Boxloader_iso20',90,'container'] call boxloader_fnc_pallet_addmem";
+		deleted =  "deleteVehicle ((_this select 0) getVariable['boxloader_mem',objNull])";
 		};
+		class VehicleTransport {
+			class Cargo {
+				parachuteClass              = B_Parachute_02_F;
+				parachuteHeightLimit        = 40;
+				canBeTransported            = 1;
+			};
+		};
+	};
+	class Land_Boxloader_Pallet_4_ed: Boxloader_Pallet_base_ed {
+		displayName = "Boxloader Flatrack";
+		model = "\boxloader\mdl\boxloader_pallet4.p3d";
+		scope=1;
+		scopeCurator=1;
+		BoxloaderClass = "Land_Boxloader_Pallet_4";
 	};
 	class Land_Boxloader_Pallet_1: Boxloader_Pallet_Base {
 		model = "\boxloader\mdl\boxloader_pallet1.p3d";
 		displayName = "Boxloader Pallet Square";
+		class VehicleTransport: VehicleTransport {
+			class Carrier: Carrier {
+				maxLoadMass                 = 15000; //hectograms?
+			};
+		};
 	};
 
 	class Land_Boxloader_Pallet_2: Boxloader_Pallet_Base {
@@ -124,6 +150,25 @@ class CfgVehicles {
 		model = "\boxloader\mdl\boxloader_pallet3.p3d";
 		displayName = "Boxloader Pallet US";
 	};
+	class Land_Boxloader_Pallet_4: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_pallet4.p3d";
+		displayName = "Boxloader Flatrack";
+		class VehicleTransport: VehicleTransport {
+			class Cargo {
+				canBeTransported            = 0;
+			};
+			class Carrier: Carrier {
+				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
+				cargoAlignment[]            = {"left","front"};
+				cargoSpacing[]              = {0.05, 0.05, 0};
+				maxLoadMass                 = 480000; //randomly chosen
+				disableHeightLimit          = 1;
+			};
+		};
+		class EventHandlers: EventHandlers {
+			init = "_this call boxloader_fnc_rack_init";
+		};
+	};
 	class Land_Boxloader_iso20: Boxloader_Pallet_Base {
 		model = "\boxloader\mdl\boxloader_mem_iso20.p3d";
 		class VehicleTransport: VehicleTransport {
@@ -133,8 +178,10 @@ class CfgVehicles {
 			class Carrier: Carrier {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
 				cargoSpacing[]              = {0.05, 0.05, 0};
+				maxLoadMass                 = 280000;
 			};
 		};
+		slingLoadCargoMemoryPoints[] = {};
 	};
 };
 class CfgEditorSubcategories {
