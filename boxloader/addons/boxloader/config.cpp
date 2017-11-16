@@ -7,7 +7,8 @@ class CfgPatches {
 			"Land_Boxloader_iso20","Land_Boxloader_iso20_ed",
 			"Land_Boxloader_Pallet_4","Land_Boxloader_Pallet_4_ed",
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
-			"Land_Boxloader_Crate_1"
+			"Land_Boxloader_Crate_1",
+			"Land_Boxloader_mem_90x40x100_100kg"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -20,12 +21,16 @@ class CfgFunctions {
 		tag = "boxloader";
 		class boxloaderFunctions {
 			file = "\boxloader\functions";
-		class init {postInit = 1;};
+		class init {postInit = 1};
 		class load {};
 		class addaction {};
 		class pallet_create {};
 		class pallet_init {};
 		class pallet_addmem {};
+		class quadrack {};
+		class rack_van {};
+		class quadrack_switch {};
+		class init_racks {preInit = 1};
 		};
 	};
 };
@@ -232,6 +237,34 @@ class CfgVehicles {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
 				cargoSpacing[]              = {0.05, 0.05, 0};
 				maxLoadMass                 = 280000;
+			};
+		};
+		slingLoadCargoMemoryPoints[] = {};
+	};
+	class Land_Boxloader_mem_90x40x100_100kg: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_90x40x100.p3d";
+		class VehicleTransport: VehicleTransport {
+			class Cargo {
+				canBeTransported            = 0;
+			};
+			class Carrier: Carrier {
+				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
+				cargoSpacing[]              = {0, 0, 0};
+				maxLoadMass                 = 1000;
+			};
+		};
+		slingLoadCargoMemoryPoints[] = {};
+	};
+	class Land_Boxloader_mem_420x140x150_300kg: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_420x140x150.p3d";
+		class VehicleTransport: VehicleTransport {
+			class Cargo {
+				canBeTransported            = 0;
+			};
+			class Carrier: Carrier {
+				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
+				cargoSpacing[]              = {0, 0, 0};
+				maxLoadMass                 = 3000;
 			};
 		};
 		slingLoadCargoMemoryPoints[] = {};
