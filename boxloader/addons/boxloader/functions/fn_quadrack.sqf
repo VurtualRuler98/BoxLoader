@@ -11,8 +11,8 @@ _veh addAction ["Select rear rack",{(_this select 1) setVariable ["boxloader_tgt
 if (!isServer) exitWith {true};
 _rack0 = "Land_Boxloader_mem_90x40x100_100kg" createVehicle position _veh;
 _rack1 = "Land_Boxloader_mem_90x40x100_100kg" createVehicle position _veh;
-_rack0 attachTo [_veh,[0,0.75,-0.5]];
-_rack1 attachTo [_veh,[0,-0.85,-0.4]];
+_rack0 attachTo [_veh,[0,0.75,-0.55]];
+_rack1 attachTo [_veh,[0,-0.85,-0.45]];
 _rack0 setDir 90;
 _rack1 setDir 90;
 _veh addEventHandler ["Deleted",{deleteVehicle ((_this select 0) getVariable["boxloader_rack0",objNull]);deleteVehicle ((_this select 0) getVariable["boxloader_rack1",objNull])}];

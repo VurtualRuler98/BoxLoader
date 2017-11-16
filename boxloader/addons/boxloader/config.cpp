@@ -8,7 +8,9 @@ class CfgPatches {
 			"Land_Boxloader_Pallet_4","Land_Boxloader_Pallet_4_ed",
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
 			"Land_Boxloader_Crate_1",
-			"Land_Boxloader_mem_90x40x100_100kg"
+			"Land_Boxloader_mem_90x40x100_100kg",
+			"Land_Boxloader_mem_420x140x150_300kg",
+			"Land_Boxloader_mem_200x130x200_1000kg"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -29,6 +31,8 @@ class CfgFunctions {
 		class pallet_addmem {};
 		class quadrack {};
 		class rack_van {};
+		class rack_offroad {};
+		class rack_offroad_switch {};
 		class quadrack_switch {};
 		class init_racks {preInit = 1};
 		};
@@ -214,6 +218,7 @@ class CfgVehicles {
 	class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
 		model = "\boxloader\mdl\boxloader_pallet5.p3d";
 		displayName = "463L Master Pallet";
+		ace_dragging_dragPosition[] = {0,2.5,0};
 		class VehicleTransport: VehicleTransport {
 			class Cargo: Cargo {
 				dimensions[]                = {"BBox_Base0", "BBox_Corner"};
@@ -265,6 +270,21 @@ class CfgVehicles {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
 				cargoSpacing[]              = {0, 0, 0};
 				maxLoadMass                 = 3000;
+			};
+		};
+		slingLoadCargoMemoryPoints[] = {};
+		
+	};
+	class Land_Boxloader_mem_200x130x200_1000kg: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_200x130x200.p3d";
+		class VehicleTransport: VehicleTransport {
+			class Cargo {
+				canBeTransported            = 0;
+			};
+			class Carrier: Carrier {
+				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
+				cargoSpacing[]              = {0, 0, 0};
+				maxLoadMass                 = 10000;
 			};
 		};
 		slingLoadCargoMemoryPoints[] = {};
