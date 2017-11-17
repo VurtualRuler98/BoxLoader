@@ -81,12 +81,6 @@ class Land_Boxloader_mem_kamaz: Land_Boxloader_membase_truck {
 class Land_Boxloader_mem_typhoon: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_typhoon.p3d";
 };
-class Land_Boxloader_mem_rhsural: Land_Boxloader_membase_truck {
-	model = "\boxloader\mdl\boxloader_mem_rhsural.p3d";
-};
-class Land_Boxloader_mem_rhsgaz: Land_Boxloader_membase_truck {
-	model = "\boxloader\mdl\boxloader_mem_rhsgaz.p3d";
-};
 class Land_Boxloader_mem_boxer: Boxloader_Pallet_Base {
 	model = "\boxloader\mdl\boxloader_mem_boxer.p3d";
 	class VehicleTransport: VehicleTransport {
@@ -108,6 +102,26 @@ class Land_Boxloader_mem_zodiac: Land_Boxloader_membase_truck {
 		class Carrier: Carrier {
 			cargoAlignment[]            = {"back","center"};
 			maxLoadMass                 = 5000;
+		};
+	};
+};
+
+class Land_Boxloader_mem_rhsural: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_rhsural.p3d";
+};
+class Land_Boxloader_mem_rhsgaz: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_rhsgaz.p3d";
+};
+
+
+class Land_Boxloader_mem_ifa: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_ifa.p3d";
+};
+class Land_Boxloader_mem_ifazis: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_ifazis.p3d";
+	class VehicleTransport: VehicleTransport {
+		class Carrier: Carrier {
+			exits[]                     = {"BBox_Exit"};
 		};
 	};
 };
