@@ -21,5 +21,7 @@ if (is3DEN) exitWith {false};
 ["CUP_M1152_BASE","init",{(_this select 0) call boxloader_fnc_rack_cupm1152}] call CBA_fnc_addClassEventHandler;
 ["CUP_Ural_Base","init",{(_this select 0) call boxloader_fnc_rack_cupural}] call CBA_fnc_addClassEventHandler;
 
+
+{[_x,"init",{(_this select 0) call boxloader_fnc_rack_ifa}] call CBA_fnc_addClassEventHandler;} forEach ["LIB_US_GMC_Open","LIB_opelblitz_open_y_camo","LIB_US6_Unarmed_base","LIB_Zis5v"];
 true
 
