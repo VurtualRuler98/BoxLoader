@@ -1,6 +1,6 @@
 params [["_veh",objNull,[objNull]]];
 if (isNull _veh) exitWith {["Vehicle passed was null!"] call bis_fnc_error; false};
-if (!(_veh isKindOf "Offroad_01_civil_base_F")) exitWith {["That's not an offroad!"] call bis_fnc_error; false};
+if (!(_veh isKindOf "Offroad_01_civil_base_F") && !(_veh isKindOf "I_G_Offroad_01_F")) exitWith {["That's not an offroad!"] call bis_fnc_error; false};
 if (_veh getVariable ["boxloader_rackinit",false]) exitWith {false};
 _veh setVariable ["boxloader_rackinit",true,true];
 _veh setVariable ["boxloader_dontload",true,true];
