@@ -7,13 +7,7 @@ class CfgPatches {
 			"Land_Boxloader_iso20","Land_Boxloader_iso20_ed",
 			"Land_Boxloader_Pallet_4","Land_Boxloader_Pallet_4_ed",
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
-			"Land_Boxloader_Crate_1",
-			"Land_Boxloader_mem_90x40x100_100kg",
-			"Land_Boxloader_mem_420x140x150_300kg",
-			"Land_Boxloader_mem_200x130x200_1000kg",
-			"Land_Boxloader_mem_550x240x160_9100kg",
-			"Land_Boxloader_mem_470x240x160_6000kg",
-			"Land_Boxloader_mem_300x180x160_1000kg"
+			"Land_Boxloader_Crate_1"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -32,8 +26,9 @@ class CfgFunctions {
 		class pallet_create {};
 		class pallet_init {};
 		class pallet_addmem {};
-		class quadrack {};
-		class rack_van {};
+		class rack_quad {};
+		class rack_quad_switch {};
+		class rack_idap {};
 		class rack_offroad {};
 		class rack_offroad_switch {};
 		class rack_hemtt {};
@@ -42,7 +37,8 @@ class CfgFunctions {
 		class rack_kamaz_switch {};
 		class rack_boxer {};
 		class rack_boxer_switch {};
-		class quadrack_switch {};
+		class rack_rhsural {};
+		class rack_rhsgaz {};
 		class init_racks {preInit = 1};
 		};
 	};
@@ -120,7 +116,7 @@ class CfgVehicles {
 			};
 		   class Carrier {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner_1m"};
-				disableHeightLimit          = 0;
+				disableHeightLimit          = 1;
 				maxLoadMass                 = 10000;
 				cargoAlignment[]            = {"front", "left"};
 				cargoSpacing[]              = {0, 0, 0};
@@ -133,6 +129,20 @@ class CfgVehicles {
 			};
 		};
 		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
+	};
+	class Land_Boxloader_membase_truck: Boxloader_Pallet_Base {
+		class VehicleTransport: VehicleTransport {
+			class Cargo {
+				canBeTransported            = 0;
+			};
+			class Carrier: Carrier {
+				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
+				cargoSpacing[]              = {0, 0.1, 0};
+				cargoAlignment[]            = {"front","center"};
+				maxLoadMass                 = 100000;
+			};
+		};
+		slingLoadCargoMemoryPoints[] = {};
 	};
 	class Land_Boxloader_Pallet_1_ed: Boxloader_Pallet_base_ed {
 		displayName = "Boxloader Pallet Square";
@@ -255,8 +265,8 @@ class CfgVehicles {
 		};
 		slingLoadCargoMemoryPoints[] = {};
 	};
-	class Land_Boxloader_mem_90x40x100_100kg: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_mem_90x40x100.p3d";
+	class Land_Boxloader_mem_quad: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_quad.p3d";
 		class VehicleTransport: VehicleTransport {
 			class Cargo {
 				canBeTransported            = 0;
@@ -265,12 +275,28 @@ class CfgVehicles {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
 				cargoSpacing[]              = {0, 0, 0};
 				maxLoadMass                 = 1000;
+				cargoAlignment[]            = {"left","center"};
 			};
 		};
 		slingLoadCargoMemoryPoints[] = {};
 	};
-	class Land_Boxloader_mem_420x140x150_300kg: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_mem_420x140x150.p3d";
+	class Land_Boxloader_mem_quad_front: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_quad_front.p3d";
+		class VehicleTransport: VehicleTransport {
+			class Cargo {
+				canBeTransported            = 0;
+			};
+			class Carrier: Carrier {
+				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
+				cargoSpacing[]              = {0, 0, 0};
+				maxLoadMass                 = 1000;
+				cargoAlignment[]            = {"back","center"};
+			};
+		};
+		slingLoadCargoMemoryPoints[] = {};
+	};
+	class Land_Boxloader_mem_idap: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_idap.p3d";
 		class VehicleTransport: VehicleTransport {
 			class Cargo {
 				canBeTransported            = 0;
@@ -284,8 +310,8 @@ class CfgVehicles {
 		slingLoadCargoMemoryPoints[] = {};
 		
 	};
-	class Land_Boxloader_mem_200x130x200_1000kg: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_mem_200x130x200.p3d";
+	class Land_Boxloader_mem_offroad: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_offroad.p3d";
 		class VehicleTransport: VehicleTransport {
 			class Cargo {
 				canBeTransported            = 0;
@@ -298,38 +324,20 @@ class CfgVehicles {
 		};
 		slingLoadCargoMemoryPoints[] = {};
 	};
-	class Land_Boxloader_mem_550x240x160_9100kg: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_mem_550x240x160.p3d";
-		class VehicleTransport: VehicleTransport {
-			class Cargo {
-				canBeTransported            = 0;
-			};
-			class Carrier: Carrier {
-				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
-				cargoSpacing[]              = {0, 0.1, 0};
-				cargoAlignment[]            = {"front","center"};
-				maxLoadMass                 = 91000;
-			};
-		};
-		slingLoadCargoMemoryPoints[] = {};
+	class Land_Boxloader_mem_hemtt: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_mem_hemtt.p3d";
 	};
-	class Land_Boxloader_mem_470x240x160_6000kg: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_mem_470x240x160.p3d";
-		class VehicleTransport: VehicleTransport {
-			class Cargo {
-				canBeTransported            = 0;
-			};
-			class Carrier: Carrier {
-				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
-				cargoSpacing[]              = {0, 0.1, 0};
-				cargoAlignment[]            = {"front","center"};
-				maxLoadMass                 = 60000;
-			};
-		};
-		slingLoadCargoMemoryPoints[] = {};
+	class Land_Boxloader_mem_kamaz: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_mem_kamaz.p3d";
 	};
-	class Land_Boxloader_mem_300x180x160_1000kg: Boxloader_Pallet_Base {
-		model = "\boxloader\mdl\boxloader_mem_300x180x160.p3d";
+	class Land_Boxloader_mem_rhsural: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_mem_rhsural.p3d";
+	};
+	class Land_Boxloader_mem_rhsgaz: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_mem_rhsgaz.p3d";
+	};
+	class Land_Boxloader_mem_boxer: Boxloader_Pallet_Base {
+		model = "\boxloader\mdl\boxloader_mem_boxer.p3d";
 		class VehicleTransport: VehicleTransport {
 			class Cargo {
 				canBeTransported            = 0;
