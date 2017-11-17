@@ -7,9 +7,9 @@ _ply addAction ["Load this in target",{_veh = (_this select 0 getVariable ["boxl
 _ply addAction ["Unload object",{_box = cursorTarget; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box};},[],0,false,true,"","(vehicle _this == _target) && (!isNull isVehicleCargo cursorTarget) && (cursorTarget distance _target<10) && !(cursorTarget isKindOf 'Boxloader_Pallet_Base')"];
 
 
-if (!isClass(configFile >> "CfgPatches" >> "boxloader_ace")) then {
+//if (!isClass(configFile >> "CfgPatches" >> "boxloader_ace")) then {
 	_ply addAction ["Unload pallet",{_box = cursorTarget; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box};},[],0,false,true,"","(vehicle _this == _target) && (!isNull isVehicleCargo cursorTarget) && (cursorTarget distance _target<10) && (cursorTarget isKindOf 'Boxloader_Pallet_Base')"];
-};
+//};
 _ply setVariable["boxloader_init",true];
 true
 
