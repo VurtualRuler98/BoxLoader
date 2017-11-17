@@ -1,5 +1,6 @@
 params [["_veh",objNull,[objNull]]];
 if (isNull _veh) exitWith {["Vehicle passed was null!"] call bis_fnc_error; false};
+if (_veh isKindOf "rhs_kamaz5350") exitWith {_veh setVariable ["boxloader_rackinit",true,true];false};
 if (!(_veh isKindOf "Truck_02_transport_Base_F") && !(typeOf _veh in ["O_Truck_02_covered_F","I_Truck_02_covered_F","C_Truck_02_covered_F","C_IDAP_Truck_02_F"])) exitWith {["That's not an acceptable kamaz!"] call bis_fnc_error; false};
 if (_veh getVariable ["boxloader_rackinit",false]) exitWith {false};
 _veh setVariable ["boxloader_rackinit",true,true];
@@ -9,7 +10,7 @@ _veh addAction ["Use rear cargo seats",{[(_this select 0),(_this select 1),false
 _veh addAction ["Select cargo bed",{(_this select 1) setVariable ["boxloader_tgt",((_this select 0) getVariable ["boxloader_rack0",objNull]),true]},[],0,false,true,"","(vehicle _this == _this) && (isNull (_this getVariable ['boxloader_tgt',objNull])) && !((_target getVariable ['boxloader_rack0',objNull]) getVariable ['boxloader_dontload',true])"];
 _veh addAction ["Unload cargo bed",{((_this select 0) getVariable ['boxloader_rack0',objNull]) setVehicleCargo objNull;},[],0,false,true,"","(driver _target == _this) && ((count getVehicleCargo (_target getVariable ['boxloader_rack0',objNull]))>0)"];
 if (!isServer) exitWith {true};
-_rack0 = "Land_Boxloader_mem_470x240x160_6000kg" createVehicle position _veh;
+_rack0 = "Land_Boxloader_mem_kamaz" createVehicle position _veh;
 _rack0 attachTo [_veh,[0,-1.3,-0.76]];
 _veh addEventHandler ["Deleted",{deleteVehicle ((_this select 0) getVariable["boxloader_rack0",objNull]);}];
 _veh setVariable ["boxloader_rack0",_rack0,true];
