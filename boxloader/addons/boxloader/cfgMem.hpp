@@ -106,6 +106,17 @@ class Land_Boxloader_mem_zodiac: Land_Boxloader_membase_truck {
 	};
 };
 
+class Land_Boxloader_mem_prowler: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_prowler.p3d";
+	class VehicleTransport: VehicleTransport {
+		class Carrier: Carrier {
+			cargoAlignment[]            = {"back","center"};
+			disableHeightLimit          = 0;
+		};
+	};
+};
+
+
 class Land_Boxloader_mem_rhsural: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_rhsural.p3d";
 };
