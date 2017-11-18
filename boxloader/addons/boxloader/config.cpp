@@ -37,6 +37,8 @@ class CfgFunctions {
 		class rack_typhoon {}; class rack_typhoon_switch {};
 		class rack_zodiac {};
 		class rack_motorboat {};
+		class rack_huron {}; class rack_huron_switch {};
+		class rack_prowler {}; class rack_prowler_switch {};
 		
 		
 		class rack_rhsural {};
@@ -147,12 +149,18 @@ class CfgVehicles {
 			};
 			class Carrier: Carrier {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
-				cargoSpacing[]              = {0, 0.1, 0};
-				cargoAlignment[]            = {"front","center"};
+				cargoSpacing[]              = {0, 0, 0};
+				cargoAlignment[]            = {"front","left"};
 				maxLoadMass                 = 100000;
 			};
 		};
 		slingLoadCargoMemoryPoints[] = {};
+	};
+	class Land_Boxloader_Prowler_Net: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_prowler_net.p3d";
+	};
+	class Land_Boxloader_Prowler_Roofnet: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_prowler_roofnet.p3d";
 	};
 	#include "cfgPallets.hpp"
 	#include "cfgMem.hpp"
