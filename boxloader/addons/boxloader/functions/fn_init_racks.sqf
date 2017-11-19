@@ -1,41 +1,139 @@
 if (is3DEN) exitWith {false};
+//[0 rack object,1 position, 2 rotation, 3 useText, 4 unloadText, 5 toggles,6 [0 enableText,1 disableText,2 hide when disabled,3 cargo seats blocked,4 turret seats blocked,5 blocks vehicle loading],7 [selection,state]]
 
 //Vanilla
 
 	//Land
-	["Quadbike_01_Base_F","init",{(_this select 0) call boxloader_fnc_rack_quad}] call CBA_fnc_addClassEventHandler;
-	["Van_02_base_F","init",{(_this select 0) call boxloader_fnc_rack_idap}] call CBA_fnc_addClassEventHandler;
-	["Offroad_01_civil_base_F","init",{(_this select 0) call boxloader_fnc_rack_offroad}] call CBA_fnc_addClassEventHandler;
-	["I_G_Offroad_01_F","init",{(_this select 0) call boxloader_fnc_rack_offroad}] call CBA_fnc_addClassEventHandler;
-	["B_Truck_01_transport_F","init",{(_this select 0) call boxloader_fnc_rack_hemtt}] call CBA_fnc_addClassEventHandler;
-	["Van_01_transport_base_F","init",{(_this select 0) call boxloader_fnc_rack_boxer}] call CBA_fnc_addClassEventHandler;
-	{[_x,"init",{(_this select 0) call boxloader_fnc_rack_kamaz}] call CBA_fnc_addClassEventHandler;} forEach ["Truck_02_transport_Base_F","O_Truck_02_covered_F","I_Truck_02_covered_F","C_Truck_02_covered_F","C_IDAP_Truck_02_F"];
-	{[_x,"init",{(_this select 0) call boxloader_fnc_rack_typhoon}] call CBA_fnc_addClassEventHandler;} forEach ["O_Truck_03_covered_F","O_Truck_03_transport_F"];
-	{[_x,"init",{(_this select 0) call boxloader_fnc_rack_prowler}] call CBA_fnc_addClassEventHandler;} forEach ["LSV_01_unarmed_base_F","LSV_01_light_base_F"];
 
+
+	//Offroad
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_offroad",[0,-1.7,-0.65],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[],[1,2,3,4],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["Offroad_01_civil_base_F","I_G_Offroad_01_F"];
+	
+	
+	//Boxer
+	["Van_01_transport_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_boxer",[0,-1.8,-0.58],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[],[2,3,4,5,6,7,8,9,10,11],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+
+	//KAMAZ
+	{[_x,"init",{if (_veh isKindOf "rhs_kamaz5350") exitWith {false}; [(_this select 0),[
+		[["Land_Boxloader_mem_kamaz",[0,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11,12,13],[14,15],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["Truck_02_transport_Base_F","O_Truck_02_covered_F","I_Truck_02_covered_F","C_Truck_02_covered_F","C_IDAP_Truck_02_F"];
+	
+	
+	//Typhoon
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_typhoon",[0,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,6,7,8,9,10,12],[5,11],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["O_Truck_03_covered_F","O_Truck_03_transport_F"];
+
+
+	//IDAP Van
+	["Van_02_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_idap",[0,-0.65,1.2],0,"Select roof rack","Unload roof rack",false,[],["roof_rack_hide",0]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//HEMTT
+	["B_Truck_01_transport_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_hemtt",[0,-2.15,-0.5],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,8,9,10,11,12,13,14,16],[7,15],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Quad bike
+	["Quadbike_01_Base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_quad_front",[0,0.75,-0.55],0,"Select front cargo rack","Unload front cargo rack",false,[]],"boxloader_rack0"],
+		[["Land_Boxloader_mem_quad",[0,-0.85,-0.45],90,"Select rear cargo rack","Unload rear cargo rack",true,["Use rear cargo rack","Use rear passenger seat",false,[0],[],false]],"boxloader_rack1"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	
+	//Prowler
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_prowler",[0,-0.35,-1.2],0,"Select middle cargo space","Unload middle cargo space",false,[]],"boxloader_rack0"],
+		[["Land_Boxloader_prowler_net",[0,-1.4,-0.8],0,"Select rear cargo net","Unload rear cargo net",true,["Use rear cargo net","Use rear passenger seats",true,[],[4,5],false]],"boxloader_rack1"],
+		[["Land_Boxloader_prowler_roofnet",[0,-0.1,-0.1],0,"Select roof cargo net","Unload roof cargo net",true,["Attach roof cargo net","Detach roof cargo net",true,[],[0],true]],"boxloader_rack2"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["LSV_01_unarmed_base_F","LSV_01_light_base_F"];
+
+	
 	//Air
-	["Heli_Transport_03_base_F","init",{(_this select 0) call boxloader_fnc_rack_huron}] call CBA_fnc_addClassEventHandler;
+	
+	
+	//Huron
+	["Heli_Transport_03_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_hemtt",[0,0,-2.15],0,"Select cargo space","Unload cargo space",true,["Use cargo space","Use passenger space",false,[0,1,2,3,4,5,6,8,9,10,11,12,13],[0,0],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//Sea
-	["Rubber_duck_base_F","init",{(_this select 0) call boxloader_fnc_rack_zodiac}] call CBA_fnc_addClassEventHandler;
-	["Boat_Civil_01_base_F","init",{(_this select 0) call boxloader_fnc_rack_motorboat}] call CBA_fnc_addClassEventHandler;
+	
+	
+	//Zodiacs
+	["Rubber_duck_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_zodiac",[0,-0.4,-0.85],0,"Select cargo space","Unload cargo space",false,[]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Motorboat
+	["Boat_Civil_01_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_zodiac",[0,-0.9,-1],0,"Select cargo space","Unload cargo space",false,[]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+
 
 
 //RHS
-["RHS_Ural_Flat_MSV_01","init",{(_this select 0) call boxloader_fnc_rack_rhsural}] call CBA_fnc_addClassEventHandler;
-["RHS_Ural_Open_Flat_MSV_01","init",{(_this select 0) call boxloader_fnc_rack_rhsural}] call CBA_fnc_addClassEventHandler;
-["rhs_gaz66o_flat_vmf","init",{(_this select 0) call boxloader_fnc_rack_rhsgaz}] call CBA_fnc_addClassEventHandler;
-["rhs_gaz66_flat_vmf","init",{(_this select 0) call boxloader_fnc_rack_rhsgaz}] call CBA_fnc_addClassEventHandler;
 
+	//Ural flatbed
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_rhsural",[0,-1.4,-0.18],0,"Select rear cargo bed","Unload rear cargo bed",false,[]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["RHS_Ural_Flat_MSV_01","RHS_Ural_Open_Flat_MSV_01"];
+	
+	//GAZ flatbed
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_rhsgaz",[0,-0.8,-0.57],0,"Select rear cargo bed","Unload rear cargo bed",false,[]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["rhs_gaz66o_flat_vmf","rhs_gaz66_flat_vmf"];
 
 //CUP
-{[_x,"init",{(_this select 0) call boxloader_fnc_rack_cuphsov}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_HMMWV_SOV_Base","CUP_HMMWV_SOV_M2_Base"];
-["CUP_HMMWV_Transport_Base","init",{(_this select 0) call boxloader_fnc_rack_cupm998}] call CBA_fnc_addClassEventHandler;
-["CUP_M1152_BASE","init",{(_this select 0) call boxloader_fnc_rack_cupm1152}] call CBA_fnc_addClassEventHandler;
-["CUP_Ural_Base","init",{(_this select 0) call boxloader_fnc_rack_cupural}] call CBA_fnc_addClassEventHandler;
 
+
+
+	//HMMWV SOV
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_cuphsov",[0,-1.5,-1.32],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[],[2,3],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_HMMWV_SOV_Base","CUP_HMMWV_SOV_M2_Base"];
+	
+	//M998 HMMWV
+	["CUP_HMMWV_Transport_Base","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_cupm998",[0,-1.05,-0.59],0,"Select cargo space","Unload cargo space",false,[]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+
+	//M1152 HMMWV
+	["CUP_M1152_BASE","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_cupm1152",[0,-1.3,-1.54],0,"Select cargo bed","Unload cargo bed",false,[]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	
+	//Ural
+	["CUP_Ural_Base","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_rhsural",[0,-1.4,-0.45],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[2,3,4,5,6,7,8,9,12,13],[10,11],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 
 //IFA3
-{[_x,"init",{(_this select 0) call boxloader_fnc_rack_ifa}] call CBA_fnc_addClassEventHandler;} forEach ["LIB_US_GMC_Open","LIB_opelblitz_open_y_camo","LIB_US6_Unarmed_base","LIB_Zis5v"];
+
+	//GMC
+	["LIB_US_GMC_Open","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_ifa",[0,-0.6,0],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	["LIB_US6_Unarmed_base","init",{if ((_this select 0) isKindOf "LIB_US6_Tent_Cargo") exitWith {false};[(_this select 0),[
+		[["Land_Boxloader_mem_ifa",[0,-1.7,0.25],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+
+	["LIB_opelblitz_open_y_camo","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_ifa",[0,-1,0],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+
+	["LIB_Zis5v","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_ifazis",[0,-1,-0.75],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+
 true
 
