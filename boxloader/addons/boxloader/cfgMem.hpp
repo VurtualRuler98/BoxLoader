@@ -78,9 +78,6 @@ class Land_Boxloader_mem_hemtt: Land_Boxloader_membase_truck {
 class Land_Boxloader_mem_kamaz: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_kamaz.p3d";
 };
-class Land_Boxloader_mem_typhoon: Land_Boxloader_membase_truck {
-	model = "\boxloader\mdl\boxloader_mem_typhoon.p3d";
-};
 class Land_Boxloader_mem_boxer: Boxloader_Pallet_Base {
 	model = "\boxloader\mdl\boxloader_mem_boxer.p3d";
 	class VehicleTransport: VehicleTransport {
