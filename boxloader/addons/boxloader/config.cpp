@@ -27,31 +27,10 @@ class CfgFunctions {
 		class pallet_addmem {};
 		class init_racks {preInit = 1};
 		
-		
-		class rack_quad {}; class rack_quad_switch {};
-		class rack_idap {};
-		class rack_offroad {}; class rack_offroad_switch {};
-		class rack_hemtt {}; class rack_hemtt_switch {};
-		class rack_kamaz {}; class rack_kamaz_switch {};
-		class rack_boxer {}; class rack_boxer_switch {};
-		class rack_typhoon {}; class rack_typhoon_switch {};
-		class rack_zodiac {};
-		class rack_motorboat {};
-		class rack_huron {}; class rack_huron_switch {};
-		class rack_prowler {}; class rack_prowler_switch {};
-		
-		
-		class rack_rhsural {};
-		class rack_rhsgaz {};
-		
-		
-		class rack_cupm1152 {};
-		class rack_cupm998 {};
-		class rack_cuphsov {}; class rack_cuphsov_switch {};
-		class rack_cupural {}; class rack_cupural_switch {};
-		
-		
-		class rack_ifa {}; class rack_ifa_switch {};
+		class racks_setup {};
+		class racks_add {};
+		class racks_validate {};
+		class racks_switch {};
 		};
 	};
 };
