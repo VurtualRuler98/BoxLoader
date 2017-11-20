@@ -1,5 +1,5 @@
 if (is3DEN) exitWith {false};
-//[0 rack object,1 position, 2 rotation, 3 useText, 4 unloadText, 5 toggles,6 [0 enableText,1 disableText,2 hide when disabled,3 cargo seats blocked,4 turret seats blocked,5 blocks vehicle loading],7 [selection,state]]
+//[0 rack object,1 position, 2 rotation, 3 useText, 4 unloadText, 5 toggles,6 [0 enableText,1 disableText,2 hide when disabled,3 cargo seats blocked,4 turret seats blocked,5 blocks vehicle loading],7 [selection,state], 8 addon action]
 
 //Vanilla
 
@@ -20,14 +20,23 @@ if (is3DEN) exitWith {false};
 
 	//KAMAZ
 	{[_x,"init",{if (_veh isKindOf "rhs_kamaz5350") exitWith {false}; [(_this select 0),[
-		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11,12,13],[14,15],false]],"boxloader_rack0"]
+		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13],[14,15],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["Truck_02_transport_Base_F","O_Truck_02_covered_F","I_Truck_02_covered_F","C_Truck_02_covered_F","C_IDAP_Truck_02_F"];
 	
+	//KAMAZ Medical
+	["Truck_02_medical_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13,14,15],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//Typhoon
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_hemtt",[0.1,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,6,7,8,9,10,12],[5,11],false]],"boxloader_rack0"]
-	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["O_Truck_03_covered_F","O_Truck_03_transport_F"];
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["O_Truck_03_covered_F","O_Truck_03_transport_F","O_T_Truck_03_transport_ghex_F","O_T_Truck_03_covered_ghex_F"];
+	
+	//Typhoon medical
+	["O_Truck_03_medical_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_hemtt",[0.1,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 
 
 	//IDAP Van
@@ -38,6 +47,11 @@ if (is3DEN) exitWith {false};
 	//HEMTT
 	["B_Truck_01_transport_F","init",{[(_this select 0),[
 		[["Land_Boxloader_mem_hemtt",[0.1,-2.15,-0.5],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,8,9,10,11,12,13,14,16],[7,15],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//HEMTT Medical
+	["B_Truck_01_medical_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_hemtt",[0.1,-2.15,-0.5],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//Quad bike
@@ -51,18 +65,42 @@ if (is3DEN) exitWith {false};
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_prowler",[0,-0.35,-1.2],0,"Select middle cargo space","Unload middle cargo space",false,[]],"boxloader_rack0"],
 		[["Land_Boxloader_prowler_net",[0,-1.4,-0.8],0,"Select rear cargo net","Unload rear cargo net",true,["Use rear cargo net","Use rear passenger seats",true,[],[4,5],false]],"boxloader_rack1"],
-		[["Land_Boxloader_prowler_roofnet",[0,-0.1,-0.1],0,"Select roof cargo net","Unload roof cargo net",true,["Attach roof cargo net","Detach roof cargo net",true,[],[0],true]],"boxloader_rack2"]
+		[["Land_Boxloader_prowler_roofnet",[0,-0.1,-0.1],0,"Select roof cargo net","Unload roof cargo net",true,["Attach roof cargo net","Detach roof cargo net",true,[],[0],true],[],"Add roof cargo net kit"],"boxloader_rack2"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["LSV_01_unarmed_base_F","LSV_01_light_base_F"];
 
+	
+	//M-ATV
+	["B_MRAP_01_F","init",{[(_this select 0),[
+		[["Land_Boxloader_Roofrack_1",[0,-2,0.65],0,"Select roof rack","Unload roof rack",true,["Set up roof rack","Take down roof rack",true,[],[],true],[],"Add roof rack kit"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Punisher
+	{;[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_Roofrack_1",[0,-3,0.45],0,"Select roof rack","Unload roof rack",true,["Set up roof rack","Take down roof rack",true,[],[],true],[],"Add roof rack kit"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["O_MRAP_02_F","O_T_MRAP_02_ghex_F"];
+	
+	
+	//Fennek
+	["I_MRAP_03_F","init",{[(_this select 0),[
+		[["Land_Boxloader_Roofrack_1",[0,0,0.55],0,"Select roof rack","Unload roof rack",true,["Set up roof rack","Take down roof rack",true,[],[],true],[],"Add roof rack kit"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	
+	
+	//SUV
+	["C_SUV_01_F","init",{[(_this select 0),[
+		[["Land_Boxloader_Roofrack_1",[0,-1,0.4],0,"Select roof rack","Unload roof rack",true,["Set up roof rack","Take down roof rack",true,[],[],true],[],"Add roof rack kit"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//Air
 	
 	
 	//Huron
+	/*
 	["Heli_Transport_03_base_F","init",{[(_this select 0),[
 		[["Land_Boxloader_mem_hemtt",[0,0,-2.15],0,"Select cargo space","Unload cargo space",true,["Use cargo space","Use passenger space",false,[0,1,2,3,4,5,6,8,9,10,11,12,13],[0,0],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
-	
+	*/
 	//Sea
 	
 	

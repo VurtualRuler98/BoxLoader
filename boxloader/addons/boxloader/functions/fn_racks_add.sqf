@@ -18,6 +18,10 @@ if (_rack select 5) then {
 	if (count (_rack select 7)>0) then {
 		_expOn = _expOn + "&& (_target animationSourcePhase '"+(_rack select 7 select 0)+"')=="+(str (_rack select 7 select 1));
 	};
+	if (count (_rack select 8)>0) then {
+		_expOn = _expOn + "&& ((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_addon',false])";
+		_veh addAction [(_rack select 8),{_addon = (_this select 0 getVariable [(_this select 3 select 0),[objNull]] select 0); if (!isNull _addon) then {_addon setVariable ["boxloader_addon",true,true]; (_this select 0) removeAction (_this select 2);};},[_rackVar],0,false,true,"","((nearestObject [_target,'Land_Boxloader_Crate_Roofrack']) distance _target)<15"];
+	};
 	_expOff = "(vehicle _this == _this) && !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_dontload',true]) && ((count getVehicleCargo (_target getVariable ['"+_rackVar+"',[objNull]] select 0))==0)";
 	_veh addAction [(_rack select 6 select 0),{[(_this select 0),(_this select 3 select 0),true] remoteExecCall ["boxloader_fnc_racks_switch",(_this select 0)]},[_rackVar],0,false,true,"",_expOn];
 	_veh addAction [(_rack select 6 select 1),{[(_this select 0),(_this select 3 select 0),false] remoteExecCall ["boxloader_fnc_racks_switch",(_this select 0)]},[_rackVar],0,false,true,"",_expOff];
@@ -37,6 +41,9 @@ if (_rack select 5) then {
 	if (_rack select 6 select 2) then {
 		_obj hideObjectGlobal true;
 	};
+};
+if (count (_rack select 8)>0) then {
+	_obj setVariable ["boxloader_addon",false,true];
 };
 _rack set [0,_obj];
 _veh setVariable [_rackVar,_rack,true];
