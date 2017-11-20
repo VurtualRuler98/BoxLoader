@@ -4,6 +4,12 @@ class Land_Boxloader_mem_cupm1152: Land_Boxloader_membase_truck {
 class Land_Boxloader_mem_cuphsov: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_cuphsov.p3d";
 };
+class Land_Boxloader_mem_cupmtvr: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_cupmtvr.p3d";
+};
+class Land_Boxloader_mem_cupuaz: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_cupuaz.p3d";
+};
 class Land_Boxloader_mem_cupm998: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_cupm998.p3d";
 	class VehicleTransport: VehicleTransport {
