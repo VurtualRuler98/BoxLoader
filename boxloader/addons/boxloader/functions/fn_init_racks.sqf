@@ -114,6 +114,11 @@ if (is3DEN) exitWith {false};
 		[["Land_Boxloader_mem_zodiac",[0,-0.9,-1],0,"Select cargo space","Unload cargo space",false,[]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
+	//Armed boat
+	["Boat_Armed_01_base_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_zodiac",[0,-1.8,-1.79],0,"Select rear cargo space","Unload rear cargo space",false,[]],"boxloader_rack0"],
+		[["Land_Boxloader_mem_zodiac",[0,2.8,-2.12],0,"Select front cargo space","Unload front cargo space",false,[]],"boxloader_rack1"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 
 
 
@@ -150,6 +155,21 @@ if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
 		[["Land_Boxloader_mem_cupm1152",[0,-1.3,-1.54],0,"Select cargo bed","Unload cargo bed",false,[]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
+	//M1025 and M1151 HMMWV
+	{;[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_Roofrack_1",[0,-0.2,-0.5],90,"Select roof rack","Unload roof rack",true,["Set up roof rack","Take down roof rack",true,[],[],true],[],"Add roof rack kit"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_M1151_Unarmed_BASE","CUP_HMMWV_Unarmed_Base"];
+
+	//MTVR
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_cupmtvr",[0.1,-1.6,-0.375],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_B_MTVR_USA","CUP_B_MTVR_USMC"];
+
+	//UAZ
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_cupuaz",[0,-1.3,0.72],0,"Select rear cargo space","Unload rear cargo space",true,["Use rear cargo space","Use rear passenger seats",true,[2,5],[2,5],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_UAZ_Open_Base","CUP_UAZ_Unarmed_Base"];
+	
 	//Ural
 	["CUP_Ural_Base","init",{[(_this select 0),[
 		[["Land_Boxloader_mem_rhsural",[0.1,-1.4,-0.45],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[2,3,4,5,6,7,8,9,12,13],[10,11],false]],"boxloader_rack0"]
@@ -159,6 +179,16 @@ if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_cupv3s",[0.1,-1,-0.57],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_V3S_Covered_Base","CUP_O_V3S_Open_TKA","CUP_O_V3S_Open_TKM","CUP_V3S_Open_NAPA","CUP_I_V3S_Open_TKG","CUP_C_V3S_Open_TKC"];
+	
+	//Tatra T810 unarmed
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_kamaz",[0.1,-1.05,-0.55],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_B_T810_Unarmed_CZ_DES","CUP_B_T810_Unarmed_CZ_WDL"];
+	
+	//Tatra T810 armed
+	["CUP_T810_Armed_Base","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_kamaz",[0.1,-1.05,-1.26],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 };
 //IFA3
 
