@@ -32,6 +32,7 @@ class CfgFunctions {
 		class racks_add {};
 		class racks_validate {};
 		class racks_switch {};
+		class racks_lock {};
 		};
 	};
 };

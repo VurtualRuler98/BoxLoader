@@ -5,10 +5,10 @@ _val = _rack call boxloader_fnc_racks_validate;
 if (!(_val select 0)) exitWith {["Variable name passed is not rack data!"] call bis_fnc_error; false};
 _rack = (_val select 1);
 if (typeName (_rack select 0)!=typeName "") exitWith {["Rack object must be a string here."] call bis_fnc_error;false};
-_expUse = "(vehicle _this == _this) && (isNull (_this getVariable ['boxloader_tgt',objNull]))";
+_expUse = "(vehicle _this == _this) && (isNull (_this getVariable ['boxloader_tgt',objNull])) && !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_cargo_locked',false])";
 if (_rack select 5) then {
 	_expUse = _expUse + "&& !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_dontload',true])";
-	_expOn = "(vehicle _this == _this) && ((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_dontload',false])";
+	_expOn = "(vehicle _this == _this) && ((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_dontload',false]) && !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_cargo_locked',false])";
 	if (count (_rack select 6 select 3)>0) then {
 		_expOn = _expOn +" && (({!(isNull (_x select 0)) && (_x select 2) in "+(str (_rack select 6 select 3))+"} count fullCrew [_target, 'cargo',true])==0)";
 	};
@@ -20,9 +20,9 @@ if (_rack select 5) then {
 	};
 	if (count (_rack select 8)>0) then {
 		_expOn = _expOn + "&& ((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_addon',false])";
-		_veh addAction [(_rack select 8),{_addon = (_this select 0 getVariable [(_this select 3 select 0),[objNull]] select 0); if (!isNull _addon) then {_addon setVariable ["boxloader_addon",true,true]; (_this select 0) removeAction (_this select 2);};},[_rackVar],0,false,true,"","((nearestObject [_target,'Land_Boxloader_Crate_Roofrack']) distance _target)<15"];
+		_veh addAction [(_rack select 8),{_addon = (_this select 0 getVariable [(_this select 3 select 0),[objNull]] select 0); if (!isNull _addon) then {_addon setVariable ["boxloader_addon",true,true]; (_this select 0) removeAction (_this select 2);(_this select 0) setVariable ["boxloader_racks",true,true];};},[_rackVar],0,false,true,"","((nearestObject [_target,'Land_Boxloader_Crate_Roofrack']) distance _target)<15"];
 	};
-	_expOff = "(vehicle _this == _this) && !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_dontload',true]) && ((count getVehicleCargo (_target getVariable ['"+_rackVar+"',[objNull]] select 0))==0)";
+	_expOff = "(vehicle _this == _this) && !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_dontload',true]) && ((count getVehicleCargo (_target getVariable ['"+_rackVar+"',[objNull]] select 0))==0) && !((_target getVariable ['"+_rackVar+"',[objNull]] select 0) getVariable ['boxloader_cargo_locked',false])";
 	_veh addAction [(_rack select 6 select 0),{[(_this select 0),(_this select 3 select 0),true] remoteExecCall ["boxloader_fnc_racks_switch",(_this select 0)]},[_rackVar],0,false,true,"",_expOn];
 	_veh addAction [(_rack select 6 select 1),{[(_this select 0),(_this select 3 select 0),false] remoteExecCall ["boxloader_fnc_racks_switch",(_this select 0)]},[_rackVar],0,false,true,"",_expOff];
 };
@@ -44,7 +44,11 @@ if (_rack select 5) then {
 };
 if (count (_rack select 8)>0) then {
 	_obj setVariable ["boxloader_addon",false,true];
+} else {
+	_veh setVariable ["boxloader_racks",true,true];
 };
 _rack set [0,_obj];
+_obj setVariable  ["boxloader_cargo_locked",true,true];
+_obj enableVehicleCargo false;
 _veh setVariable [_rackVar,_rack,true];
 true 
