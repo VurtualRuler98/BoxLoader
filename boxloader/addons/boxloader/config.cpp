@@ -7,7 +7,8 @@ class CfgPatches {
 			"Land_Boxloader_iso20","Land_Boxloader_iso20_ed",
 			"Land_Boxloader_Pallet_4","Land_Boxloader_Pallet_4_ed",
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
-			"Land_Boxloader_Crate_1"
+			"Land_Boxloader_Crate_1",
+			"Land_Boxloader_Crate_Roofrack"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -37,6 +38,7 @@ class CfgFunctions {
 class CfgVehicles {
 	class StaticWeapon;
 	class Thing;
+	class ThingX;
 	class Reammobox_F;
 	class Land_Cargo20_military_green_F;
 	class Boxloader_Pallet_base_ed: Thing {
@@ -75,6 +77,31 @@ class CfgVehicles {
 		ace_cargo_canLoad = 1;
 		ace_cargo_space = 4;
 		ace_Cargo_hasCargo = 1;
+	};
+	class Land_Boxloader_Crate_Roofrack: ThingX {
+		ace_dragging_dragPosition[] = {0,1.5,0};
+		class VehicleTransport {
+			class Cargo {
+				parachuteClass              = B_Parachute_02_F;
+				parachuteHeightLimit        = 40;
+				canBeTransported            = 1;
+				dimensions[]                = {"BBox_Base0", "BBox_Corner_1m"};
+			};
+		   class Carrier {
+			};
+		};
+		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
+		editorCategory="EdCat_Supplies";
+		editorSubcategory="EdSubCat_Boxloader";
+		displayName = "Boxloader roof rack Box";
+		model = "\boxloader\mdl\boxloader_crate1.p3d";
+		icon = "iconObject_1x1";
+		scope=2;
+		scopeCurator=2;
+		side=3;
+		ace_cargo_size = 5;
+		ace_cargo_canLoad = 1;
+		ace_Cargo_hasCargo = 0;
 	};
 	class Boxloader_Pallet_base: StaticWeapon {
 		icon = "iconObject_1x1";
@@ -140,6 +167,9 @@ class CfgVehicles {
 	};
 	class Land_Boxloader_Prowler_Roofnet: Land_Boxloader_membase_truck {
 		model = "\boxloader\mdl\boxloader_prowler_roofnet.p3d";
+	};
+	class Land_Boxloader_Roofrack_1: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_roofrack1.p3d";
 	};
 	#include "cfgPallets.hpp"
 	#include "cfgMem.hpp"
