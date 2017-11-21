@@ -32,6 +32,8 @@ class CfgFunctions {
 		class racks_add {};
 		class racks_validate {};
 		class racks_switch {};
+		class hide {};
+		class hide_recursion {};
 		};
 	};
 };
@@ -46,7 +48,7 @@ class CfgVehicles {
 		editorSubcategory="EdSubCat_Boxloader";
 		icon = "iconObject_1x1";
 		scope=1;
-		side=3;
+		side=4;
 		class EventHandlers {
 		init = "_this call boxloader_fnc_pallet_create";	
 		};
@@ -71,7 +73,7 @@ class CfgVehicles {
 		icon = "iconObject_1x1";
 		scope=2;
 		scopeCurator=2;
-		side=3;
+		side=4;
 		maximumLoad=5000;
 		ace_cargo_size = 5;
 		ace_cargo_canLoad = 1;
@@ -98,7 +100,7 @@ class CfgVehicles {
 		icon = "iconObject_1x1";
 		scope=2;
 		scopeCurator=2;
-		side=3;
+		side=4;
 		ace_cargo_size = 5;
 		ace_cargo_canLoad = 1;
 		ace_Cargo_hasCargo = 0;
@@ -106,7 +108,7 @@ class CfgVehicles {
 	class Boxloader_Pallet_base: StaticWeapon {
 		icon = "iconObject_1x1";
 		scope=1;
-		side=3;
+		side=4;
 		accuracy = 0.001;
 		camouflage = 10;
 		armor = 2000;
