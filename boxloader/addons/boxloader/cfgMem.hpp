@@ -119,3 +119,11 @@ class Land_Boxloader_mem_ifazis: Land_Boxloader_membase_truck {
 		};
 	};
 };
+class Land_Boxloader_mem_ifac47: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_ifac47.p3d";
+	class VehicleTransport: VehicleTransport {
+		class Carrier: Carrier {
+			disableHeightLimit = 0;
+		};
+	};
+};

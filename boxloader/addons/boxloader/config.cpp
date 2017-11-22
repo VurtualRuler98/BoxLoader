@@ -6,8 +6,6 @@ class CfgPatches {
 			"Land_Boxloader_Pallet_3","Land_Boxloader_Pallet_3_ed",
 			"Land_Boxloader_iso_20ft","Land_Boxloader_iso20_ed",
 			"Land_Boxloader_iso_tricon","Land_Boxloader_iso_tricon_ed",
-
-			"Land_Boxloader_Pallet_4","Land_Boxloader_Pallet_4_ed",
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
 			"Land_Boxloader_Crate_1",
 			"Land_Boxloader_Crate_Roofrack"
@@ -75,7 +73,7 @@ class CfgVehicles {
 		icon = "iconObject_1x1";
 		scope=2;
 		scopeCurator=2;
-		side=4;
+		side=3;
 		maximumLoad=5000;
 		ace_cargo_size = 5;
 		ace_cargo_canLoad = 1;
@@ -102,7 +100,7 @@ class CfgVehicles {
 		icon = "iconObject_1x1";
 		scope=2;
 		scopeCurator=2;
-		side=4;
+		side=3;
 		ace_cargo_size = 5;
 		ace_cargo_canLoad = 1;
 		ace_Cargo_hasCargo = 0;
@@ -135,7 +133,6 @@ class CfgVehicles {
 				parachuteHeightLimit		= 15;
 				dimensions[]                = {"BBox_Base0", "BBox_Corner_1m"};
 			};
-				disableHeightLimit          = 0;
 		   class Carrier {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner_1m"};
 				maxLoadMass                 = 10000;
@@ -145,6 +142,7 @@ class CfgVehicles {
 				unloadingInterval           = 2;
 				loadingDistance             = 1;
 				loadingAngle                = 60;
+				disableHeightLimit          = 0;
 				parachuteClassDefault       = "B_Parachute_02_F";
 				parachuteHeightLimitDefault = 10000;
 			};
