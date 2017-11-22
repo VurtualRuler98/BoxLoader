@@ -1,18 +1,4 @@
 #include "cfgMemCup.hpp"
-class Land_Boxloader_iso20: Boxloader_Pallet_Base {
-	model = "\boxloader\mdl\boxloader_mem_iso20.p3d";
-	class VehicleTransport: VehicleTransport {
-		class Cargo {
-			canBeTransported            = 0;
-		};
-		class Carrier: Carrier {
-			cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
-			cargoSpacing[]              = {0.05, 0.05, 0};
-			maxLoadMass                 = 280000;
-		};
-	};
-	slingLoadCargoMemoryPoints[] = {};
-};
 class Land_Boxloader_mem_quad: Boxloader_Pallet_Base {
 	model = "\boxloader\mdl\boxloader_mem_quad.p3d";
 	class VehicleTransport: VehicleTransport {
