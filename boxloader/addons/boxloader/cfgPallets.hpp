@@ -35,13 +35,6 @@ class Land_Boxloader_iso_tricon_ed: Boxloader_Pallet_base_ed {
 	scopeCurator=2;
 	BoxloaderClass = "Land_Boxloader_iso_tricon";
 };
-class Land_Boxloader_Pallet_4_ed: Boxloader_Pallet_base_ed {
-	displayName = "Boxloader Flatrack";
-	model = "\boxloader\mdl\boxloader_pallet4.p3d";
-	scope=1;
-	scopeCurator=1;
-	BoxloaderClass = "Land_Boxloader_Pallet_4";
-};
 class Land_Boxloader_Pallet_5_ed: Boxloader_Pallet_base_ed {
 	displayName = "Boxloader 463L Master Pallet";
 	model = "\boxloader\mdl\boxloader_pallet5.p3d";
@@ -70,23 +63,17 @@ class Land_Boxloader_Pallet_3: Boxloader_Pallet_Base {
 	model = "\boxloader\mdl\boxloader_pallet3.p3d";
 	displayName = "Boxloader Pallet US";
 };
-class Land_Boxloader_Pallet_4: Boxloader_Pallet_Base {
+class Land_Boxloader_Flatrack: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_pallet4.p3d";
 	displayName = "Boxloader Flatrack";
 	class VehicleTransport: VehicleTransport {
-		class Cargo {
-			canBeTransported            = 0;
-		};
 		class Carrier: Carrier {
 			cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
-			cargoAlignment[]            = {"left","front"};
+			cargoAlignment[]            = {"front","center"};
 			cargoSpacing[]              = {0.05, 0.05, 0};
 			maxLoadMass                 = 480000; //randomly chosen
 			disableHeightLimit          = 1;
 		};
-	};
-	class EventHandlers: EventHandlers {
-		init = "_this call boxloader_fnc_rack_init";
 	};
 };
 class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
