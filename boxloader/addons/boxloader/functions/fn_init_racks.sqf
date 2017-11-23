@@ -180,8 +180,8 @@ if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["CUP_UAZ_Open_Base","CUP_UAZ_Unarmed_Base"];
 	
 	//Ural
-	["CUP_Ural_Base","init",{[(_this select 0),[
-		[["Land_Boxloader_mem_rhsural",[0.1,-1.4,-0.45],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[2,3,4,5,6,7,8,9,12,13],[10,11],false]],"boxloader_rack0"]
+	["CUP_Ural_Base","init",{_height = -0.45; if ((_this select 0) isKindOf "CUP_C_Ural_Open_Civ_01") then {_height=1.575}; [(_this select 0),[
+		[["Land_Boxloader_mem_rhsural",[0.1,-1.4,_height],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[2,3,4,5,6,7,8,9,12,13],[10,11],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//V3S
