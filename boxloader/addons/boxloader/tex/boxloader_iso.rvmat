@@ -1,0 +1,6 @@
+Ambient[]={0.9,0.9,0.9,1}; 
+Diffuse[]={0.9,0.9,0.9,1}; 
+fogMode="Fog";
+PixelShaderID="Normal";
+VertexShaderID="Basic";
+surfaceInfo="boxloader\tex\boxloader_iso.bisurf";
