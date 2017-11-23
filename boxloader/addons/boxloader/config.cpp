@@ -8,7 +8,19 @@ class CfgPatches {
 			"Land_Boxloader_iso_tricon","Land_Boxloader_iso_tricon_ed",
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
 			"Land_Boxloader_Crate_1",
-			"Land_Boxloader_Crate_Roofrack"
+			"Land_Boxloader_Crate_Roofrack",
+			"Land_Boxloader_iso_20ft_black_ed",
+			"Land_Boxloader_iso_20ft_aid_ed",
+			"Land_Boxloader_iso_20ft_seabee_ed",
+			"Land_Boxloader_iso_tricon_black_ed",
+			"Land_Boxloader_iso_tricon_aid_ed",
+			"Land_Boxloader_iso_tricon_seabee_ed",
+			"Land_Boxloader_iso_20ft_black",
+			"Land_Boxloader_iso_20ft_aid",
+			"Land_Boxloader_iso_20ft_seabee",
+			"Land_Boxloader_iso_tricon_black",
+			"Land_Boxloader_iso_tricon_aid",
+			"Land_Boxloader_iso_tricon_seabee"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -158,7 +170,9 @@ class CfgVehicles {
 				cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
 				cargoSpacing[]              = {0, 0, 0};
 				cargoAlignment[]            = {"front","left"};
+				exits[]						= {"BBox_Exit"};
 				maxLoadMass                 = 100000;
+				disableHeightLimit			= 1;
 			};
 		};
 		slingLoadCargoMemoryPoints[] = {};
@@ -178,5 +192,8 @@ class CfgVehicles {
 class CfgEditorSubcategories {
 	class EdSubCat_Boxloader{
 		displayName = "Boxloader";
+	};
+	class EdSubCat_BoxloaderCon{
+		displayName = "Boxloader Containers";
 	};
 };

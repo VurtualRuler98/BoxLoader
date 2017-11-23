@@ -1,0 +1,8 @@
+density=7874;
+thickness=20;
+rough=0.5;
+dust=0;
+bulletPenetrability=0.75;
+soundEnviron="metal";
+impact = "default_Mat"
+isWater=false;
