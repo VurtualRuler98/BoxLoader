@@ -23,7 +23,8 @@ class CfgPatches {
 			"Land_Boxloader_iso_tricon_seabee",
 			"Land_Boxloader_Case_Green",
 			"Land_Boxloader_Case_Aid",
-			"Land_Boxloader_Case_Tan"
+			"Land_Boxloader_Case_Tan",
+			"Land_Boxloader_Hesco_Flat"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -42,6 +43,8 @@ class CfgFunctions {
 			class pallet_init {};
 			class pallet_addmem {};
 			class init_racks {preInit = 1;};
+			class hesco {};
+			class hesco_built {};
 			
 			class racks_setup {};
 			class racks_add {};
@@ -57,6 +60,7 @@ class CfgVehicles {
 	class Thing;
 	class ThingX;
 	class Reammobox_F;
+	class HBarrier_base_F;
 	class Land_Cargo20_military_green_F;
 	class Boxloader_Pallet_base_ed: Thing {
 		editorCategory="EdCat_Supplies";
@@ -66,6 +70,17 @@ class CfgVehicles {
 		side=3;
 		class EventHandlers {
 		init = "_this call boxloader_fnc_pallet_create";	
+		};
+	};
+	class Land_Boxloader_Hesco_Flat: HBarrier_base_F {
+		displayName = "Boxloader HESCO";
+		editorCategory="EdCat_Supplies";
+		editorSubcategory="EdSubCat_Boxloader";
+		model = "\boxloader\mdl\boxloader_hesco_flat.p3d";
+		scope = 2;
+		scopeCurator = 2;
+		class EventHandlers {
+			init = "_this call boxloader_fnc_hesco";
 		};
 	};
 	class Land_Boxloader_Crate_1: Reammobox_F {
