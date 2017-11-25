@@ -24,7 +24,10 @@ class CfgPatches {
 			"Land_Boxloader_Case_Green",
 			"Land_Boxloader_Case_Aid",
 			"Land_Boxloader_Case_Tan",
-			"Land_Boxloader_Hesco_Flat"
+			"Land_Boxloader_Hesco_Flat",
+			"Land_Boxloader_Hesco_1",
+			"Land_Boxloader_Hesco_3",
+			"Land_Boxloader_Hesco_5"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -73,7 +76,7 @@ class CfgVehicles {
 		};
 	};
 	class Land_Boxloader_Hesco_Flat: HBarrier_base_F {
-		displayName = "Boxloader HESCO";
+		displayName = "Boxloader HESCO (Packed)";
 		editorCategory="EdCat_Supplies";
 		editorSubcategory="EdSubCat_Boxloader";
 		model = "\boxloader\mdl\boxloader_hesco_flat.p3d";
@@ -82,6 +85,28 @@ class CfgVehicles {
 		class EventHandlers {
 			init = "_this call boxloader_fnc_hesco";
 		};
+		ace_dragging_canCarry = 1;
+		ace_cargo_size = 1;
+		ace_cargo_canLoad = 1;
+	};
+	class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
+		displayName = "Boxloader HESCO 1m";
+		model = "\boxloader\mdl\boxloader_hesco_1.p3d";
+		class EventHandlers {
+			init = "_this call boxloader_fnc_hesco_built";
+		};
+		scope = 1;
+		scopeCurator = 1;
+		ace_dragging_canCarry = 0;
+		ace_cargo_canLoad = 0;
+	};
+	class Land_Boxloader_Hesco_3: Land_Boxloader_Hesco_1 {
+		displayName = "Boxloader HESCO 3m";
+		model = "\boxloader\mdl\boxloader_hesco_3.p3d";
+	};
+	class Land_Boxloader_Hesco_5: Land_Boxloader_Hesco_1 {
+		displayName = "Boxloader HESCO 5m";
+		model = "\boxloader\mdl\boxloader_hesco_5.p3d";
 	};
 	class Land_Boxloader_Crate_1: Reammobox_F {
 		ace_dragging_dragPosition[] = {0,1.5,0};
