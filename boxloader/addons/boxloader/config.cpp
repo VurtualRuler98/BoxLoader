@@ -27,7 +27,8 @@ class CfgPatches {
 			"Land_Boxloader_Hesco_Flat",
 			"Land_Boxloader_Hesco_1",
 			"Land_Boxloader_Hesco_3",
-			"Land_Boxloader_Hesco_5"
+			"Land_Boxloader_Hesco_5",
+			"Land_Boxloader_Hesco_BigFlat"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -83,12 +84,16 @@ class CfgVehicles {
 		scope = 2;
 		scopeCurator = 2;
 		class EventHandlers {
-			init = "_this call boxloader_fnc_hesco";
+			init = "[_this select 0,false] call boxloader_fnc_hesco";
 		};
-		ace_dragging_canCarry = 1;
-		ace_cargo_size = 1;
-		ace_cargo_canLoad = 1;
 	};
+	class Land_Boxloader_Hesco_BigFlat: Land_Boxloader_Hesco_Flat {
+		displayName = "Boxloader Big HESCO (Packed)";
+		model = "\boxloader\mdl\boxloader_hesco_bigflat.p3d";
+		class EventHandlers {
+			init = "[_this select 0,true] call boxloader_fnc_hesco";
+		};
+	}
 	class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
 		displayName = "Boxloader HESCO 1m";
 		model = "\boxloader\mdl\boxloader_hesco_1.p3d";
@@ -99,6 +104,23 @@ class CfgVehicles {
 		scopeCurator = 1;
 		ace_dragging_canCarry = 0;
 		ace_cargo_canLoad = 0;
+		Boxloader_ConBase="Land_Boxloader_Hesco_Flat";
+		class AnimationSources {
+			class Fill_Source {
+				source = "user";
+				initPhase = 1;
+				animPeriod = 0;
+			};
+			class Empty_Source {
+				source = "user";
+				initPhase = 0;
+				animPeriod = 0;
+			};
+		};
+		//armor=300;
+		//destrType="DestructTent";
+		hiddenSelections[] = {"fill"};
+		hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_hesco_dirt_co.paa"};
 	};
 	class Land_Boxloader_Hesco_3: Land_Boxloader_Hesco_1 {
 		displayName = "Boxloader HESCO 3m";
@@ -107,6 +129,19 @@ class CfgVehicles {
 	class Land_Boxloader_Hesco_5: Land_Boxloader_Hesco_1 {
 		displayName = "Boxloader HESCO 5m";
 		model = "\boxloader\mdl\boxloader_hesco_5.p3d";
+	};
+	class Land_Boxloader_Hesco_Big1: Land_Boxloader_Hesco_1 {
+		displayName = "Boxloader Big HESCO 2m";
+		model = "\boxloader\mdl\boxloader_hesco_big1.p3d";
+		Boxloader_ConBase="Land_Boxloader_Hesco_BigFlat";
+	};
+	class Land_Boxloader_Hesco_Big3: Land_Boxloader_Hesco_Big1 {
+		displayName = "Boxloader Big HESCO 6m";
+		model = "\boxloader\mdl\boxloader_hesco_big3.p3d";
+	};
+	class Land_Boxloader_Hesco_Big5: Land_Boxloader_Hesco_Big1 {
+		displayName = "Boxloader Big HESCO 10m";
+		model = "\boxloader\mdl\boxloader_hesco_big5.p3d";
 	};
 	class Land_Boxloader_Crate_1: Reammobox_F {
 		ace_dragging_dragPosition[] = {0,1.5,0};
@@ -255,6 +290,9 @@ class CfgVehicles {
 	};
 	class Land_Boxloader_Prowler_Net: Land_Boxloader_membase_truck {
 		model = "\boxloader\mdl\boxloader_prowler_net.p3d";
+	};
+	class Boxloader_Bucket: Land_Boxloader_membase_truck {
+		model = "\boxloader\mdl\boxloader_bucket.p3d";
 	};
 	class Land_Boxloader_Prowler_Roofnet: Land_Boxloader_membase_truck {
 		model = "\boxloader\mdl\boxloader_prowler_roofnet.p3d";
