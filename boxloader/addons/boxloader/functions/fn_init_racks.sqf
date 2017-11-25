@@ -28,6 +28,11 @@ if (is3DEN) exitWith {false};
 		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13,14,15],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
+	//KAMAZ repair
+	["Truck_02_box_base_F","init",{[(_this select 0),[
+		[["Boxloader_Bucket",[0,4.5,-2],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
 	//Typhoon
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_hemtt",[0.1,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,6,7,8,9,10,12],[5,11],false]],"boxloader_rack0"]
@@ -182,6 +187,11 @@ if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
 	//Ural
 	["CUP_Ural_Base","init",{_height = -0.45; if ((_this select 0) isKindOf "CUP_C_Ural_Open_Civ_01") then {_height=1.575}; [(_this select 0),[
 		[["Land_Boxloader_mem_rhsural",[0.1,-1.4,_height],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seat",false,[2,3,4,5,6,7,8,9,12,13],[10,11],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Ural Empty
+	["CUP_Ural_Empty_Base","init",{[(_this select 0),[
+		[["Boxloader_Bucket",[0,4.5,-1.5],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//V3S
