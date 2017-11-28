@@ -6,6 +6,9 @@ _box addAction ["Disassemble HESCO",{
 	_con = (_this select 3 select 0) createVehicle (position (_this select 0));
 	_con setPosASL getPosASL (_this select 0);
 	_con setDir (getDir (_this select 0));
+	_pos = getPosASL _con;
+	_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
+	_con setPosASL _pos;
 	deleteVehicle (_this select 0);
 },[_obj],0,false,true,"","vehicle _this == _this && (_target animationSourcePhase 'Fill_Source')==1"];
 _box addAction ["Fill HESCO",{
