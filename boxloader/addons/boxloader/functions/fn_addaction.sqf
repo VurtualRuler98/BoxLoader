@@ -11,7 +11,9 @@ _ply addAction ["Show cargo",{[vehicle (_this select 0),false] call boxloader_fn
 //if (!isClass(configFile >> "CfgPatches" >> "boxloader_ace")) then {
 	_ply addAction ["Unload pallet",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box};},[],0,false,true,"","(vehicle _this == _target) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _target<10) && (cursorObject isKindOf 'Boxloader_Pallet_Base')"];
 //};
-_ply addaction ["Push",{cursorObject setPosATL (getPosATL cursorObject vectorAdd (vectorDir (_this select 0) vectorMultiply 0.5))},[],5,false,false,"","(_target getVariable ['boxloader_tgt',objNull]) canVehicleCargo cursorObject select 1 && ((_target getVariable ['boxloader_tgt',objNull]) distance _target)<15"];
+_ply addaction ["Push",{cursorObject setPosATL (getPosATL cursorObject vectorAdd (vectorDir (_this select 0) vectorMultiply 0.5))},[],5,false,false,"","((_target getVariable ['boxloader_tgt',objNull]) canVehicleCargo cursorObject select 1 || ((cursorObject isKindOf 'Land_Boxloader_Pallet_4') && (_target getVariable ['boxloader_tgt',ObjNull] isKindOf 'Land_Boxloader_PLS'))) && ((_target getVariable ['boxloader_tgt',objNull]) distance _target)<15"];
 _ply setVariable["boxloader_init",true];
+
+_ply addAction ["Attach flat rack",{_veh = (_this select 0 getVariable ["boxloader_tgt",objNull]); _box = cursorObject; if ((_veh isKindOf 'Land_Boxloader_PLS') && (count (attachedObjects _veh)==0) && (_box isKindOf 'Land_Boxloader_Pallet_4') && ((_box distance _veh)<15)) then {_box attachTo [_veh,[0,0,0]];};},[],5,false,true,"","(vehicle _this == _target) && ((_target getVariable ['boxloader_tgt',objNull]) isKindOf 'Land_Boxloader_PLS') && (cursorObject isKindof 'Land_Boxloader_Pallet_4') && (cursorObject distance _target)<5 && ((_target getVariable ['boxloader_tgt',objNull]) distance _target)<15 && (count (attachedObjects (_target getVariable ['boxloader_tgt',objNull]))==0)"];
 true
 

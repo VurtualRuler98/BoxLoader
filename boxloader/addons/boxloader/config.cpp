@@ -74,7 +74,9 @@ class CfgVehicles {
 		init = "_this call boxloader_fnc_pallet_create";	
 		};
 	};
-
+	class Land_Boxloader_PLS: Thing {
+		model = "\boxloader\mdl\boxloader_pls.p3d";
+	};
 	class Land_Boxloader_Crate_1: Reammobox_F {
 		ace_dragging_dragPosition[] = {0,1.5,0};
 		class VehicleTransport {

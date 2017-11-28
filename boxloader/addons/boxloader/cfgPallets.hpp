@@ -104,9 +104,9 @@ class Land_Boxloader_Pallet_3: Boxloader_Pallet_Base {
 	model = "\boxloader\mdl\boxloader_pallet3.p3d";
 	displayName = "Boxloader Pallet US";
 };
-class Land_Boxloader_Flatrack: Land_Boxloader_membase_truck {
+class Land_Boxloader_Pallet_4: Boxloader_Pallet_Base {
 	model = "\boxloader\mdl\boxloader_pallet4.p3d";
-	displayName = "Boxloader Flatrack";
+	displayName = "Boxloader Flat Rack";
 	class VehicleTransport: VehicleTransport {
 		class Carrier: Carrier {
 			cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner"};
