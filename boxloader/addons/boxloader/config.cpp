@@ -26,7 +26,8 @@ class CfgPatches {
 			"Land_Boxloader_Case_Tan",
 			"Land_Boxloader_Hesco_Flat",
 			"Land_Boxloader_Hesco_BigFlat",
-			"Land_Boxloader_Hesco_SmallFlat"
+			"Land_Boxloader_Hesco_SmallFlat",
+			"Land_Boxloader_Fort_Roof_Flat"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -47,6 +48,8 @@ class CfgFunctions {
 			class init_racks {preInit = 1;};
 			class hesco {};
 			class hesco_built {};
+			class fort_roof {};
+			class fort_roof_built {};
 			
 			class racks_setup {};
 			class racks_add {};

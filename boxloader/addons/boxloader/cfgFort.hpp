@@ -63,7 +63,43 @@ class Land_Boxloader_Hesco_5: Land_Boxloader_Hesco_1 {
 	displayName = "Boxloader HESCO 5m";
 	model = "\boxloader\mdl\boxloader_hesco_5.p3d";
 };
-
+class Land_Boxloader_Fort_Roof_Flat: HBarrier_base_F {
+	displayName = "Boxloader Bunker Roof (Packed)";
+	editorCategory="EdCat_Supplies";
+	editorSubcategory="EdSubCat_Boxloader";
+	model = "\boxloader\mdl\boxloader_fort_roof_flat.p3d";
+	scope = 2;
+	Boxloader_ConBase="Land_Boxloader_Fort_Roof";
+	Boxloader_ConName="Build bunker roof";
+	scopeCurator = 2;
+	class EventHandlers {
+		init = "_this call boxloader_fnc_fort_roof";
+	};
+};
+class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
+	displayName = "Boxloader Bunker Roof";
+	model = "\boxloader\mdl\boxloader_fort_roof.p3d";
+	scope = 1;
+	scopeCurator = 1;
+	ace_dragging_canCarry = 0;
+	ace_cargo_canLoad = 0;
+	Boxloader_ConBase="Land_Boxloader_Fort_Roof_Flat";
+	class AnimationSources {
+		class Fill_Source {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 1;
+		};
+		class Lift_Source {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 1;
+		};
+	};
+	class EventHandlers {
+		init = "_this call boxloader_fnc_fort_roof_built";
+	};
+};
 
 
 class Land_Boxloader_Hesco_Big1: Land_Boxloader_Hesco_1 {
