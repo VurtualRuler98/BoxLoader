@@ -50,8 +50,8 @@ class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
 			animPeriod = 0;
 		};
 	};
-	//armor=300;
-	//destrType="DestructTent";
+	armor=1000;
+	destrType="DestructBuilding";
 	hiddenSelections[] = {"fill"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_hesco_dirt_co.paa"};
 };
@@ -77,6 +77,8 @@ class Land_Boxloader_Fort_Roof_Flat: HBarrier_base_F {
 	};
 };
 class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
+	armor=2000;
+	destrType="DestructBuilding";
 	displayName = "Boxloader Bunker Roof";
 	model = "\boxloader\mdl\boxloader_fort_roof.p3d";
 	scope = 1;
@@ -103,6 +105,7 @@ class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 
 
 class Land_Boxloader_Hesco_Big1: Land_Boxloader_Hesco_1 {
+	armor=2000;
 	displayName = "Boxloader Big HESCO 2m";
 	model = "\boxloader\mdl\boxloader_hesco_big1.p3d";
 	Boxloader_ConBase="Land_Boxloader_Hesco_BigFlat";
@@ -117,6 +120,7 @@ class Land_Boxloader_Hesco_Big5: Land_Boxloader_Hesco_Big1 {
 };
 
 class Land_Boxloader_Hesco_Small1: Land_Boxloader_Hesco_1 {
+	armor=1000;
 	displayName = "Boxloader Small HESCO 0.5m";
 	model = "\boxloader\mdl\boxloader_hesco_small1.p3d";
 	Boxloader_ConBase="Land_Boxloader_Hesco_SmallFlat";
