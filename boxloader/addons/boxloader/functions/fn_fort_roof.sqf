@@ -10,11 +10,11 @@ _box addAction ["Toggle build menu",{
 	(_this select 0) setVariable ["BuildMenu",!(_this select 0 getVariable["BuildMenu",true])];
 },[],0.5,false,true,"","(isNull attachedTo _target)"];
 _box addAction ["Pick up",{
-	(_this select 0) attachTo [(_this select 1),[0,2,0]];
+	(_this select 0) attachTo [(_this select 1),[0,2,0.2]];
 	(_this select 0) setDir ((_this select 0) getVariable ["BuildDir",0]);
 	_ac0=(_this select 1) addAction ["Rotate Fortification",{_dir = (((_this select 3 select 0) getVariable ["BuildDir",0])+60); (_this select 3 select 0) setVariable ["BuildDir",_dir];(_this select 3 select 0) setDir _dir;},[_this select 0]];
-	_ac1=(_this select 1) addAction ["Lift Fortification",{(_this select 3 select 0) attachTo [(_this select 0),[0,2,1.5]]},[_this select 0]];
-	_ac2=(_this select 1) addAction ["Lower Fortification",{(_this select 3 select 0) attachTo [(_this select 0),[0,2,0]]},[_this select 0]];
+	_ac1=(_this select 1) addAction ["Lift Fortification",{(_this select 3 select 0) attachTo [(_this select 0),[0,2,1.6]]},[_this select 0]];
+	_ac2=(_this select 1) addAction ["Lower Fortification",{(_this select 3 select 0) attachTo [(_this select 0),[0,2,0.2]]},[_this select 0]];
 	_ac3=(_this select 1) addAction ["Drop Fortification",{
 		detach (_this select 3 select 0);
 		(_this select 3 select 0) setVehiclePosition [(getposATL (_this select 3 select 0)),[],0,"CAN_COLLIDE"];
