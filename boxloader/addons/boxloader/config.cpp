@@ -27,7 +27,12 @@ class CfgPatches {
 			"Land_Boxloader_Hesco_Flat",
 			"Land_Boxloader_Hesco_BigFlat",
 			"Land_Boxloader_Hesco_SmallFlat",
-			"Land_Boxloader_Fort_Roof_Flat"
+			"Land_Boxloader_Fort_Roof_Flat",
+			"Land_Boxloader_Fort_iso_Green",
+			"Land_Boxloader_Fort_iso_Rusty",
+			"Land_Boxloader_Fort_iso_Brown",
+			"Land_Boxloader_Fort_iso_Aid",
+			"Land_Boxloader_Fort_Plat_Flat",
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -50,6 +55,10 @@ class CfgFunctions {
 			class hesco_built {};
 			class fort_roof {};
 			class fort_roof_built {};
+			class fort_iso {};
+			class fort_iso_built {};
+			class fort_plat {};
+			class fort_plat_built {};
 			
 			class racks_setup {};
 			class racks_add {};
@@ -60,6 +69,7 @@ class CfgFunctions {
 		};
 	};
 };
+class CBA_Extended_EventHandlers_base;
 class CfgVehicles {
 	class StaticWeapon;
 	class Thing;
@@ -74,7 +84,8 @@ class CfgVehicles {
 		scope=1;
 		side=3;
 		class EventHandlers {
-		init = "_this call boxloader_fnc_pallet_create";	
+		init = "_this call boxloader_fnc_pallet_create";
+		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 		};
 	};
 
@@ -174,7 +185,8 @@ class CfgVehicles {
 		simulation = "tankX";
 		nameSound = "";
 		class EventHandlers {
-			init = "_this call boxloader_fnc_pallet_init";	
+			init = "_this call boxloader_fnc_pallet_init";
+			class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 			handleDamage = "0";
 		};
 		class TransportItem {};
@@ -245,5 +257,8 @@ class CfgEditorSubcategories {
 	};
 	class EdSubCat_BoxloaderCon{
 		displayName = "Boxloader Containers";
+	};
+	class EdSubCat_BoxloaderFort{
+		displayName = "Boxloader Fortifications";
 	};
 };

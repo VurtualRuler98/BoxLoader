@@ -137,7 +137,8 @@ class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
 };
 class Boxloader_Container_Base: Boxloader_Pallet_Base {
 	class EventHandlers: EventHandlers {
-		init = "[_this select 0,'container'] call boxloader_fnc_pallet_init";	
+		init = "[_this select 0,'container'] call boxloader_fnc_pallet_init";
+		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
 	hiddenSelections[] = {"container"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_blank_co.paa"};
@@ -163,6 +164,11 @@ class Boxloader_Container_Base: Boxloader_Pallet_Base {
 			sound = "GenericDoorsSound";
 		};
 		class Door_2_Source: Door_1_Source {};
+		class Sign_Hide_Source {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 1;
+		};
 	};
 	class UserActions {
 		class OpenDoor1 {
