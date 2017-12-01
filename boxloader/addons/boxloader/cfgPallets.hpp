@@ -29,6 +29,13 @@ class Land_Boxloader_iso20_ed: Boxloader_Pallet_base_ed {
 	scopeCurator=2;
 	BoxloaderClass = "Land_Boxloader_iso_20ft";
 	hiddenSelections[] = {"container"};
+	class AnimationSources {
+			class Sign_Hide_Source {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 1;
+		};
+	};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_blank_co.paa"};
 };
 class Land_Boxloader_iso_tricon_ed: Boxloader_Pallet_base_ed {
