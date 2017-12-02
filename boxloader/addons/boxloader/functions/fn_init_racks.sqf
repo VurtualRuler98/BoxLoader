@@ -58,7 +58,7 @@ if (is3DEN) exitWith {false};
 		};
 		if (typeOf (_this select 0)=="B_Truck_01_mover_F" || typeOf (_this select 0)=="B_T_Truck_01_mover_F") then {
 			[(_this select 0),[
-				[["Land_Boxloader_flatrack",[0,-3.4,1],0,"Select flat rack","Unload flat rack",true,["Use flat rack","Store flat rack",true,[],[0],true],[],"Add flat rack"],"boxloader_rack0"]
+				[["Land_Boxloader_flatrack",[0,-3.4,1],0,"Select flat rack","Unload flat rack",true,["Use flat rack","Store flat rack",true,[],[],true],[],"Add flat rack"],"boxloader_rack0"]
 			]] spawn boxloader_fnc_racks_setup;
 		};
 	}] call CBA_fnc_addClassEventHandler;
@@ -193,7 +193,11 @@ if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
 	["CUP_Ural_Empty_Base","init",{[(_this select 0),[
 		[["Boxloader_Bucket",[0,4.5,-1.5],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
-	
+
+	//M113 Bulldozer
+	["CUP_M113_Base","init",{_height = -2.5; if ((_this select 0) isKindOf "CUP_M113_Med_Base") then {_height = -2};[(_this select 0),[
+		[["Boxloader_Bucket",[0.4,3,_height],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	//V3S
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_cupv3s",[0.1,-1,-0.57],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
