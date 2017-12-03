@@ -71,7 +71,22 @@ class CfgFunctions {
 };
 class CBA_Extended_EventHandlers_base;
 class CfgVehicles {
-	class StaticWeapon;
+	class LandVehicle;
+	class Tank: LandVehicle {
+		class NewTurret;
+	};
+	class Tank_F: Tank {
+		class Turrets {
+			class MainTurret:NewTurret {
+				class Turrets;
+			};
+		};
+	};
+	class StaticWeapon {
+		class Turret {
+			class mainTurret {};
+		};
+	};
 	class Thing;
 	class ThingX;
 	class Reammobox_F;
@@ -173,6 +188,36 @@ class CfgVehicles {
 		ace_cargo_size = 5;
 		ace_cargo_canLoad = 1;
 		ace_Cargo_hasCargo = 0;
+	};
+	class Boxloader_Cranetest: Tank_F {
+		icon = "iconObject_1x1";
+		scope = 1;
+		side = 4;
+		armor = 2000;
+		simulation = "tankX";
+		class TransportItem {};
+		slingLoadMemoryPoint = "slingLoad";
+		maximumLoad=100000;
+		slingLoadMaxCargoMass=100000;
+		model = "\boxloader\mdl\boxloader_cranetest.p3d";
+		class Turrets: Turrets {
+			class mainTurret: mainTurret {
+				class Turrets: Turrets {
+					animationSourceBody="mainTurret";
+					animationSourceGun="mainGun";
+					animationSourceElevation="mainElevation";
+					body="crane_x";
+					elevationMode = 0;
+					gun="crane_y";
+					gunnerGetInAction="Get in crane";
+					gunnerName="Crane Operator";
+					maxElev = 70;
+					memoryPointsGetInGunner="pos_gunner";
+					stabilizedInAxes = 0;
+					memoryPointGunnerOptics= "pos_gunner";
+				};
+			};
+		};
 	};
 	class Boxloader_Pallet_base: StaticWeapon {
 		icon = "iconObject_1x1";

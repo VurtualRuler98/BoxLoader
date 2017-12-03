@@ -136,7 +136,7 @@ if (is3DEN) exitWith {false};
 
 
 
-//RHS
+//RHS rhs
 if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
 
 	//Ural flatbed
@@ -148,8 +148,15 @@ if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_rhsgaz",[0.1,-0.8,-0.57],0,"Select rear cargo bed","Unload rear cargo bed",false,[]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["rhs_gaz66o_flat_vmf","rhs_gaz66_flat_vmf"];
-};
+	
 
+};
+if (isClass(configFile >> "CfgPatches" >> "rhsusf_main")) then {
+	//M113 Bulldozer
+	["rhsusf_m113tank_base","init",{[(_this select 0),[
+		[["Boxloader_Bucket",[0.4,3,-2.3],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+};
 
 //CUP
 if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
