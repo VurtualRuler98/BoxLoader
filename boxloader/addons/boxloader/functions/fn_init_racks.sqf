@@ -136,7 +136,7 @@ if (is3DEN) exitWith {false};
 
 
 
-//RHS
+//RHS rhs
 if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
 
 	//Ural flatbed
@@ -148,8 +148,29 @@ if (isClass(configFile >> "CfgPatches" >> "rhs_main")) then {
 	{[_x,"init",{[(_this select 0),[
 		[["Land_Boxloader_mem_rhsgaz",[0.1,-0.8,-0.57],0,"Select rear cargo bed","Unload rear cargo bed",false,[]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["rhs_gaz66o_flat_vmf","rhs_gaz66_flat_vmf"];
-};
+	
 
+};
+if (isClass(configFile >> "CfgPatches" >> "rhsusf_main")) then {
+	//M113 Bulldozer
+	["rhsusf_m113tank_base","init",{[(_this select 0),[
+		[["Boxloader_Bucket",[0.4,3,-2.3],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	//HMMWV
+	["rhsusf_hmmwe_base","init",{
+		_mdl = (getModelInfo (_this select 0) select 0);
+		_rack = [["Land_Boxloader_mem_cuphsov",[0,-1.5,-0.95],0,"Select cargo space","Unload cargo space",false,[]],"boxloader_rack0"];
+		if (_mdl == "rhsusf_m1025_m2.p3d") then {
+			_rack = [["Land_Boxloader_mem_cuphsov",[0,-1.5,-1.15],0,"Select cargo space","Unload cargo space",false,[]],"boxloader_rack0"];
+		};
+		if (_mdl == "rhsusf_m998_2dr.p3d") then {
+			_rack = [["Land_Boxloader_mem_cupm1152",[0,-1.15,-0.9],0,"Select cargo space","Unload cargo space",true,["Use rear cargo space","Use rear passenger seats",true,[1,2,4,5],[3,6],false]],"boxloader_rack0"];
+		};
+		if (_mdl == "rhsusf_m998_4dr.p3d") then {
+			_rack = [["Land_Boxloader_mem_cuphsov",[0,-1.5,-0.9],0,"Select cargo space","Unload cargo space",true,["Use rear cargo space","Disable rear cargo space",true,[],[3,4],false]],"boxloader_rack0"];
+		};
+	[(_this select 0),[_rack]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+};
 
 //CUP
 if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
