@@ -257,6 +257,9 @@ if (isClass(configFile >> "CfgPatches" >> "LIB_core")) then {
 	["LIB_C47_Skytrain","init",{[(_this select 0),[
 		[["Land_Boxloader_mem_ifac47",[0,2,-1],0,"Select cargo area","Unload cargo area",true,["Use cargo area","Use passenger seats",false,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	["LIB_CG4_Waco","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_ifawaco_rear",[0,0.1,-1.8],0,"Select tail cargo area","Unload tail cargo area",false,[],[],false],[],"",-9],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 };
 true
 

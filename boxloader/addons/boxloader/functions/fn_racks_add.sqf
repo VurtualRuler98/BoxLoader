@@ -45,6 +45,9 @@ if (_rack select 5) then {
 if (count (_rack select 8)>0) then {
 	_obj setVariable ["boxloader_addon",false,true];
 };
+if (_pitch!=0) then {
+	[_obj,_pitch,0] call BIS_fnc_setPitchBank;
+};
 _rack set [0,_obj];
 _veh setVariable [_rackVar,_rack,true];
 true 
