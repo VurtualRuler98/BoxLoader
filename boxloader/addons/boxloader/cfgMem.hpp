@@ -130,3 +130,21 @@ class Land_Boxloader_mem_ifawaco_rear: Land_Boxloader_membase_truck {
 		};
 	};
 };
+class Land_Boxloader_mem_ifawaco_front: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_ifawaco_front.p3d";
+	class VehicleTransport: VehicleTransport {
+		class Carrier: Carrier {
+			disableHeightLimit = 1;
+			cargoAlignment[]            = {"back","center"};
+		};
+	};
+};
+class Land_Boxloader_mem_ifahorsa_front: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_ifahorsa_front.p3d";
+	class VehicleTransport: VehicleTransport {
+		class Carrier: Carrier {
+			disableHeightLimit = 1;
+			cargoAlignment[]            = {"back","center"};
+		};
+	};
+};
