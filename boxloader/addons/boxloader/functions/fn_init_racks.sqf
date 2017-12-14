@@ -258,7 +258,11 @@ if (isClass(configFile >> "CfgPatches" >> "LIB_core")) then {
 		[["Land_Boxloader_mem_ifac47",[0,2,-1],0,"Select cargo area","Unload cargo area",true,["Use cargo area","Use passenger seats",false,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	["LIB_CG4_Waco","init",{[(_this select 0),[
-		[["Land_Boxloader_mem_ifawaco_rear",[0,0.1,-1.8],0,"Select tail cargo area","Unload tail cargo area",false,[],[],false],[],"",-9],"boxloader_rack0"]
+		[["Land_Boxloader_mem_ifawaco_rear",[0,0.1,-1.8],0,"Select tail cargo area","Unload tail cargo area",false,[],[],"",-9],"boxloader_rack0"],
+		[["Land_Boxloader_mem_ifawaco_front",[0,3.7,-1.8],0,"Select seat cargo area","Unload seat cargo area",true,["Use seat cargo area","Use passenger seats",false,[0,1,2,3,4,5,6,7,8,9,10,11,12,13],[],false]],"boxloader_rack1"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	["LIB_Horsa","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_ifahorsa_front",[0,2.1,-2],0,"Select seat cargo area","Unload seat cargo area",true,["Use seat cargo area","Use passenger seats",false,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 };
 true
