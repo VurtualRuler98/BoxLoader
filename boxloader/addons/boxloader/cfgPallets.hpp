@@ -1,4 +1,24 @@
 
+#define MACRO_ISO20(CLASS,NAME,TEX) \
+class Land_Boxloader_iso_20ft_##CLASS##_ed: Land_Boxloader_iso20_ed { \
+	displayName = __EVAL("20ft ISO ("+##NAME##+")"); \
+	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
+	BoxloaderClass = __EVAL("Land_Boxloader_iso_20ft_"+#CLASS); \
+}; \
+class Land_Boxloader_iso_20ft_##CLASS##: Land_Boxloader_iso_20ft { \
+	displayName = __EVAL("20ft ISO ("+##NAME##+")"); \
+	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
+}; \
+class Land_Boxloader_iso_tricon_##CLASS##_ed: Land_Boxloader_iso_tricon_ed {\
+	displayName = __EVAL("Tricon ("+##NAME##+")"); \
+	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
+	BoxloaderClass = __EVAL("Land_Boxloader_iso_tricon_"+#CLASS); \
+}; \
+class Land_Boxloader_iso_tricon_##CLASS##: Land_Boxloader_iso_tricon { \
+	displayName = __EVAL("Tricon ("+##NAME##+")"); \
+	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
+};
+
 //Editor entries
 class Land_Boxloader_Pallet_1_ed: Boxloader_Pallet_base_ed {
 	displayName = "Boxloader Pallet Square";
@@ -23,7 +43,7 @@ class Land_Boxloader_Pallet_3_ed: Boxloader_Pallet_base_ed {
 };
 class Land_Boxloader_iso20_ed: Boxloader_Pallet_base_ed {
 	model = "\boxloader\mdl\boxloader_iso_basic.p3d";
-	displayName = "20ft ISO (Green)";
+	displayName = "20ft ISO (Rusty)";
 	editorSubcategory="EdSubCat_BoxloaderCon";
 	scope=2;
 	scopeCurator=2;
@@ -40,7 +60,7 @@ class Land_Boxloader_iso20_ed: Boxloader_Pallet_base_ed {
 };
 class Land_Boxloader_iso_tricon_ed: Boxloader_Pallet_base_ed {
 	model = "\boxloader\mdl\boxloader_iso_tricon.p3d";
-	displayName = "TRICON (Green)";
+	displayName = "Tricon (Rusty)";
 	editorSubcategory="EdSubCat_BoxloaderCon";
 	scope=2;
 	scopeCurator=2;
@@ -49,38 +69,7 @@ class Land_Boxloader_iso_tricon_ed: Boxloader_Pallet_base_ed {
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_blank_co.paa"};
 };
 
-class Land_Boxloader_iso_20ft_black_ed: Land_Boxloader_iso20_ed {
-	displayName = "20ft ISO (Black)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_black_co.paa"};
-	BoxloaderClass = "Land_Boxloader_iso_20ft_black";
-};
-class Land_Boxloader_iso_20ft_aid_ed: Land_Boxloader_iso20_ed {
-	displayName = "20ft ISO (Red Crystal)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_aid_co.paa"};
-	BoxloaderClass = "Land_Boxloader_iso_20ft_aid";
-};
-class Land_Boxloader_iso_20ft_seabee_ed: Land_Boxloader_iso20_ed {
-	displayName = "20ft ISO (Equipment)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_seabee_co.paa"};
-	BoxloaderClass = "Land_Boxloader_iso_20ft_seabee";
-};
 
-
-class Land_Boxloader_iso_tricon_black_ed: Land_Boxloader_iso_tricon_ed {
-	displayName = "TRICON (Black)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_black_co.paa"};
-	BoxloaderClass = "Land_Boxloader_iso_tricon_black";
-};
-class Land_Boxloader_iso_tricon_aid_ed: Land_Boxloader_iso_tricon_ed {
-	displayName = "TRICON (Red Crystal)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_aid_co.paa"};
-	BoxloaderClass = "Land_Boxloader_iso_tricon_aid";
-};
-class Land_Boxloader_iso_tricon_seabee_ed: Land_Boxloader_iso_tricon_ed {
-	displayName = "TRICON (Equipment)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_seabee_co.paa"};
-	BoxloaderClass = "Land_Boxloader_iso_tricon_seabee";
-};
 
 
 class Land_Boxloader_Pallet_5_ed: Boxloader_Pallet_base_ed {
@@ -208,24 +197,12 @@ class Boxloader_Container_Base: Boxloader_Pallet_Base {
 };
 class Land_Boxloader_iso_20ft: Boxloader_Container_Base {
 	model = "\boxloader\mdl\boxloader_iso_basic.p3d";
-	displayName = "20ft ISO (Green)";
+	displayName = "20ft ISO (Rusty)";
 	class VehicleTransport: VehicleTransport {
 		class Carrier: Carrier {
 			maxLoadMass                 = 280000;
 		};
 	};
-};
-class Land_Boxloader_iso_20ft_black: Land_Boxloader_iso_20ft {
-	displayName = "20ft ISO (Black)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_black_co.paa"};
-};
-class Land_Boxloader_iso_20ft_aid: Land_Boxloader_iso_20ft {
-	displayName = "20ft ISO (Red Crystal)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_aid_co.paa"};
-};
-class Land_Boxloader_iso_20ft_seabee: Land_Boxloader_iso_20ft {
-	displayName = "20ft ISO (Equipment)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_seabee_co.paa"};
 };
 
 class Land_Boxloader_iso_tricon: Boxloader_Container_Base {
@@ -254,15 +231,9 @@ class Land_Boxloader_iso_tricon: Boxloader_Container_Base {
 		};
 	};
 };
-class Land_Boxloader_iso_tricon_black: Land_Boxloader_iso_tricon {
-	displayName = "TRICON (Black)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_black_co.paa"};
-};
-class Land_Boxloader_iso_tricon_aid: Land_Boxloader_iso_tricon {
-	displayName = "TRICON (Red Crystal)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_aid_co.paa"};
-};
-class Land_Boxloader_iso_tricon_seabee: Land_Boxloader_iso_tricon {
-	displayName = "TRICON (Equipment)";
-	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_seabee_co.paa"};
-};
+MACRO_ISO20(green,"Green","od");
+MACRO_ISO20(sand,"Sand","sand");
+MACRO_ISO20(black,"Black","black");
+MACRO_ISO20(aid,"Red Crystal","aid");
+MACRO_ISO20(seabee,"Equipment","seabee");
+

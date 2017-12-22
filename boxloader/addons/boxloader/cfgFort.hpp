@@ -195,6 +195,7 @@ class Land_Boxloader_Fort_iso_Green: ThingX {
 	BoxloaderClass = "Land_Boxloader_iso_20ft";
 	hiddenSelections[] = {"container","sign"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_od_co.paa","\boxloader\tex\boxloader_isostruct_black_ca.paa"};
+	slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
 };
 class Land_Boxloader_Fort_iso_Rusty: Land_Boxloader_Fort_iso_Green {
 	displayName = "Container Building, Packed (Rusty)";
