@@ -1,3 +1,9 @@
+#define MACRO_UNITS_ISO20(CLASS) \
+__EVAL("Land_Boxloader_iso_20ft_"+#CLASS+"_ed"), \
+__EVAL("Land_Boxloader_iso_20ft_"+#CLASS), \
+__EVAL("Land_Boxloader_iso_tricon_"+#CLASS+"_ed"), \
+__EVAL("Land_Boxloader_iso_tircon_"#CLASS),
+
 class CfgPatches {
 	class boxloader {
 		units[] = {
@@ -9,18 +15,13 @@ class CfgPatches {
 			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
 			"Land_Boxloader_Crate_1",
 			"Land_Boxloader_Crate_Roofrack",
-			"Land_Boxloader_iso_20ft_black_ed",
-			"Land_Boxloader_iso_20ft_aid_ed",
-			"Land_Boxloader_iso_20ft_seabee_ed",
-			"Land_Boxloader_iso_tricon_black_ed",
-			"Land_Boxloader_iso_tricon_aid_ed",
-			"Land_Boxloader_iso_tricon_seabee_ed",
-			"Land_Boxloader_iso_20ft_black",
-			"Land_Boxloader_iso_20ft_aid",
-			"Land_Boxloader_iso_20ft_seabee",
-			"Land_Boxloader_iso_tricon_black",
-			"Land_Boxloader_iso_tricon_aid",
-			"Land_Boxloader_iso_tricon_seabee",
+			
+			MACRO_UNITS_ISO20(green)
+			MACRO_UNITS_ISO20(sand)
+			MACRO_UNITS_ISO20(black)
+			MACRO_UNITS_ISO20(aid)
+			MACRO_UNITS_ISO20(seabee)
+
 			"Land_Boxloader_Case_Green",
 			"Land_Boxloader_Case_Aid",
 			"Land_Boxloader_Case_Tan",
