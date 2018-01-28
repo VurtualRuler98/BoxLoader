@@ -10,6 +10,12 @@ class Land_Boxloader_mem_cupmtvr: Land_Boxloader_membase_truck {
 class Land_Boxloader_mem_cupuaz: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_cupuaz.p3d";
 };
+class Land_Boxloader_mem_cupdatsun: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_cupdatsun.p3d";
+};
+class Land_Boxloader_mem_cupdatsun_rear: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_cupdatsun_rear.p3d";
+};
 class Land_Boxloader_mem_cupm998: Land_Boxloader_membase_truck {
 	model = "\boxloader\mdl\boxloader_mem_cupm998.p3d";
 	class VehicleTransport: VehicleTransport {

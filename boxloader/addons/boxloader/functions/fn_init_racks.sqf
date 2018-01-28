@@ -19,7 +19,7 @@ if (is3DEN) exitWith {false};
 	
 
 	//KAMAZ
-	{[_x,"init",{if (_veh isKindOf "rhs_kamaz5350") exitWith {false}; [(_this select 0),[
+	{[_x,"init",{if ((_this select 0) isKindOf "rhs_kamaz5350") exitWith {false}; [(_this select 0),[
 		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13],[14,15],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["Truck_02_transport_Base_F","O_Truck_02_covered_F","I_Truck_02_covered_F","C_Truck_02_covered_F","C_IDAP_Truck_02_F"];
 	
@@ -233,6 +233,26 @@ if (isClass(configFile >> "CfgPatches" >> "cup_vehicles_core")) then {
 	["CUP_T810_Armed_Base","init",{[(_this select 0),[
 		[["Land_Boxloader_mem_kamaz",[0.1,-1.05,-1.26],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Datsun
+	["CUP_Datsun_civil_Base","init",{if ((_this select 0) isKindOf "CUP_C_Datsun_4seat") exitWith {
+	[(_this select 0),[
+		[["Land_Boxloader_mem_cupdatsun",[0,-0.9,-1.1],0,"Select front of cargo bed","Unload front of cargo bed",true,["Use front of cargo bed","Use front bed passenger seat",false,[],[2],false]],"boxloader_rack0"],
+		[["Land_Boxloader_mem_cupdatsun_rear",[0,-1.8,-1.1],0,"Select rear of cargo bed","Unload rear of cargo bed",true,["Use rear of cargo bed","Use rear bed passenger seats",false,[],[0,1],false]],"boxloader_rack1"]
+	]] spawn boxloader_fnc_racks_setup;
+	};
+	[(_this select 0),[
+		[["Land_Boxloader_mem_cupdatsun",[0,-0.9,-1.1],0,"Select front of cargo bed","Unload front of cargo bed",true,["Use front of cargo bed","Use front bed passenger seat",false,[],[2],false]],"boxloader_rack0"],
+		[["Land_Boxloader_mem_cupdatsun_rear",[0,-1.8,-1.1],0,"Select rear of cargo bed","Unload rear of cargo bed",false,[]],"boxloader_rack1"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	
+	["CUP_Datsun_PK_Base","init",{
+	[(_this select 0),[
+		[["Land_Boxloader_mem_cupdatsun_rear",[0,-1.8,-1.1],0,"Select rear of cargo bed","Unload rear of cargo bed",true,["Use rear of cargo bed","Use rear bed passenger seats",false,[],[0,1],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	
 };
 //IFA3
 
