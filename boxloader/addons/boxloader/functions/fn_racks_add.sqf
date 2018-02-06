@@ -41,6 +41,8 @@ if (_rack select 5) then {
 	if (_rack select 6 select 2) then {
 		_obj hideObjectGlobal true;
 	};
+} else {
+	_obj setVariable ["boxloader_dontload",false,true];
 };
 if (count (_rack select 8)>0) then {
 	_obj setVariable ["boxloader_addon",false,true];
