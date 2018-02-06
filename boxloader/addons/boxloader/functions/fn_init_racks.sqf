@@ -29,7 +29,7 @@ if (is3DEN) exitWith {false};
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
 	//KAMAZ repair
-	["Truck_02_box_base_F","init",{[(_this select 0),[
+	["Truck_02_box_base_F","init",{if ((_this select 0) isKindOf "Truck_02_medical_base_F") exitWith {false};[(_this select 0),[
 		[["Boxloader_Bucket",[0,4.5,-2],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 	
