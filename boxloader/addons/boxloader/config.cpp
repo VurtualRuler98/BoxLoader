@@ -2,7 +2,7 @@
 __EVAL("Land_Boxloader_iso_20ft_"+#CLASS+"_ed"), \
 __EVAL("Land_Boxloader_iso_20ft_"+#CLASS), \
 __EVAL("Land_Boxloader_iso_tricon_"+#CLASS+"_ed"), \
-__EVAL("Land_Boxloader_iso_tircon_"#CLASS),
+__EVAL("Land_Boxloader_iso_tricon_"#CLASS),
 
 class CfgPatches {
 	class boxloader {
@@ -34,6 +34,7 @@ class CfgPatches {
 			"Land_Boxloader_Fort_iso_Brown",
 			"Land_Boxloader_Fort_iso_Aid",
 			"Land_Boxloader_Fort_Plat_Flat",
+			"Land_Boxloader_Fort_Tent_Flat"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -60,6 +61,8 @@ class CfgFunctions {
 			class fort_iso_built {};
 			class fort_plat {};
 			class fort_plat_built {};
+			class fort_tent {};
+			class fort_tent_built {};
 			
 			class racks_setup {};
 			class racks_add {};

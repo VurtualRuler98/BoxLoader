@@ -113,14 +113,21 @@ class Land_Boxloader_Fort_Plat_Flat: HBarrier_base_F {
 	displayName = "Boxloader Wood Platform (Packed)";
 	editorCategory="EdCat_Supplies";
 	editorSubcategory="EdSubCat_BoxloaderFort";
-	model = "\boxloader\mdl\boxloader_fort_plat_flat.p3d";
+	model = "\boxloader\mdl\boxloader_fort_roof_flat.p3d";
 	scope = 2;
 	scopeCurator = 2;
 	class EventHandlers {
 		init = "_this call boxloader_fnc_fort_plat";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
-	hiddenSelections[] = {"texture"};
+	class AnimationSources {
+		class Sign_Hide {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 0;
+		};
+	};
+	hiddenSelections[] = {"Texture"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_wood_co.paa"};
 };
 class Land_Boxloader_Fort_Plat_5: HBarrier_base_F {
@@ -224,3 +231,69 @@ class Land_Boxloader_Fort_iso_Aid: Land_Boxloader_Fort_iso_Green {
 	hiddenSelections[] = {"container","sign"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_aid_co.paa","\boxloader\tex\boxloader_isostruct_black_ca.paa"};
 };
+
+class Land_Boxloader_Fort_Tent_Flat: HBarrier_base_F {
+	displayName = "Boxloader Large Tent (Packed)";
+	editorCategory="EdCat_Supplies";
+	editorSubcategory="EdSubCat_BoxloaderFort";
+	model = "\boxloader\mdl\boxloader_fort_plat_flat.p3d";
+	scope = 2;
+	scopeCurator = 2;
+	class EventHandlers {
+		init = "_this call boxloader_fnc_fort_tent";
+		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
+	};
+	class AnimationSources {
+		class Sign_Hide {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 0;
+		};
+	};
+	hiddenSelections[] = {"Texture"};
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_tropic_F_CO.paa"};
+};
+class Land_MedicalTent_01_base_F;
+class Land_Boxloader_Fort_Tent_Built: Land_MedicalTent_01_base_F {
+	scope = 1;
+	maximumLoad=0;
+	class EventHandlers {
+		init = "_this call boxloader_fnc_fort_tent_built";
+		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
+	};
+	hiddenSelections[] = {"Camo"};
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_tropic_F_CO.paa"};
+	class AnimationSources {
+		class Door_Hide {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 0;
+		};
+		class MedSign_Hide {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 0;
+		};
+		class OuterTent_Hide {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 0;
+		};
+		class InnerTent_Hide {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 0;
+		};
+		class SolarPanel1_Hide {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 0;
+		};
+		class SolarPanel2_Hide {
+			source = "user";
+			initPhase = 1;
+			animPeriod = 0;
+		};
+	};
+};
+
