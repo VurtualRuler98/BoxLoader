@@ -35,6 +35,7 @@ class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
 	model = "\boxloader\mdl\boxloader_hesco_1.p3d";
 	class EventHandlers {
 		init = "_this call boxloader_fnc_hesco_built";
+		deleted = "if (!isNull _this getVariable ['tent_floor',objNull]) then {deleteVehicle (_this getVariable ['tent_floor',objNull)}";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
 	scope = 1;
@@ -232,13 +233,15 @@ class Land_Boxloader_Fort_iso_Aid: Land_Boxloader_Fort_iso_Green {
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_aid_co.paa","\boxloader\tex\boxloader_isostruct_black_ca.paa"};
 };
 
-class Land_Boxloader_Fort_Tent_Flat: HBarrier_base_F {
+class Land_Boxloader_Fort_Tent_Flat_Base: HBarrier_base_F {
 	displayName = "Boxloader Large Tent (Packed)";
 	editorCategory="EdCat_Supplies";
 	editorSubcategory="EdSubCat_BoxloaderFort";
 	model = "\boxloader\mdl\boxloader_fort_plat_flat.p3d";
-	scope = 2;
-	scopeCurator = 2;
+	scope = 1;
+	scopeCurator = 1;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_Base";
+	hiddenSelections[] = {"Texture"};
 	class EventHandlers {
 		init = "_this call boxloader_fnc_fort_tent";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
@@ -250,13 +253,54 @@ class Land_Boxloader_Fort_Tent_Flat: HBarrier_base_F {
 			animPeriod = 0;
 		};
 	};
-	hiddenSelections[] = {"Texture"};
+};
+class Land_Boxloader_Fort_Tent_Flat_Green: Land_Boxloader_Fort_Tent_Flat_Base {
+	displayName = "Packed Large Tent (Green)";
+	scope = 2;
+	scopeCurator = 2;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_Green";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_tropic_F_CO.paa"};
 };
+class Land_Boxloader_Fort_Tent_Flat_Brown: Land_Boxloader_Fort_Tent_Flat_Base {
+	displayName = "Packed Large Tent (Brown)";
+	scope = 2;
+	scopeCurator = 2;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_brown";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_MTP_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Flat_BrownHex: Land_Boxloader_Fort_Tent_Flat_Base {
+	displayName = "Packed Large Tent (Hex, Brown)";
+	scope = 2;
+	scopeCurator = 2;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_brownhex";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_brownhex_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Flat_GreenHex: Land_Boxloader_Fort_Tent_Flat_Base {
+	displayName = "Packed Large Tent (Hex, Green)";
+	scope = 2;
+	scopeCurator = 2;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_greenhex";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_greenhex_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Flat_Digital: Land_Boxloader_Fort_Tent_Flat_Base {
+	displayName = "Packed Large Tent (AAF)";
+	scope = 2;
+	scopeCurator = 2;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_digital";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_digital_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Flat_White: Land_Boxloader_Fort_Tent_Flat_Base {
+	displayName = "Packed Large Tent (White)";
+	scope = 2;
+	scopeCurator = 2;
+	buildClass = "Land_Boxloader_Fort_Tent_Built_white";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_white_generic_F_CO.paa"};
+};
 class Land_MedicalTent_01_base_F;
-class Land_Boxloader_Fort_Tent_Built: Land_MedicalTent_01_base_F {
+class Land_Boxloader_Fort_Tent_Built_Base: Land_MedicalTent_01_base_F {
 	scope = 1;
 	maximumLoad=0;
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_Base";
 	class EventHandlers {
 		init = "_this call boxloader_fnc_fort_tent_built";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
@@ -276,12 +320,12 @@ class Land_Boxloader_Fort_Tent_Built: Land_MedicalTent_01_base_F {
 		};
 		class OuterTent_Hide {
 			source = "user";
-			initPhase = 0;
+			initPhase = 1;
 			animPeriod = 0;
 		};
 		class InnerTent_Hide {
 			source = "user";
-			initPhase = 0;
+			initPhase = 1;
 			animPeriod = 0;
 		};
 		class SolarPanel1_Hide {
@@ -296,4 +340,27 @@ class Land_Boxloader_Fort_Tent_Built: Land_MedicalTent_01_base_F {
 		};
 	};
 };
-
+class Land_Boxloader_Fort_Tent_Built_Green: Land_Boxloader_Fort_Tent_Built_Base {
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_Green";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_tropic_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Built_Brown: Land_Boxloader_Fort_Tent_Built_Base {
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_Brown";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_MTP_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Built_BrownHex: Land_Boxloader_Fort_Tent_Built_Base {
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_BrownHex";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_brownhex_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Built_GreenHex: Land_Boxloader_Fort_Tent_Built_Base {
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_GreenHex";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_greenhex_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Built_Digital: Land_Boxloader_Fort_Tent_Built_Base {
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_Digital";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_digital_F_CO.paa"};
+};
+class Land_Boxloader_Fort_Tent_Built_White: Land_Boxloader_Fort_Tent_Built_Base {
+	buildClass = "Land_Boxloader_Fort_Tent_Flat_White";
+	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_white_generic_F_CO.paa"};
+};
