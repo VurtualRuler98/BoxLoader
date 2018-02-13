@@ -285,5 +285,34 @@ if (isClass(configFile >> "CfgPatches" >> "LIB_core")) then {
 		[["Land_Boxloader_mem_ifahorsa_front",[0,2.1,-2],0,"Select seat cargo area","Unload seat cargo area",true,["Use seat cargo area","Use passenger seats",false,[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],[],false]],"boxloader_rack0"]
 	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
 };
+
+
+//CSAT Modification Project
+if (isClass(configFile >> "CfgPatches" >> "CSAT_Vehicles")) then {
+	//KAMAZ
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13],[14,15],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["TEC_VH_Truck_Zamak_Covered","TEC_VH_Truck_Zamak"];
+	
+	//KAMAZ Medical
+	["TEC_VH_Truck_Zamak_Medical_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_kamaz",[0.1,-1.3,-0.76],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13,14,15],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//KAMAZ repair
+	["TEC_VH_Truck_Zamak_Repair_F","init",{if ((_this select 0) isKindOf "Truck_02_medical_base_F") exitWith {false};[(_this select 0),[
+		[["Boxloader_Bucket",[0,4.5,-2],0,"Select bucket","Unload bucket",true,["Deploy bucket","Stow bucket",true,[],[],true],[],"Install bucket"],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Typhoon
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_hemtt",[0.1,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,6,7,8,9,10,12],[5,11],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["TEC_VH_Truck_Tempest","TEC_VH_Truck_Tempest_Covered"];
+	
+	//Typhoon medical
+	["TEC_VH_Truck_Tempest_medical_F","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_hemtt",[0.1,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;\
+};
 true
 
