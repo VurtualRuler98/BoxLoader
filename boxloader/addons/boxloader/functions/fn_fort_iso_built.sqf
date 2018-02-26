@@ -4,7 +4,7 @@ if ((isNull _box) || !(_base isKindOf "Land_Boxloader_Fort_iso_Green")) exitWith
 _box setVariable ["BuildMenu",false];
 _box addAction ["Toggle build menu",{
 	(_this select 0) setVariable ["BuildMenu",!(_this select 0 getVariable["BuildMenu",true])];
-},[],0.5,false,true,"","(isNull attachedTo _target) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (count ((position _this) nearObjects ['B_APC_Tracked_01_CRV_F',15])>0))"];
+},[],0.5,false,true,"","(isNull attachedTo _target) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]))"];
 _box addAction ["Pack Structure",{
 	_con = (_this select 3 select 0) createVehicle (position (_this select 0));
 	_con setDir (getDir (_this select 0));
@@ -12,5 +12,5 @@ _box addAction ["Pack Structure",{
 	_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 	_con setPosASL _pos;
 	deleteVehicle (_this select 0);
-},[_base],0,false,true,"","(_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (count ((position _this) nearObjects ['B_APC_Tracked_01_CRV_F',15])>0))"];
+},[_base],0,false,true,"","(_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]))"];
 true 
