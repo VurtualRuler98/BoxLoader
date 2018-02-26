@@ -1,4 +1,5 @@
 if (is3DEN) exitWith {false};
+if (isClass(configFile >> "CfgPatches" >> "Boxloader_noretro")) exitWith {false};
 //[0 rack object,1 position, 2 rotation, 3 useText, 4 unloadText, 5 toggles,6 [0 enableText,1 disableText,2 hide when disabled,3 cargo seats blocked,4 turret seats blocked,5 blocks vehicle loading],7 [selection,state], 8 addon action]
 
 //Vanilla
