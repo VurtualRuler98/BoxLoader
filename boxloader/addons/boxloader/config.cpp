@@ -1,20 +1,20 @@
 #define MACRO_UNITS_ISO20(CLASS) \
-__EVAL("Land_Boxloader_iso_20ft_"+#CLASS+"_ed"), \
 __EVAL("Land_Boxloader_iso_20ft_"+#CLASS), \
-__EVAL("Land_Boxloader_iso_tricon_"+#CLASS+"_ed"), \
 __EVAL("Land_Boxloader_iso_tricon_"+#CLASS),
-
+//__EVAL("Land_Boxloader_iso_20ft_"+#CLASS+"_ed"), 
+//__EVAL("Land_Boxloader_iso_tricon_"+#CLASS+"_ed"), 
 class CfgPatches {
 	class boxloader {
 		units[] = {
-			"Land_Boxloader_Pallet_1","Land_Boxloader_Pallet_1_ed",
-			"Land_Boxloader_Pallet_2","Land_Boxloader_Pallet_2_ed",
-			"Land_Boxloader_Pallet_3","Land_Boxloader_Pallet_3_ed",
-			"Land_Boxloader_iso_20ft","Land_Boxloader_iso20_ed",
-			"Land_Boxloader_iso_tricon","Land_Boxloader_iso_tricon_ed",
-			"Land_Boxloader_Pallet_5","Land_Boxloader_Pallet_5_ed",
+			"Land_Boxloader_Pallet_1",//"Land_Boxloader_Pallet_1_ed",
+			"Land_Boxloader_Pallet_2",//"Land_Boxloader_Pallet_2_ed",
+			"Land_Boxloader_Pallet_3",//"Land_Boxloader_Pallet_3_ed",
+			"Land_Boxloader_iso_20ft",//"Land_Boxloader_iso20_ed",
+			"Land_Boxloader_iso_tricon",//"Land_Boxloader_iso_tricon_ed",
+			"Land_Boxloader_Pallet_5",//"Land_Boxloader_Pallet_5_ed",
 			"Land_Boxloader_Crate_1",
 			"Land_Boxloader_Crate_Roofrack",
+			"Boxloader_Flatrack_M1077",
 			
 			MACRO_UNITS_ISO20(green)
 			MACRO_UNITS_ISO20(sand)
@@ -57,6 +57,8 @@ class CfgFunctions {
 			class addaction {};
 			class pallet_create {};
 			class pallet_init {};
+			class flatrack_init {};
+			class pls {};
 			class pallet_addmem {};
 			class init_racks {preInit = 1;};
 			class hesco {};
@@ -185,9 +187,14 @@ class CfgVehicles {
 		ace_Cargo_hasCargo = 0;
 	};
 	class Boxloader_Pallet_base: StaticWeapon {
+		editorForceEmpty = 1;
+		crew = "C_man_1";
+		editorCategory="EdCat_Supplies";
 		icon = "iconObject_1x1";
+		editorSubcategory="EdSubCat_Boxloader";
 		scope=1;
-		side=4;
+		side=3;
+		faction = "CIV_F";
 		accuracy = 0.001;
 		camouflage = 10;
 		armor = 2000;
@@ -201,6 +208,7 @@ class CfgVehicles {
 		};
 		class TransportItem {};
 		class Turrets {};
+		transportSoldier = 1;
 		ace_dragging_canDrag = 1;
 		ace_dragging_dragPosition[] = {0,1.5,0};
 		ace_dragging_dragDirection = 0;
@@ -229,6 +237,7 @@ class CfgVehicles {
 		};
 		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
 	};
+	class Boxloader_Flatrack_Base: Boxloader_Pallet_Base {};
 	class Land_Boxloader_membase_truck: Boxloader_Pallet_Base {
 		class VehicleTransport: VehicleTransport {
 			class Cargo {

@@ -23,30 +23,26 @@ class Land_Boxloader_iso_tricon_##CLASS##: Land_Boxloader_iso_tricon { \
 class Land_Boxloader_Pallet_1_ed: Boxloader_Pallet_base_ed {
 	displayName = "Boxloader Pallet Square";
 	model = "\boxloader\mdl\boxloader_pallet1.p3d";
-	scope=2;
-	scopeCurator=2;
+	scope=1;
 	BoxloaderClass = "Land_Boxloader_Pallet_1";
 };
 class Land_Boxloader_Pallet_2_ed: Boxloader_Pallet_base_ed {
 	displayName = "Boxloader EUR-1 Pallet";
 	model = "\boxloader\mdl\boxloader_pallet2.p3d";
-	scope=2;
-	scopeCurator=2;
+	scope=1;
 	BoxloaderClass = "Land_Boxloader_Pallet_2";
 };
 class Land_Boxloader_Pallet_3_ed: Boxloader_Pallet_base_ed {
 	displayName = "Boxloader Pallet US";
 	model = "\boxloader\mdl\boxloader_pallet3.p3d";
-	scope=2;
-	scopeCurator=2;
+	scope=1;
 	BoxloaderClass = "Land_Boxloader_Pallet_3";
 };
 class Land_Boxloader_iso20_ed: Boxloader_Pallet_base_ed {
 	model = "\boxloader\mdl\boxloader_iso_basic.p3d";
 	displayName = "20ft ISO (Rusty)";
 	editorSubcategory="EdSubCat_BoxloaderCon";
-	scope=2;
-	scopeCurator=2;
+	scope=1;
 	BoxloaderClass = "Land_Boxloader_iso_20ft";
 	hiddenSelections[] = {"container"};
 	class AnimationSources {
@@ -62,8 +58,7 @@ class Land_Boxloader_iso_tricon_ed: Boxloader_Pallet_base_ed {
 	model = "\boxloader\mdl\boxloader_iso_tricon.p3d";
 	displayName = "Tricon (Rusty)";
 	editorSubcategory="EdSubCat_BoxloaderCon";
-	scope=2;
-	scopeCurator=2;
+	scope=1;
 	BoxloaderClass = "Land_Boxloader_iso_tricon";
 	hiddenSelections[] = {"container"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_blank_co.paa"};
@@ -75,14 +70,14 @@ class Land_Boxloader_iso_tricon_ed: Boxloader_Pallet_base_ed {
 class Land_Boxloader_Pallet_5_ed: Boxloader_Pallet_base_ed {
 	displayName = "Boxloader 463L Master Pallet";
 	model = "\boxloader\mdl\boxloader_pallet5.p3d";
-	scope=2;
-	scopeCurator=2;
+	scope=1;
 	BoxloaderClass = "Land_Boxloader_Pallet_5";
 };
 
 
 //Gameplay pallets
 class Land_Boxloader_Pallet_1: Boxloader_Pallet_Base {
+	scope = 2;
 	model = "\boxloader\mdl\boxloader_pallet1.p3d";
 	displayName = "Boxloader Pallet Square";
 	class VehicleTransport: VehicleTransport {
@@ -93,10 +88,12 @@ class Land_Boxloader_Pallet_1: Boxloader_Pallet_Base {
 };
 
 class Land_Boxloader_Pallet_2: Boxloader_Pallet_Base {
+	scope = 2;
 	model = "\boxloader\mdl\boxloader_pallet2.p3d";
 	displayName = "Boxloader EUR-1 Pallet";
 };
 class Land_Boxloader_Pallet_3: Boxloader_Pallet_Base {
+	scope = 2;
 	model = "\boxloader\mdl\boxloader_pallet3.p3d";
 	displayName = "Boxloader Pallet US";
 };
@@ -114,7 +111,29 @@ class Land_Boxloader_Flatrack: Land_Boxloader_membase_truck {
 		};
 	};
 };
+class Boxloader_Flatrack_M1077: Boxloader_Flatrack_Base {
+	scope = 2;
+	model = "\boxloader\mdl\boxloader_flatrack.p3d";
+	displayName = "M1077A1 Flatrack";
+	class VehicleTransport: VehicleTransport {
+		class Cargo: Cargo {
+			dimensions[]                = {"VTV_Cargo_Base", "VTV_Cargo_Corner"};
+		};
+		class Carrier: Carrier {
+			cargoBayDimensions[]        = {"VTV_Carrier_Base", "VTV_Carrier_Corner"};
+			exits[]						= {"VTV_Exit_1"};
+			cargoAlignment[]            = {"front","center"};
+			cargoSpacing[]              = {0, 0, 0};
+			maxLoadMass                 = 15000; 
+			disableHeightLimit          = 1;
+		};
+	};
+		class EventHandlers: EventHandlers {
+			init = "_this call boxloader_fnc_flatrack_init";
+		};
+};
 class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
+	scope = 2;
 	model = "\boxloader\mdl\boxloader_pallet5.p3d";
 	displayName = "463L Master Pallet";
 	ace_dragging_dragPosition[] = {0,2.5,0};
@@ -198,6 +217,7 @@ class Boxloader_Container_Base: Boxloader_Pallet_Base {
 class Land_Boxloader_iso_20ft: Boxloader_Container_Base {
 	model = "\boxloader\mdl\boxloader_iso_basic.p3d";
 	displayName = "20ft ISO (Rusty)";
+	scope = 2;
 	class VehicleTransport: VehicleTransport {
 		class Carrier: Carrier {
 			maxLoadMass                 = 280000;
@@ -207,7 +227,8 @@ class Land_Boxloader_iso_20ft: Boxloader_Container_Base {
 
 class Land_Boxloader_iso_tricon: Boxloader_Container_Base {
 	model = "\boxloader\mdl\boxloader_iso_tricon.p3d";
-	displayName = "TRICON (Green)";
+	displayName = "TRICON (Rusty)";
+	scope = 2;
 	class VehicleTransport: VehicleTransport {
 		class Carrier: Carrier {
 			maxLoadMass                 = 56000;
