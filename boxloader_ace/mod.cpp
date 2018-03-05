@@ -1,2 +1,2 @@
-name = "Box Loader (ACE compat)";
+name = "Boxloader - ACE Compatability";
 author = "vurtual";

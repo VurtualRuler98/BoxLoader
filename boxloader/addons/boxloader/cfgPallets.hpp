@@ -115,10 +115,8 @@ class Boxloader_Flatrack_M1077: Boxloader_Flatrack_Base {
 	scope = 2;
 	model = "\boxloader\mdl\boxloader_flatrack.p3d";
 	displayName = "M1077A1 Flatrack";
+	maximumLoad = 500;
 	class VehicleTransport: VehicleTransport {
-		class Cargo: Cargo {
-			dimensions[]                = {"VTV_Cargo_Base", "VTV_Cargo_Corner"};
-		};
 		class Carrier: Carrier {
 			cargoBayDimensions[]        = {"VTV_Carrier_Base", "VTV_Carrier_Corner"};
 			exits[]						= {"VTV_Exit_1"};
@@ -128,9 +126,29 @@ class Boxloader_Flatrack_M1077: Boxloader_Flatrack_Base {
 			disableHeightLimit          = 1;
 		};
 	};
-		class EventHandlers: EventHandlers {
-			init = "_this call boxloader_fnc_flatrack_init";
+	transportMaxBackpacks=4;
+};
+class Boxloader_Flatrack_M7FRS: Boxloader_Flatrack_Base {
+	scope = 2;
+	maximumLoad = 1500;
+	transportRepair=200000000;
+	model = "\boxloader\mdl\boxloader_flatrack_m7.p3d";
+	displayName = "M7 Forward Repair System";
+	class VehicleTransport {
+		class Cargo {
+			dimensions[]                = {"VTV_Cargo_Base", "VTV_Cargo_Corner"};
+			parachuteClass = "B_Parachute_02_F";
+			parachuteHeightLimit = 40;
+			canBeTransported = 1;
 		};
+	};
+	class TransportItems { //inventory doesn't work
+		class xx_ToolKit {
+			name = "ToolKit";
+			count = 5;
+		};
+	};
+	transportMaxBackpacks=16;
 };
 class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
 	scope = 2;

@@ -3,10 +3,17 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"ace_interact_menu","boxloader"};
+		requiredAddons[] = {"ace_repair","boxloader"}; //"ace_interact_menu"
 	};
 };
-class CfgVehicles {
+class cfgVehicles {
+	class boxloader_flatrack_base;
+	class boxloader_flatrack_m7frs: boxloader_flatrack_base {
+		transportRepair = 0;
+		ace_repair_canrepair = 1;
+	};
+};
+/*class CfgVehicles {
 	class StaticWeapon;
 	class Boxloader_Pallet_Base: StaticWeapon {
 		class ACE_Actions {
@@ -39,4 +46,4 @@ class CfgVehicles {
 			};
 		};
 	};
-};
+};*/
