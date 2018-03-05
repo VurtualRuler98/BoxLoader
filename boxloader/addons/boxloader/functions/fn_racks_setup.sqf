@@ -1,4 +1,5 @@
 params [["_veh",objNull,[objNull]],["_racks",[],[[]]]];
+if !(boxloader_retrofit_enabled) exitWith {false};
 if (isNull _veh) exitWith {["Vehicle passed was null!"] call bis_fnc_error; false};
 if (_veh getVariable ["boxloader_rackinit",false]) exitWith {false};
 _veh setVariable ["boxloader_rackinit",true];

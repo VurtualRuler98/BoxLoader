@@ -53,12 +53,14 @@ class CfgFunctions {
 		class boxloaderFunctions {
 			file = "\boxloader\functions";
 			class init {postInit = 1;};
+			class preinit {};
 			class load {};
 			class addaction {};
 			class pallet_create {};
 			class pallet_init {};
 			class flatrack_init {};
 			class pls {};
+			class init_pls {};
 			class pallet_addmem {};
 			class init_racks {preInit = 1;};
 			class hesco {};
@@ -82,6 +84,11 @@ class CfgFunctions {
 	};
 };
 class CBA_Extended_EventHandlers_base;
+class Extended_Preinit_EventHandlers {
+	class Boxloader_preinit {
+		init = "call boxloader_fnc_preinit";
+	};
+};
 class CfgVehicles {
 	class StaticWeapon;
 	class Thing;
@@ -237,7 +244,9 @@ class CfgVehicles {
 		};
 		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
 	};
-	class Boxloader_Flatrack_Base: Boxloader_Pallet_Base {};
+	class Boxloader_Flatrack_Base: Boxloader_Pallet_Base {
+		editorSubcategory="EdSubCat_BoxloaderPLS";
+	};
 	class Land_Boxloader_membase_truck: Boxloader_Pallet_Base {
 		class VehicleTransport: VehicleTransport {
 			class Cargo {
@@ -280,6 +289,9 @@ class CfgEditorSubcategories {
 	};
 	class EdSubCat_BoxloaderCon{
 		displayName = "Boxloader Containers";
+	};
+	class EdSubCat_BoxloaderPLS{
+		displayName = "Boxloader Flatracks";
 	};
 	class EdSubCat_BoxloaderFort{
 		displayName = "Boxloader Fortifications";

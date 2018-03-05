@@ -10,12 +10,12 @@ class Land_Boxloader_iso_20ft_##CLASS##: Land_Boxloader_iso_20ft { \
 	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
 }; \
 class Land_Boxloader_iso_tricon_##CLASS##_ed: Land_Boxloader_iso_tricon_ed {\
-	displayName = __EVAL("Tricon ("+##NAME##+")"); \
+	displayName = __EVAL("TRICON ("+##NAME##+")"); \
 	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
 	BoxloaderClass = __EVAL("Land_Boxloader_iso_tricon_"+#CLASS); \
 }; \
 class Land_Boxloader_iso_tricon_##CLASS##: Land_Boxloader_iso_tricon { \
-	displayName = __EVAL("Tricon ("+##NAME##+")"); \
+	displayName = __EVAL("TRICON ("+##NAME##+")"); \
 	hiddenSelectionsTextures[] = {__EVAL("\boxloader\tex\boxloader_iso_"+##TEX##+"_co.paa")}; \
 };
 
@@ -157,6 +157,7 @@ class Boxloader_Container_Base: Boxloader_Pallet_Base {
 	};
 	hiddenSelections[] = {"container"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_iso_blank_co.paa"};
+	editorSubcategory="EdSubCat_BoxloaderCon";
 	class VehicleTransport: VehicleTransport {
 		class Cargo: Cargo {
 			parachuteClass              = "B_Parachute_02_F";
