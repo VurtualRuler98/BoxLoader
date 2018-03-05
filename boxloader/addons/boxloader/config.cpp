@@ -15,6 +15,7 @@ class CfgPatches {
 			"Land_Boxloader_Crate_1",
 			"Land_Boxloader_Crate_Roofrack",
 			"Boxloader_Flatrack_M1077",
+			"Boxloader_Flatrack_M7FRS",
 			
 			MACRO_UNITS_ISO20(green)
 			MACRO_UNITS_ISO20(sand)
@@ -246,6 +247,14 @@ class CfgVehicles {
 	};
 	class Boxloader_Flatrack_Base: Boxloader_Pallet_Base {
 		editorSubcategory="EdSubCat_BoxloaderPLS";
+		class EventHandlers: EventHandlers {
+			init = "_this call boxloader_fnc_flatrack_init";
+		};
+		class VehicleTransport: VehicleTransport {
+			class Cargo: Cargo {
+				dimensions[]                = {"VTV_Cargo_Base", "VTV_Cargo_Corner"};
+			};
+		};
 	};
 	class Land_Boxloader_membase_truck: Boxloader_Pallet_Base {
 		class VehicleTransport: VehicleTransport {
