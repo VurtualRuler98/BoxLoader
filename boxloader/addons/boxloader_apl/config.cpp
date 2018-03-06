@@ -33,7 +33,7 @@ class CfgVehicles {
 		scope=2;
 		scopeCurator=2;
 		side=3;
-		maximumLoad=4500;
+		maximumLoad=45000;
 		ace_cargo_canLoad = 0;
 		ace_Cargo_hasCargo = 0;
 	};
@@ -58,7 +58,7 @@ class CfgVehicles {
 		scope=2;
 		scopeCurator=2;
 		side=3;
-		maximumLoad=100;
+		maximumLoad=500;
 		transportFuel=3406;
 		ace_cargo_canLoad = 0;
 		ace_Cargo_hasCargo = 0;
