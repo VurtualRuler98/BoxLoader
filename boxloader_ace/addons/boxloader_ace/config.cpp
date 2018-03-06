@@ -12,6 +12,11 @@ class cfgVehicles {
 		transportRepair = 0;
 		ace_repair_canrepair = 1;
 	};
+	class Reammobox_F;
+	class Boxloader_sixcon_fuel: Reammobox_F {
+		transportFuel = 0;
+		ace_refuel_fuelcargo = 3406;
+	};
 };
 /*class CfgVehicles {
 	class StaticWeapon;
