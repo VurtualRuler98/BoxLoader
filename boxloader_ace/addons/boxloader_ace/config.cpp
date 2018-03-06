@@ -3,7 +3,7 @@ class CfgPatches {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"ace_repair","boxloader"}; //"ace_interact_menu"
+		requiredAddons[] = {"ace_repair","boxloader","ace_refuel"}; //"ace_interact_menu"
 	};
 };
 class cfgVehicles {
