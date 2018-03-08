@@ -83,6 +83,8 @@ class CfgFunctions {
 			class racks_switch {};
 			class hide {};
 			class hide_recursion {};
+			
+			class getmaxlift {};
 		};
 	};
 };
