@@ -120,7 +120,7 @@ class Boxloader_Flatrack_M1077: Boxloader_Flatrack_Base {
 		class Carrier: Carrier {
 			cargoBayDimensions[]        = {"VTV_Carrier_Base", "VTV_Carrier_Corner"};
 			exits[]						= {"VTV_Exit_1"};
-			cargoAlignment[]            = {"front","center"};
+			cargoAlignment[]            = {"front","left"};
 			cargoSpacing[]              = {0, 0, 0};
 			maxLoadMass                 = 15000; 
 			disableHeightLimit          = 1;

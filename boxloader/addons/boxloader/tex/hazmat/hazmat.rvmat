@@ -1,0 +1,5 @@
+Ambient[]={0.2,0.2,0.2,1}; 
+Diffuse[]={0.2,0.2,0.2,1}; 
+fogMode="Fog";
+PixelShaderID="Normal";
+VertexShaderID="Basic";
