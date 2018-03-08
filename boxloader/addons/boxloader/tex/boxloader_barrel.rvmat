@@ -1,0 +1,14 @@
+Ambient[]={0.9,0.9,0.9,1}; 
+Diffuse[]={0.7,0.7,0.7,1}; 
+fogMode="Fog";
+PixelShaderID="NormalMapSpecularMap";
+VertexShaderID="NormalMap";
+specularPower=10;
+class Stage1 {
+	texture "\boxloader\tex\boxloader_barrel_nohq.paa";
+	uvSource = "tex";
+};
+class Stage2 {
+	texture = "\boxloader\tex\boxloader_barrel_sm.paa";
+	uvSource="tex";
+};

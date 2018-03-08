@@ -17,6 +17,16 @@ class cfgVehicles {
 		transportFuel = 0;
 		ace_refuel_fuelcargo = 3406;
 	};
+	class Boxloader_Ammo_West;
+	class Boxloader_VehicleAmmo_West: Boxloader_Ammo_West {
+		transportAmmo = 0;
+		ace_rearm_defaultSupply=1200;
+	};
+	class boxloader_drumpallet_empty;
+	class Boxloader_drumpallet_fuel: boxloader_drumpallet_empty {
+		transportFuel = 0;
+		ace_refuel_fuelcargo = 830;
+	};
 };
 /*class CfgVehicles {
 	class StaticWeapon;
