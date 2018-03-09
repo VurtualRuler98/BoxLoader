@@ -85,6 +85,7 @@ class CfgFunctions {
 			class hide_recursion {};
 			
 			class getmaxlift {};
+			class skid_init {};
 		};
 	};
 };
