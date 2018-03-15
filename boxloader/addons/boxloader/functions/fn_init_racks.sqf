@@ -5,7 +5,7 @@
 if (is3DEN) exitWith {false};
 	
 
-["B_APC_Tracked_01_CRV_F","init",{(_this select 0) setVariable ["boxloader_build_fill",true];(_this select 0) setVariable ["boxloader_build_tools",true];}] call CBA_fnc_addClassEventHandler;
+["B_APC_Tracked_01_CRV_F","init",{(_this select 0) setVariable ["boxloader_build_fill",true];(_this select 0) setVariable ["boxloader_build_tools",true]; (_this select 0) setVariable ["boxloader_load_maxweight",35000]; (_this select 0) setVariable "boxloader_load_maxheight",5]; (_this select 0) setVariable ["boxloader_crane_push",35000];}] call CBA_fnc_addClassEventHandler;
 //[0 rack object,1 position, 2 rotation, 3 useText, 4 unloadText, 5 toggles,6 [0 enableText,1 disableText,2 hide when disabled,3 cargo seats blocked,4 turret seats blocked,5 blocks vehicle loading],7 [selection,state], 8 addon action]
 
 //Vanilla
