@@ -317,11 +317,11 @@ class CfgVehicles {
 		};
 	};
 	class boxloader_skid_bucket: boxloader_skidbase {
-		scope = 2;
+		scope = 1;
 		displayname = "Loader (Bucket)";
 	};
 	class boxloader_skid_fork: boxloader_skidbase {
-		scope = 2;
+		scope = 1;
 		displayname = "Loader (Pallet Fork)";
 		class AnimationSources {
 			class Bucket_Hide {
