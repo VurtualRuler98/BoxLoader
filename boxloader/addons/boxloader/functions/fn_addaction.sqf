@@ -25,7 +25,7 @@ _ply addAction ["Hide cargo",{[vehicle (_this select 0),true] call boxloader_fnc
 _ply addAction ["Show cargo",{[vehicle (_this select 0),false] call boxloader_fnc_hide;},[],0,false,true,"","((vehicle _target) getVariable ['boxloader_cargohidden',false])"];
 
 //*_ply addAction ["Unload flatrack",{_box = cursorObject; if (!(isNull attachedTo _box) && ((attachedTo _box) getVariable ['boxloader_flatrack',objNull])==_box && (_box distance (_this select 0)<10)) then {[attachedTo _box,objNull] call boxloader_fnc_pls;};},[],0,false,true,"","(vehicle _this == _target) && (cursorObject isKindOf 'Boxloader_Flatrack_Base') && !(isNull attachedTo cursorObject) && ((attachedTo cursorObject) getVariable ['boxloader_flatrack',objNull])==cursorObject"];*/
-_ply addaction ["Push",{cursorObject setPosATL (getPosATL cursorObject vectorAdd (vectorDir (_this select 0) vectorMultiply 0.5))},[],5,false,false,"","!boxloader_maxload_enabled && (((_target getVariable ['boxloader_tgt',objNull]) canVehicleCargo cursorObject select 1) || ((_target getVariable ['boxloader_tgt',objNull]) isKindOf 'Boxloader_Bucket' && (cursorObject getVariable ['boxloader_bucketable',false]))) && ((_target getVariable ['boxloader_tgt',objNull]) distance _target)<15 && !(_target getVariable ['boxloader_dontpush',false])"];
+_ply addaction ["Push",{cursorObject setPosATL (getPosATL cursorObject vectorAdd (vectorDir (_this select 0) vectorMultiply 0.5))},[],5,false,false,"","boxloader_push_enabled && !boxloader_maxload_enabled && (((_target getVariable ['boxloader_tgt',objNull]) canVehicleCargo cursorObject select 1) || ((_target getVariable ['boxloader_tgt',objNull]) isKindOf 'Boxloader_Bucket' && (cursorObject getVariable ['boxloader_bucketable',false]))) && ((_target getVariable ['boxloader_tgt',objNull]) distance _target)<15 && !(_target getVariable ['boxloader_dontpush',false])"];
 
 
 //Advanced load actions
@@ -35,7 +35,7 @@ _ply addAction ["Push object",{
 	_pos = (getPosATL _box vectorAdd (vectorDir _ply vectorMultiply 0.5));
 	_pos = [_pos select 0, _pos select 1, (_pos select 2)+0.5];
 	_box setVehiclePosition [_pos,[],0,"CAN_COLLIDE"];
-},[],1,false,false,"","boxloader_maxload_enabled && (weaponLowered _this || vehicle _this != _this) && (getMass cursorObject)<selectMax [_this getVariable ['boxloader_tgt',objNull] getVariable ['boxloader_crane_push',0], (vehicle _this getVariable ['boxloader_crane_push',0]),boxloader_maxload_push]"];
+},[],1,false,false,"","boxloader_push_enabled && boxloader_maxload_enabled && (weaponLowered _this || vehicle _this != _this) && (getMass cursorObject)>boxloader_maxload_minpush) && (getMass cursorObject)<selectMax [_this getVariable ['boxloader_tgt',objNull] getVariable ['boxloader_crane_push',0], (vehicle _this getVariable ['boxloader_crane_push',0]),boxloader_maxload_push]"];
 
 
 
