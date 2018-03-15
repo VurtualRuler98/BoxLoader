@@ -1,3 +1,4 @@
+#define CAN_PLACE_BUILT 1
 class Land_Boxloader_Hesco_Flat: HBarrier_base_F {
 	displayName = "Boxloader HESCO (Packed)";
 	editorCategory="EdCat_Supplies";
@@ -33,13 +34,14 @@ class Land_Boxloader_Hesco_SmallFlat: Land_Boxloader_Hesco_Flat {
 class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
 	displayName = "Boxloader HESCO 1m";
 	model = "\boxloader\mdl\boxloader_hesco_1.p3d";
+	scope = CAN_PLACE_BUILT;
+	scopeCurator = CAN_PLACE_BUILT;
+	editorCategory="EdCat_Supplies";
+	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
 	class EventHandlers {
 		init = "_this call boxloader_fnc_hesco_built";
-		deleted = "if (!isNull _this getVariable ['tent_floor',objNull]) then {deleteVehicle (_this getVariable ['tent_floor',objNull)}";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
-	scope = 1;
-	scopeCurator = 1;
 	ace_dragging_canCarry = 0;
 	ace_cargo_canLoad = 0;
 	Boxloader_ConBase="Land_Boxloader_Hesco_Flat";
@@ -74,9 +76,9 @@ class Land_Boxloader_Fort_Roof_Flat: HBarrier_base_F {
 	editorSubcategory="EdSubCat_BoxloaderFort";
 	model = "\boxloader\mdl\boxloader_fort_roof_flat.p3d";
 	scope = 2;
+	scopeCurator = 2;
 	Boxloader_ConBase="Land_Boxloader_Fort_Roof";
 	Boxloader_ConName="Build bunker roof";
-	scopeCurator = 2;
 	class EventHandlers {
 		init = "_this call boxloader_fnc_fort_roof";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
@@ -87,8 +89,10 @@ class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 	destrType="DestructBuilding";
 	displayName = "Boxloader Bunker Roof";
 	model = "\boxloader\mdl\boxloader_fort_roof.p3d";
-	scope = 1;
-	scopeCurator = 1;
+	scope=CAN_PLACE_BUILT;
+	scopeCurator=CAN_PLACE_BUILT;
+	editorCategory="EdCat_Supplies";
+	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
 	ace_dragging_canCarry = 0;
 	ace_cargo_canLoad = 0;
 	Boxloader_ConBase="Land_Boxloader_Fort_Roof_Flat";
@@ -133,11 +137,12 @@ class Land_Boxloader_Fort_Plat_Flat: HBarrier_base_F {
 };
 class Land_Boxloader_Fort_Plat_5: HBarrier_base_F {
 	armor=800;
+	scope=CAN_PLACE_BUILT;
+	editorCategory="EdCat_Supplies";
+	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
 	destrType="DestructBuilding";
 	displayName = "Boxloader Bunker Platform 5x5";
 	model = "\boxloader\mdl\boxloader_fort_plat_5m.p3d";
-	scope = 1;
-	scopeCurator = 1;
 	ace_dragging_canCarry = 0;
 	ace_cargo_canLoad = 0;
 	Boxloader_ConBase="Land_Boxloader_Fort_Plat_Flat";
@@ -195,7 +200,6 @@ class Land_Boxloader_Fort_iso_Green: ThingX {
 		};
 	};
 	scope=2;
-	scopeCurator=2;
 	class EventHandlers {
 		init = "[_this select 0,1] call boxloader_fnc_fort_iso";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
@@ -239,7 +243,6 @@ class Land_Boxloader_Fort_Tent_Flat_Base: HBarrier_base_F {
 	editorSubcategory="EdSubCat_BoxloaderFort";
 	model = "\boxloader\mdl\boxloader_fort_plat_flat.p3d";
 	scope = 1;
-	scopeCurator = 1;
 	buildClass = "Land_Boxloader_Fort_Tent_Built_Base";
 	hiddenSelections[] = {"Texture"};
 	class EventHandlers {
@@ -300,9 +303,12 @@ class Land_MedicalTent_01_base_F;
 class Land_Boxloader_Fort_Tent_Built_Base: Land_MedicalTent_01_base_F {
 	scope = 1;
 	maximumLoad=0;
+	editorCategory="EdCat_Supplies";
+	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_Base";
 	class EventHandlers {
 		init = "_this call boxloader_fnc_fort_tent_built";
+		deleted = "if (!isNull ((_this select 0) getVariable ['tent_floor',objNull])) then {deleteVehicle ((_this select 0) getVariable ['tent_floor',objNull])}";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
 	hiddenSelections[] = {"Camo"};
@@ -341,26 +347,32 @@ class Land_Boxloader_Fort_Tent_Built_Base: Land_MedicalTent_01_base_F {
 	};
 };
 class Land_Boxloader_Fort_Tent_Built_Green: Land_Boxloader_Fort_Tent_Built_Base {
+	scope = CAN_PLACE_BUILT;
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_Green";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_tropic_F_CO.paa"};
 };
 class Land_Boxloader_Fort_Tent_Built_Brown: Land_Boxloader_Fort_Tent_Built_Base {
+	scope = CAN_PLACE_BUILT;
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_Brown";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_MTP_F_CO.paa"};
 };
 class Land_Boxloader_Fort_Tent_Built_BrownHex: Land_Boxloader_Fort_Tent_Built_Base {
+	scope = CAN_PLACE_BUILT;
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_BrownHex";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_brownhex_F_CO.paa"};
 };
 class Land_Boxloader_Fort_Tent_Built_GreenHex: Land_Boxloader_Fort_Tent_Built_Base {
+	scope = CAN_PLACE_BUILT;
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_GreenHex";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_greenhex_F_CO.paa"};
 };
 class Land_Boxloader_Fort_Tent_Built_Digital: Land_Boxloader_Fort_Tent_Built_Base {
+	scope = CAN_PLACE_BUILT;
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_Digital";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_digital_F_CO.paa"};
 };
 class Land_Boxloader_Fort_Tent_Built_White: Land_Boxloader_Fort_Tent_Built_Base {
+	scope = CAN_PLACE_BUILT;
 	buildClass = "Land_Boxloader_Fort_Tent_Flat_White";
 	hiddenSelectionsTextures[] = {"\A3\Structures_F_Orange\Humanitarian\Camps\Data\MedicalTent_01_white_generic_F_CO.paa"};
 };
