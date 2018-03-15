@@ -28,22 +28,22 @@ class CfgPatches {
 			"Land_Boxloader_Case_Green",
 			"Land_Boxloader_Case_Aid",
 			"Land_Boxloader_Case_Tan",
-			"Land_Boxloader_Hesco_Flat",
-			"Land_Boxloader_Hesco_BigFlat",
-			"Land_Boxloader_Hesco_SmallFlat",
-			"Land_Boxloader_Fort_Roof_Flat",
+			"Land_Boxloader_Hesco_Flat","Land_Boxloader_Hesco_1","Land_Boxloader_Hesco_3","Land_Boxloader_Hesco_5",
+			"Land_Boxloader_Hesco_BigFlat","Land_Boxloader_Hesco_Big1","Land_Boxloader_Hesco_Big3","Land_Boxloader_Hesco_Big5",
+			"Land_Boxloader_Hesco_SmallFlat","Land_Boxloader_Hesco_Small1","Land_Boxloader_Hesco_Small6","Land_Boxloader_Hesco_Small10",
+			"Land_Boxloader_Fort_Roof_Flat","Land_Boxloader_Fort_Roof",
 			"Land_Boxloader_Fort_iso_Green",
 			"Land_Boxloader_Fort_iso_Rusty",
 			"Land_Boxloader_Fort_iso_Brown",
 			"Land_Boxloader_Fort_iso_Aid",
-			"Land_Boxloader_Fort_Plat_Flat",
+			"Land_Boxloader_Fort_Plat_Flat","Land_Boxloader_Fort_Plat_3","Land_Boxloader_Fort_Plat_5",
 			
-			"Land_Boxloader_Fort_Tent_Flat_Green",
-			"Land_Boxloader_Fort_Tent_Flat_Brown",
-			"Land_Boxloader_Fort_Tent_Flat_BrownHex",
-			"Land_Boxloader_Fort_Tent_Flat_GreenHex",
-			"Land_Boxloader_Fort_Tent_Flat_Digital",
-			"Land_Boxloader_Fort_Tent_Flat_White"
+			"Land_Boxloader_Fort_Tent_Flat_Green","Land_Boxloader_Fort_Tent_Built_Green",
+			"Land_Boxloader_Fort_Tent_Flat_Brown","Land_Boxloader_Fort_Tent_Built_Brown",
+			"Land_Boxloader_Fort_Tent_Flat_BrownHex","Land_Boxloader_Fort_Tent_Built_BrownHex",
+			"Land_Boxloader_Fort_Tent_Flat_GreenHex","Land_Boxloader_Fort_Tent_Built_GreenHex",
+			"Land_Boxloader_Fort_Tent_Flat_Digital","Land_Boxloader_Fort_Tent_Built_Digital",
+			"Land_Boxloader_Fort_Tent_Flat_White","Land_Boxloader_Fort_Tent_Built_White"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -354,5 +354,8 @@ class CfgEditorSubcategories {
 	};
 	class EdSubCat_BoxloaderFort{
 		displayName = "Boxloader Fortifications";
+	};
+	class EdSubCat_BoxloaderFortBuilt{
+		displayName = "Boxloader Fortifications (Built)";
 	};
 };
