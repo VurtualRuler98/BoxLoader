@@ -17,6 +17,14 @@ if (is3DEN) exitWith {false};
 	(_this select 0) setVariable ["boxloader_load_ramp",true];
 }] call CBA_fnc_addClassEventHandler; //all planes and helicopters use ramps by default
 
+["Land_RepairDepot_01_base_F","init",{
+	//(_this select 0) setVariable ["boxloader_build_fill",true];
+	//(_this select 0) setVariable ["boxloader_build_tools",true];
+	(_this select 0) setVariable ["boxloader_load_weight",4500];
+	(_this select 0) setVariable ["boxloader_load_height",5];
+	(_this select 0) setVariable ["boxloader_crane_push",4500];
+}] call CBA_fnc_addClassEventHandler;
+
 //RHS
 if (isClass(configFile >> "CfgPatches" >> "rhsusf_main")) then {
 
