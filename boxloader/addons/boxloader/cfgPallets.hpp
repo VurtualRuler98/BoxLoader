@@ -142,6 +142,9 @@ class Boxloader_Flatrack_M7FRS: Boxloader_Flatrack_Base {
 			canBeTransported = 1;
 		};
 	};
+	class EventHandlers: EventHandlers {
+		init = "_this call boxloader_fnc_flatrack_init; (_this select 0) setVariable ['boxloader_load_weight',4500]; (_this select 0) setVariable ['boxloader_load_height',5]; (_this select 0) setVariable ['boxloader_crane_push',4500];";
+	};
 	class TransportItems { //inventory doesn't work
 		class xx_ToolKit {
 			name = "ToolKit";
