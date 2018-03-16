@@ -9,10 +9,47 @@ if (is3DEN) exitWith {false};
 	(_this select 0) setVariable ["boxloader_build_fill",true];
 	(_this select 0) setVariable ["boxloader_build_tools",true];
 	(_this select 0) setVariable ["boxloader_load_weight",35000];
-	(_this select 0) setVariable ["boxloader_load_height",5];
+	(_this select 0) setVariable ["boxloader_load_height",7];
 	(_this select 0) setVariable ["boxloader_crane_push",35000];
 }] call CBA_fnc_addClassEventHandler;
+
+["Air","init",{
+	(_this select 0) setVariable ["boxloader_load_ramp",true];
+}] call CBA_fnc_addClassEventHandler; //all planes and helicopters use ramps by default
+
+//RHS
+if (isClass(configFile >> "CfgPatches" >> "rhsusf_main")) then {
+
+	{[_x,"init",{
+		(_this select 0) setVariable ["boxloader_load_weight",2270];
+		(_this select 0) setVariable ["boxloader_load_height",7]; //5.1
+		(_this select 0) setVariable ["boxloader_crane_push",2268];
+	}] call CBA_fnc_addClassEventHandler;} forEach ["rhsusf_M1084A1P2_fmtv_usarmy","rhsusf_M1084A1P2_B_M2_fmtv_usarmy"];
+
+
+	//HEMTT, ~2.3m above ground, length 3-5.8m
+	["rhsusf_HEMTT_A4_base","init",{
+		if (({(_this select 0) isKindOf _x} count ["rhsusf_M978A4_BKIT_usarmy_wd","rhsusf_M978A4_usarmy_wd","rhsusf_M978A4_BKIT_usarmy_d","rhsusf_M978A4_usarmy_d"])>0) exitWith {};
+		(_this select 0) setVariable ["boxloader_load_weight",6600];
+		(_this select 0) setVariable ["boxloader_load_height",8.1]; //5.3
+		//(_this select 0) setVariable ["boxloader_load_weight_high",1133];
+		//(_this select 0) setVariable ["boxloader_load_height_high",8.1];
+		(_this select 0) setVariable ["boxloader_crane_push",6600];
+	}] call CBA_fnc_addClassEventHandler;
+};
+//Unsung
+if (isClass(configFile >> "CfgPatches" >> "uns_main")) then {
+	["uns_M113_ENG","init",{
+		(_this select 0) setVariable ["boxloader_build_fill",true];
+		(_this select 0) setVariable ["boxloader_build_tools",true];
+		(_this select 0) setVariable ["boxloader_load_weight",1000];
+		(_this select 0) setVariable ["boxloader_load_height",3.8];
+		(_this select 0) setVariable ["boxloader_crane_push",10000];
+	}] call CBA_fnc_addClassEventHandler;
+};
+
 //[0 rack object,1 position, 2 rotation, 3 useText, 4 unloadText, 5 toggles,6 [0 enableText,1 disableText,2 hide when disabled,3 cargo seats blocked,4 turret seats blocked,5 blocks vehicle loading],7 [selection,state], 8 addon action]
+
 
 //Vanilla
 
@@ -325,7 +362,30 @@ if (isClass(configFile >> "CfgPatches" >> "CSAT_Vehicles")) then {
 	//Typhoon medical
 	["TEC_VH_Truck_Tempest_medical_F","init",{[(_this select 0),[
 		[["Land_Boxloader_mem_hemtt",[0.1,-2.5,-0.38],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11],[],false]],"boxloader_rack0"]
-	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;\
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+};
+//Unsung
+if (isClass(configFile >> "CfgPatches" >> "uns_main")) then {
+
+	//M37
+	["uns_m37b1","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_uns_m37",[0,-1.8,-0.78],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//M35A2
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_rhsural",[0,-1.5,-0.5],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[3,4,5,6,7,8,9,10],[1,2],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["uns_M35A2","uns_M35A2_Open"];
+	
+	//ZIL-157
+	["uns_zil157","init",{[(_this select 0),[
+		[["Land_Boxloader_mem_cupv3s",[0,-1.2,1.45],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[1,2,3,4,5,6,7,8,9,10,11,12],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;
+	
+	//Ural
+	{[_x,"init",{[(_this select 0),[
+		[["Land_Boxloader_mem_rhsural",[0,-1.6,0.1],0,"Select rear cargo bed","Unload rear cargo bed",true,["Use rear cargo bed","Use rear passenger seats",true,[2,3,4,5,6,7,8,9,10,11,12,13,14],[],false]],"boxloader_rack0"]
+	]] spawn boxloader_fnc_racks_setup}] call CBA_fnc_addClassEventHandler;} forEach ["uns_nvatruck","uns_nvatruck_camo","uns_nvatruck_open"];
 };
 true
 

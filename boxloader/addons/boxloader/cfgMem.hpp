@@ -148,3 +148,6 @@ class Land_Boxloader_mem_ifahorsa_front: Land_Boxloader_membase_truck {
 		};
 	};
 };
+class Land_Boxloader_mem_uns_m37: Land_Boxloader_membase_truck {
+	model = "\boxloader\mdl\boxloader_mem_uns_m37.p3d";
+};
