@@ -14,11 +14,11 @@ _box addAction ["Disassemble HESCO",{
 _box addAction ["Fill HESCO",{
 	(_this select 0) animateSource ["Fill_Source",0];
 	(_this select 0) animateSource ["Empty_Source",1];
-},[],0,false,true,"","(({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_fill',false])) && (_target animationSourcePhase 'Fill_Source')==1"];
+},[],0,false,true,"","(({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_fill',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_fill',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15)) && (_target animationSourcePhase 'Fill_Source')==1"];
 _box addAction ["Empty HESCO",{
 	(_this select 0) animateSource ["Fill_Source",1];
 	(_this select 0) animateSource ["Empty_Source",0];
-},[],0,false,true,"","(({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_fill',false])) && (_target animationSourcePhase 'Fill_Source')==0"];
+},[],0,false,true,"","(({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_fill',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_fill',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15)) && (_target animationSourcePhase 'Fill_Source')==0"];
 //_box addEventHandler["HandleDamage",{if (((_this select 0) animationSourcePhase 'Fill_Source')<0.5) exitWith {0}}];
 true 
 //(count ((position _target) nearObjects ['B_APC_Tracked_01_CRV_F',20])>0)

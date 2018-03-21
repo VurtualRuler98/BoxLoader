@@ -12,7 +12,7 @@ if (_tgt getVariable ["boxloader_load_ramp",false]) then {
 _height = (_bedheight - ((getPosATL _box select 2) min (getPosASL _box select 2)));
 if ((_tgt getVariable ["boxloader_load_weight",0]>_mass) && (_tgt getVariable ["boxloader_load_height",0]>_height)) exitWith {true};
 if ((vehicle _ply getVariable ["boxloader_load_weight",0]>_mass) && (vehicle _ply getVariable ["boxloader_load_height",0]>_height)) exitWith {true};
-if (!(isNull _crane) && (_crane distance _box)<15 && (_crane distance _tgt)<15 && (_crane getVariable ["boxloader_load_weight",0]>_mass) && (_crane getVariable ["boxloader_load_height",0]>_height)) exitWith {true};
+if (!(isNull _crane) && (_crane distance _box)<15 && (_crane distance _tgt)<15 && (((_crane getVariable ["boxloader_load_weight",0]>_mass) && (_crane getVariable ["boxloader_load_height",0]>_height)) || ((_crane getVariable ["boxloader_crane_push",0]>_mass) && (_height < 0.2)))) exitWith {true};
 if (_height < -2) exitWith {false};
 if (_height < 2.1 && _mass < boxloader_maxload_overhead) exitWith {true};
 if (_height < 1.3 && _mass < boxloader_maxload_lift) exitWith {true};

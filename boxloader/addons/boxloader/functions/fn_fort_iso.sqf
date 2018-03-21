@@ -5,7 +5,7 @@ if ((isNull _box) || !(_box isKindOf "Land_Boxloader_Fort_iso_Green")) exitWith 
 _box setVariable ["BuildMenu",false];
 _box addAction ["Toggle build menu",{
 	(_this select 0) setVariable ["BuildMenu",!(_this select 0 getVariable["BuildMenu",true])];
-},[],0.5,false,true,"","(isNull attachedTo _target) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (count ((position _this) nearObjects ['B_APC_Tracked_01_CRV_F',15])>0))"];
+},[],0.5,false,true,"","(isNull attachedTo _target) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 _arr = [];
 if (_col==1) then {
 	_arr = [["Land_Cargo_House_V1_F","Build Cargo House (Green)"],["Land_Cargo_Patrol_V1_F","Build Cargo Post (Green)"]];
@@ -26,7 +26,7 @@ if (_col==0) then {
 		_con setDir getdir (_this select 0);
 		[_con,typeOf (_this select 0)] call boxloader_fnc_fort_iso_built;
 		deleteVehicle (_this select 0);
-	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (count ((position _this) nearObjects ['B_APC_Tracked_01_CRV_F',15])>0))"];
+	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 } forEach _arr;
 _box setVariable ["boxloader_bucketable",true];
 _box addAction ["Rotate Container",{

@@ -5,7 +5,7 @@ if ((isNull _box) || !(_box isKindOf "Land_Boxloader_Fort_Plat_Flat")) exitWith 
 _box setVariable ["BuildMenu",false];
 _box addAction ["Toggle build menu",{
 	(_this select 0) setVariable ["BuildMenu",!(_this select 0 getVariable["BuildMenu",true])];
-},[],0.5,false,true,"","(isNull attachedTo _target) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (count ((position _this) nearObjects ['B_APC_Tracked_01_CRV_F',15])>0))"];
+},[],0.5,false,true,"","(isNull attachedTo _target) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 _arr = [["Land_Boxloader_Fort_Plat_5","Build Wood Platform 5x5m"],["Land_Boxloader_Fort_Plat_3","Build Wood Platform 3x3m"]];
 _box addAction ["Pick up",{
 	(_this select 0) attachTo [(_this select 1),[0,2,0.2]];
@@ -30,7 +30,7 @@ _box addAction ["Pick up",{
 		_con setPosASL getPosASL (_this select 0);
 		_con setDir getdir (_this select 0);
 		deleteVehicle (_this select 0);
-	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (count ((position _this) nearObjects ['B_APC_Tracked_01_CRV_F',15])>0))"];
+	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) ||(((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 } forEach _arr;
 true 
 // && (count ((position _target) nearObjects ['B_APC_Tracked_01_CRV_F',20])>0)
