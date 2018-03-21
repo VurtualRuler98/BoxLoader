@@ -43,6 +43,10 @@ _ply addAction ["Push object",{
 
 
 
+_ply addAction ["Select construction vehicle",{_veh = cursorObject; if ((_veh getVariable ["boxloader_work_vehicle",false]) && ((_veh distance (_this select 0))<15)) then {(_this select 0) setVariable["boxloader_work_tgt",_veh,true];};},[],0,false,true,"","((vehicle _this == _target) || (vehicle _this getVariable ['boxloader_canload',false])) && (isNull (_this getVariable ['boxloader_work_tgt',objNull])) && (cursorObject getVariable ['boxloader_work_vehicle',false]) && ((cursorObject distance _this)<15)"];
+
+_ply addAction ["<t color='#FF0000'>Done with construction vehicle</t>",{(_this select 0) setVariable ["boxloader_work_tgt",objNull,true];},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && !isNull (_this getVariable ['boxloader_work_tgt',objNull])"];
+
 _ply setVariable["boxloader_init",true];
 
 true
