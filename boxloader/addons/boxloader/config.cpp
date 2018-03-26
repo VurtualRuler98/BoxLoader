@@ -86,6 +86,7 @@ class CfgFunctions {
 			
 			class getmaxlift {};
 			class skid_init {};
+			class driveon {};
 		};
 	};
 };
