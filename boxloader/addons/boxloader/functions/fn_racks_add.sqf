@@ -1,4 +1,4 @@
-_par = params [["_veh",objNull,[objNull]],["_rack",[],[[]]],["_rackVar","",[""]]];
+_par = params [["_veh",objNull,[objNull]],["_rack",[],[[]]],["_rackVar","",[""]],["_main",false,[false]]];
 if (!_par) exitWith {["Malformed params!"] call bis_fnc_error;false};
 if (isNull _veh) exitWith {["Vehicle passed was null!"] call bis_fnc_error; false};
 _val = _rack call boxloader_fnc_racks_validate;
@@ -52,4 +52,8 @@ if ((_rack select 9)!=0) then {
 };
 _rack set [0,_obj];
 _veh setVariable [_rackVar,_rack,true];
+[_obj,_veh] call boxloader_fnc_truckmem_init;
+if (_main) then {
+	[_veh,'BBox_Exit',_rackVar] call boxloader_fnc_driveon_retrofit;
+};
 true 
