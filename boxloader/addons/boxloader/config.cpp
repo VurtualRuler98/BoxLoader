@@ -87,6 +87,8 @@ class CfgFunctions {
 			class getmaxlift {};
 			class skid_init {};
 			class driveon {};
+			class driveon_retrofit {};
+			class truckmem_init {};
 		};
 	};
 };
@@ -319,6 +321,8 @@ class CfgVehicles {
 				exits[]						= {"BBox_Exit"};
 				maxLoadMass                 = 100000;
 				disableHeightLimit			= 1;
+				loadingDistance             = 0;
+				loadingAngle                = 0;
 			};
 		};
 		class EventHandlers {
