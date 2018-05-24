@@ -1,5 +1,5 @@
 _par = params [["_veh",objNull,[objNull]],["_mem","",[""]],["_rackVar","",[""]]]; 
-if (isNull _veh || _mem == "" || _retrofit == "") exitWith {false};
+if (isNull _veh || _mem == "" || _rackVar == "") exitWith {false};
 _rack = _veh getVariable [_rackVar,[objNull,[0,0,0]]];
 _tgt = _rack select 0;
 if (isNull _tgt) exitWith {false};

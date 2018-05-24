@@ -12,6 +12,7 @@ _box addAction ["Rotate Packed Tent",{
 	_box = _this select 0;
 	_dir = (getDir _ply - getDir _box);
 	_box setDir floor(getDir _ply);
+	[_box] remoteExec ["boxloader_fnc_alive",2];
 },[],0,false,true,"","(vehicle _this == _this)",5];
 _box addaction ["Push",{
 	_ply = _this select 1;
@@ -19,6 +20,7 @@ _box addaction ["Push",{
 	_pos = (getPosATL _box vectorAdd (vectorDir _ply vectorMultiply 0.5));
 	_pos = [_pos select 0, _pos select 1, (_pos select 2)+0.5];
 	_box setVehiclePosition [_pos,[],0,"CAN_COLLIDE"];
+	[_box] remoteExec ["boxloader_fnc_alive",2];
 },[],5,false,false,"","(vehicle _this == _this)"];
 [
 	_box,
@@ -38,6 +40,7 @@ _box addaction ["Push",{
 		_con = _conType createVehicle [0,0,0];
 		_con setDir (getDir (_this select 0));
 		_con setVehiclePosition [_pos,[],0,"CAN_COLLIDE"];
+		[_con] remoteExec ["boxloader_fnc_alive",2];
 		
 	},
 	{},

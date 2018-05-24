@@ -27,6 +27,7 @@ _box addAction ["Pick up",{
 	_ac3=(_this select 1) addAction ["Drop HESCO",{
 		detach (_this select 3 select 0);
 		(_this select 3 select 0) setVehiclePosition [(getposATL (_this select 3 select 0)),[],0,"CAN_COLLIDE"];
+		[_this select 3 select 0] remoteExec ["boxloader_fnc_alive",2];
 	},[_this select 0]];
 	[(_this select 0),(_this select 1),[_ac0,_ac1,_ac2,_ac3]] spawn {
 		waitUntil {sleep 0.1; ((isNull (_this select 0)) || (isNull (_this select 1)) || (!alive (_this select 1)) || (isNull attachedTo (_this select 0)))};
@@ -44,6 +45,7 @@ _box addAction ["Pick up",{
 		_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 		_con setPosASL _pos;
 		deleteVehicle (_this select 0);
+		[_con] remoteExec ["boxloader_fnc_alive",2];
 	},[_x select 1],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false])"];
 
 } forEach _arr;

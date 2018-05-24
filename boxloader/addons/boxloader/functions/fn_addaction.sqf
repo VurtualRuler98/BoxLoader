@@ -21,7 +21,7 @@ _ply addAction ["Load this in target",{_veh = (_this select 0 getVariable ["boxl
 */
 
 
-_ply addAction ["Unload object",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box};},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10)"];
+_ply addAction ["Unload object",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box; [_box] remoteExec ["boxloader_fnc_alive",2]};},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10)"];
 
 _ply addAction ["Hide cargo",{[vehicle (_this select 0),true] call boxloader_fnc_hide;},[],0,false,true,"","(boxloader_hidecargo_enabled) && !((vehicle _target) getVariable ['boxloader_cargohidden',false]) && (isClass (configFile >> 'CfgVehicles' >> (typeOf vehicle _target) >> 'vehicleTransport' >> 'Carrier') || ((vehicle _target) getVariable ['boxloader_rackinit',false]))"];
 _ply addAction ["Show cargo",{[vehicle (_this select 0),false] call boxloader_fnc_hide;},[],0,false,true,"","((vehicle _target) getVariable ['boxloader_cargohidden',false])"];
@@ -37,6 +37,7 @@ _ply addAction ["Push object",{
 	_pos = (getPosATL _box vectorAdd (vectorDir _ply vectorMultiply 0.5));
 	_pos = [_pos select 0, _pos select 1, (_pos select 2)+0.5];
 	_box setVehiclePosition [_pos,[],0,"CAN_COLLIDE"];
+	[_box] remoteExec ["boxloader_fnc_alive",2];
 },[],1,false,false,"","boxloader_push_enabled && boxloader_maxload_enabled && (isNull attachedTo cursorObject) && (weaponLowered _this || vehicle _this != _this) && (getMass cursorObject)>boxloader_maxload_minpush && (getMass cursorObject)<selectMax [_this getVariable ['boxloader_tgt',objNull] getVariable ['boxloader_crane_push',0], (vehicle _this getVariable ['boxloader_crane_push',0]),boxloader_maxload_push]"];
 
 

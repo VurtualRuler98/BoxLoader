@@ -29,8 +29,11 @@ class CfgPatches {
 			"Land_Boxloader_Case_Aid",
 			"Land_Boxloader_Case_Tan",
 			"Land_Boxloader_Hesco_Flat","Land_Boxloader_Hesco_1","Land_Boxloader_Hesco_3","Land_Boxloader_Hesco_5",
+			"Land_Boxloader_Hesco_1_Built","Land_Boxloader_Hesco_3_Built","Land_Boxloader_Hesco_5_built",
 			"Land_Boxloader_Hesco_BigFlat","Land_Boxloader_Hesco_Big1","Land_Boxloader_Hesco_Big3","Land_Boxloader_Hesco_Big5",
+			"Land_Boxloader_Hesco_Big1_Built","Land_Boxloader_Hesco_Big3_Built","Land_Boxloader_Hesco_Big5_built",
 			"Land_Boxloader_Hesco_SmallFlat","Land_Boxloader_Hesco_Small1","Land_Boxloader_Hesco_Small6","Land_Boxloader_Hesco_Small10",
+			"Land_Boxloader_Hesco_Small1_Built","Land_Boxloader_Hesco_Small6_Built","Land_Boxloader_Hesco_Small10_built",
 			"Land_Boxloader_Fort_Roof_Flat","Land_Boxloader_Fort_Roof",
 			"Land_Boxloader_Fort_iso_Green",
 			"Land_Boxloader_Fort_iso_Rusty",
@@ -89,6 +92,8 @@ class CfgFunctions {
 			class driveon {};
 			class driveon_retrofit {};
 			class truckmem_init {};
+			
+			class alive {};
 		};
 	};
 };
