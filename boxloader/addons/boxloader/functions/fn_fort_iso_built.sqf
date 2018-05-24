@@ -12,6 +12,6 @@ _box addAction ["Pack Structure",{
 	_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 	_con setPosASL _pos;
 	deleteVehicle (_this select 0);
-	[_con] remoteExec ["boxloader_fnc_alive",2];
+	[_con,_box] remoteExec ["boxloader_fnc_alive",2];
 },[_base],0,false,true,"","(_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 true 

@@ -44,8 +44,7 @@ _box addAction ["Pick up",{
 		_pos = getPosASL _con;
 		_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 		_con setPosASL _pos;
-		deleteVehicle (_this select 0);
-		[_con] remoteExec ["boxloader_fnc_alive",2];
+		[_con,(_this select 0)] remoteExec ["boxloader_fnc_alive",2];
 	},[_x select 1],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false])"];
 
 } forEach _arr;

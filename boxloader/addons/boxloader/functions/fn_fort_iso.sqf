@@ -26,7 +26,7 @@ if (_col==0) then {
 		_con setDir getdir (_this select 0);
 		[_con,typeOf (_this select 0)] call boxloader_fnc_fort_iso_built;
 		deleteVehicle (_this select 0);
-		[_con] remoteExec ["boxloader_fnc_alive",2];
+		[_con,_box] remoteExec ["boxloader_fnc_alive",2];
 	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 } forEach _arr;
 _box setVariable ["boxloader_bucketable",true];

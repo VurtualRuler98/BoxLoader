@@ -12,8 +12,7 @@ if (_hescoIsFilled==0) then {
 		_pos = getPosASL _con;
 		_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 		_con setPosASL _pos;
-		deleteVehicle (_this select 0);
-		[_con] remoteExec ["boxloader_fnc_alive",2];
+		[_con,(_this select 0)] remoteExec ["boxloader_fnc_alive",2];
 	},[_obj],0,false,true,"","vehicle _this == _this"]; //&& (_target animationSourcePhase 'Fill_Source')==1
 };
 /*
@@ -35,8 +34,7 @@ _box addAction [_fillText,{
 		_con = (_this select 3 select 0) createVehicle (position (_this select 0));
 		_con setPosASL getPosASL (_this select 0);
 		_con setVectorDirAndUp [vectorDir (_this select 0),vectorUp (_this select 0)];
-		deleteVehicle (_this select 0);
-		[_con] remoteExec ["boxloader_fnc_alive",2];
+		[_con,(_this select 0)] remoteExec ["boxloader_fnc_alive",2];
 },[_fillObject],0,false,true,"","(({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_fill',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_fill',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 true 
 //(count ((position _target) nearObjects ['B_APC_Tracked_01_CRV_F',20])>0)
