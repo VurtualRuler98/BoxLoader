@@ -34,7 +34,7 @@ class CfgPatches {
 			"Land_Boxloader_Hesco_Big1_Built","Land_Boxloader_Hesco_Big3_Built","Land_Boxloader_Hesco_Big5_built",
 			"Land_Boxloader_Hesco_SmallFlat","Land_Boxloader_Hesco_Small1","Land_Boxloader_Hesco_Small6","Land_Boxloader_Hesco_Small10",
 			"Land_Boxloader_Hesco_Small1_Built","Land_Boxloader_Hesco_Small6_Built","Land_Boxloader_Hesco_Small10_built",
-			"Land_Boxloader_Fort_Roof_Flat","Land_Boxloader_Fort_Roof",
+			"Land_Boxloader_Fort_Roof_Flat","Land_Boxloader_Fort_Roof","Land_Boxloader_Fort_Roof_Built";
 			"Land_Boxloader_Fort_iso_Green",
 			"Land_Boxloader_Fort_iso_Rusty",
 			"Land_Boxloader_Fort_iso_Brown",

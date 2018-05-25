@@ -82,15 +82,14 @@ class Land_Boxloader_Fort_Roof_Flat: HBarrier_base_F {
 	scope = 2;
 	scopeCurator = 2;
 	Boxloader_ConBase="Land_Boxloader_Fort_Roof";
-	Boxloader_ConName="Build bunker roof";
 	class EventHandlers {
-		init = "_this call boxloader_fnc_fort_roof";
+		init = "[_this select 0,3] call boxloader_fnc_hesco";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
 };
 class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 	armor=2000;
-	destrType="DestructBuilding";
+	destrType="DestructTent";
 	displayName = "Boxloader Bunker Roof";
 	model = "\boxloader\mdl\boxloader_fort_roof.p3d";
 	scope=CAN_PLACE_BUILT;
@@ -100,6 +99,8 @@ class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 	ace_dragging_canCarry = 0;
 	ace_cargo_canLoad = 0;
 	Boxloader_ConBase="Land_Boxloader_Fort_Roof_Flat";
+	boxloader_IsFilled = 0;
+	boxloader_hescoFill = "Land_Boxloader_Fort_Roof_Built";
 	class AnimationSources {
 		class Fill_Source {
 			source = "user";
@@ -113,9 +114,24 @@ class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 		};
 	};
 	class EventHandlers {
-		init = "_this call boxloader_fnc_fort_roof_built";
+		init = "_this call boxloader_fnc_hesco_built";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
+};
+class land_boxloader_fort_roof_built: land_boxloader_fort_roof {
+	class AnimationSources: AnimationSources {
+		class Fill_Source: Fill_Source {
+			initPhase = 0;
+		};
+		class Lift_Source: Lift_Source {
+			initPhase = 1;
+		};
+	};
+	destrType="DestructBuilding";
+	scope=2;
+	scopeCurator=2;
+	boxloader_isFilled=1;
+	boxloader_hescoFill="Land_Boxloader_Fort_Roof";
 };
 
 class Land_Boxloader_Fort_Plat_Flat: HBarrier_base_F {
@@ -141,7 +157,8 @@ class Land_Boxloader_Fort_Plat_Flat: HBarrier_base_F {
 };
 class Land_Boxloader_Fort_Plat_5: HBarrier_base_F {
 	armor=800;
-	scope=CAN_PLACE_BUILT;
+	scope=2;
+	scopeCurator=2;
 	editorCategory="EdCat_Supplies";
 	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
 	destrType="DestructBuilding";
@@ -207,6 +224,8 @@ class Land_Boxloader_Hesco_1_Built: Land_Boxloader_Hesco_1 {
 		};
 	};
 	destrType="DestructBuilding";
+	scope=2;
+	scopeCurator=2;
 };
 class Land_Boxloader_Hesco_3_Built: Land_Boxloader_Hesco_1_Built {
 	displayName = "Boxloader HESCO 3m";

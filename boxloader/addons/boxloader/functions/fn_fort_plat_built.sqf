@@ -12,7 +12,7 @@ _box addAction ["Disassemble Fortification",{
 	_pos = getPosASL (_this select 0);
 	_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 	_con setPosASL _pos;
-	deleteVehicle (_this select 0);
+	[_con,(_this select 0)] remoteExec ["boxloader_fnc_alive",2];
 },[_obj],0,false,true,"","(vehicle _this == _this) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 //_box addEventHandler["HandleDamage",{if (((_this select 0) animationSourcePhase 'Fill_Source')<0.5) exitWith {0}}];
 true 

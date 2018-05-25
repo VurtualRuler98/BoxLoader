@@ -5,7 +5,7 @@ _hescoIsFilled = getNumber (configFile >> "CfgVehicles" >> (typeOf _box) >> "Box
 _fillObject = getText (configFile >> "CfgVehicles" >> (typeOf _box) >> "Boxloader_HescoFill");
 if (_hescoIsFilled==0) then {
 	_obj = getText (configFile >> "CfgVehicles" >> (typeOf _box) >> "Boxloader_ConBase");
-	_box addAction ["Disassemble HESCO",{
+	_box addAction ["Disassemble Fortification",{
 		_con = (_this select 3 select 0) createVehicle (position (_this select 0));
 		_con setPosASL getPosASL (_this select 0);
 		_con setDir (getDir (_this select 0));
@@ -26,9 +26,9 @@ _box addAction ["Empty HESCO",{
 },[],0,false,true,"","(({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_fill',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_fill',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15)) && (_target animationSourcePhase 'Fill_Source')==0"];
 */
 //_box addEventHandler["HandleDamage",{if (((_this select 0) animationSourcePhase 'Fill_Source')<0.5) exitWith {0}}];
-_fillText = "Fill HESCO";
+_fillText = "Fill Fortification";
 if (_hescoIsFilled==1) then {
-	_fillText = "Empty HESCO";
+	_fillText = "Empty Fortification";
 };
 _box addAction [_fillText,{
 		_con = (_this select 3 select 0) createVehicle (position (_this select 0));
