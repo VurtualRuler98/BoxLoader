@@ -38,6 +38,8 @@ class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
 	scopeCurator = CAN_PLACE_BUILT;
 	editorCategory="EdCat_Supplies";
 	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
+	boxloader_IsFilled = 0;
+	boxloader_hescoFill = "Land_Boxloader_Hesco_1_Built";
 	class EventHandlers {
 		init = "_this call boxloader_fnc_hesco_built";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
@@ -58,17 +60,19 @@ class Land_Boxloader_Hesco_1: Land_Boxloader_Hesco_Flat {
 		};
 	};
 	armor=1000;
-	destrType="DestructBuilding";
+	destrType="DestructTent";
 	hiddenSelections[] = {"fill"};
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_hesco_dirt_co.paa"};
 };
 class Land_Boxloader_Hesco_3: Land_Boxloader_Hesco_1 {
 	displayName = "Boxloader HESCO 3m";
 	model = "\boxloader\mdl\boxloader_hesco_3.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_3_Built";
 };
 class Land_Boxloader_Hesco_5: Land_Boxloader_Hesco_1 {
 	displayName = "Boxloader HESCO 5m";
 	model = "\boxloader\mdl\boxloader_hesco_5.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_5_Built";
 };
 class Land_Boxloader_Fort_Roof_Flat: HBarrier_base_F {
 	displayName = "Boxloader Bunker Roof (Packed)";
@@ -78,15 +82,14 @@ class Land_Boxloader_Fort_Roof_Flat: HBarrier_base_F {
 	scope = 2;
 	scopeCurator = 2;
 	Boxloader_ConBase="Land_Boxloader_Fort_Roof";
-	Boxloader_ConName="Build bunker roof";
 	class EventHandlers {
-		init = "_this call boxloader_fnc_fort_roof";
+		init = "[_this select 0,3] call boxloader_fnc_hesco";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
 };
 class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 	armor=2000;
-	destrType="DestructBuilding";
+	destrType="DestructTent";
 	displayName = "Boxloader Bunker Roof";
 	model = "\boxloader\mdl\boxloader_fort_roof.p3d";
 	scope=CAN_PLACE_BUILT;
@@ -96,6 +99,8 @@ class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 	ace_dragging_canCarry = 0;
 	ace_cargo_canLoad = 0;
 	Boxloader_ConBase="Land_Boxloader_Fort_Roof_Flat";
+	boxloader_IsFilled = 0;
+	boxloader_hescoFill = "Land_Boxloader_Fort_Roof_Built";
 	class AnimationSources {
 		class Fill_Source {
 			source = "user";
@@ -109,9 +114,24 @@ class Land_Boxloader_Fort_Roof: Land_Boxloader_Fort_Roof_Flat {
 		};
 	};
 	class EventHandlers {
-		init = "_this call boxloader_fnc_fort_roof_built";
+		init = "_this call boxloader_fnc_hesco_built";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
+};
+class land_boxloader_fort_roof_built: land_boxloader_fort_roof {
+	class AnimationSources: AnimationSources {
+		class Fill_Source: Fill_Source {
+			initPhase = 0;
+		};
+		class Lift_Source: Lift_Source {
+			initPhase = 1;
+		};
+	};
+	destrType="DestructBuilding";
+	scope=2;
+	scopeCurator=2;
+	boxloader_isFilled=1;
+	boxloader_hescoFill="Land_Boxloader_Fort_Roof";
 };
 
 class Land_Boxloader_Fort_Plat_Flat: HBarrier_base_F {
@@ -137,7 +157,8 @@ class Land_Boxloader_Fort_Plat_Flat: HBarrier_base_F {
 };
 class Land_Boxloader_Fort_Plat_5: HBarrier_base_F {
 	armor=800;
-	scope=CAN_PLACE_BUILT;
+	scope=2;
+	scopeCurator=2;
 	editorCategory="EdCat_Supplies";
 	editorSubcategory="EdSubCat_BoxloaderFortBuilt";
 	destrType="DestructBuilding";
@@ -160,14 +181,17 @@ class Land_Boxloader_Hesco_Big1: Land_Boxloader_Hesco_1 {
 	displayName = "Boxloader Big HESCO 2m";
 	model = "\boxloader\mdl\boxloader_hesco_big1.p3d";
 	Boxloader_ConBase="Land_Boxloader_Hesco_BigFlat";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_big1_Built";
 };
 class Land_Boxloader_Hesco_Big3: Land_Boxloader_Hesco_Big1 {
 	displayName = "Boxloader Big HESCO 6m";
 	model = "\boxloader\mdl\boxloader_hesco_big3.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_big3_Built";
 };
 class Land_Boxloader_Hesco_Big5: Land_Boxloader_Hesco_Big1 {
 	displayName = "Boxloader Big HESCO 10m";
 	model = "\boxloader\mdl\boxloader_hesco_big5.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_big5_Built";
 };
 
 class Land_Boxloader_Hesco_Small1: Land_Boxloader_Hesco_1 {
@@ -175,17 +199,80 @@ class Land_Boxloader_Hesco_Small1: Land_Boxloader_Hesco_1 {
 	displayName = "Boxloader Small HESCO 0.5m";
 	model = "\boxloader\mdl\boxloader_hesco_small1.p3d";
 	Boxloader_ConBase="Land_Boxloader_Hesco_SmallFlat";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_small1_Built";
 };
 class Land_Boxloader_Hesco_Small6: Land_Boxloader_Hesco_Small1 {
 	displayName = "Boxloader Small HESCO 3m";
 	model = "\boxloader\mdl\boxloader_hesco_small6.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_small6_Built";
 };
 class Land_Boxloader_Hesco_Small10: Land_Boxloader_Hesco_Small1 {
 	displayName = "Boxloader Small HESCO 5m";
 	model = "\boxloader\mdl\boxloader_hesco_small10.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_small10_Built";
 };
 
+class Land_Boxloader_Hesco_1_Built: Land_Boxloader_Hesco_1 {
+	boxloader_hescoFill = "Land_Boxloader_Hesco_1";
+	boxloader_IsFilled = 1;
+	class AnimationSources: AnimationSources {
+		class Fill_Source: Fill_Source {
+			initPhase = 0;
+		};
+		class Empty_Source: Empty_Source {
+			initPhase = 1;
+		};
+	};
+	destrType="DestructBuilding";
+	scope=2;
+	scopeCurator=2;
+};
+class Land_Boxloader_Hesco_3_Built: Land_Boxloader_Hesco_1_Built {
+	displayName = "Boxloader HESCO 3m";
+	model = "\boxloader\mdl\boxloader_hesco_3.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_3";
 
+};
+class Land_Boxloader_Hesco_5_Built: Land_Boxloader_Hesco_1_Built {
+	displayName = "Boxloader HESCO 5m";
+	model = "\boxloader\mdl\boxloader_hesco_5.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_5";
+};
+
+class Land_Boxloader_Hesco_Big1_Built: Land_Boxloader_Hesco_1_Built {
+	armor=2000;
+	displayName = "Boxloader Big HESCO 2m";
+	model = "\boxloader\mdl\boxloader_hesco_big1.p3d";
+	Boxloader_ConBase="Land_Boxloader_Hesco_BigFlat";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_big1";
+};
+class Land_Boxloader_Hesco_Big3_Built: Land_Boxloader_Hesco_Big1_Built {
+	displayName = "Boxloader Big HESCO 6m";
+	model = "\boxloader\mdl\boxloader_hesco_big3.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_big3";
+};
+class Land_Boxloader_Hesco_Big5_Built: Land_Boxloader_Hesco_Big1_Built {
+	displayName = "Boxloader Big HESCO 10m";
+	model = "\boxloader\mdl\boxloader_hesco_big5.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_big5";
+};
+class Land_Boxloader_Hesco_Small1_built: Land_Boxloader_Hesco_1_built {
+	armor=1000;
+	displayName = "Boxloader Small HESCO 0.5m";
+	model = "\boxloader\mdl\boxloader_hesco_small1.p3d";
+	Boxloader_ConBase="Land_Boxloader_Hesco_SmallFlat";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_small1";
+};
+class Land_Boxloader_Hesco_Small6_built: Land_Boxloader_Hesco_Small1_built {
+	displayName = "Boxloader Small HESCO 3m";
+	model = "\boxloader\mdl\boxloader_hesco_small6.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_small6";
+};
+class Land_Boxloader_Hesco_Small10_built: Land_Boxloader_Hesco_Small1_built {
+	displayName = "Boxloader Small HESCO 5m";
+	model = "\boxloader\mdl\boxloader_hesco_small10.p3d";
+	boxloader_hescoFill = "Land_Boxloader_Hesco_small10";
+};
 
 class Land_Boxloader_Fort_iso_Green: ThingX {
 	model = "\boxloader\mdl\boxloader_iso_basic.p3d";

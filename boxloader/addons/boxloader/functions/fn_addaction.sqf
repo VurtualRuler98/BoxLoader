@@ -21,7 +21,7 @@ _ply addAction ["Load this in target",{_veh = (_this select 0 getVariable ["boxl
 */
 
 
-_ply addAction ["Unload object",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box};},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10)"];
+_ply addAction ["Unload object",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box;};},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10)"];
 
 _ply addAction ["Hide cargo",{[vehicle (_this select 0),true] call boxloader_fnc_hide;},[],0,false,true,"","(boxloader_hidecargo_enabled) && !((vehicle _target) getVariable ['boxloader_cargohidden',false]) && (isClass (configFile >> 'CfgVehicles' >> (typeOf vehicle _target) >> 'vehicleTransport' >> 'Carrier') || ((vehicle _target) getVariable ['boxloader_rackinit',false]))"];
 _ply addAction ["Show cargo",{[vehicle (_this select 0),false] call boxloader_fnc_hide;},[],0,false,true,"","((vehicle _target) getVariable ['boxloader_cargohidden',false])"];

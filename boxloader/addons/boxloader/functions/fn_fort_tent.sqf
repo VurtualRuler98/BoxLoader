@@ -38,6 +38,7 @@ _box addaction ["Push",{
 		_con = _conType createVehicle [0,0,0];
 		_con setDir (getDir (_this select 0));
 		_con setVehiclePosition [_pos,[],0,"CAN_COLLIDE"];
+		//[_con] remoteExec ["boxloader_fnc_alive",2];
 		
 	},
 	{},
