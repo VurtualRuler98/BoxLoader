@@ -12,15 +12,27 @@ class cfgVehicles {
 		transportRepair = 0;
 		ace_repair_canrepair = 1;
 	};
-	class Reammobox_F;
+	class ThingX;
+	class Reammobox_F: ThingX {
+		class ACE_Actions {
+			class ACE_MainActions;
+		};
+	};
 	class Boxloader_sixcon_fuel: Reammobox_F {
 		transportFuel = 0;
 		ace_refuel_fuelcargo = 3406;
 	};
-	class Boxloader_Ammo_West;
+	class Boxloader_Ammo_West: Reammobox_F {
+		class ACE_Actions: ACE_Actions {
+			class ACE_MainActions: ACE_MainActions {
+				distance = 5;
+			};
+		};
+	};
 	class Boxloader_VehicleAmmo_West: Boxloader_Ammo_West {
 		transportAmmo = 0;
 		ace_rearm_defaultSupply=1200;
+		};
 	};
 	class boxloader_drumpallet_empty;
 	class Boxloader_drumpallet_fuel: boxloader_drumpallet_empty {

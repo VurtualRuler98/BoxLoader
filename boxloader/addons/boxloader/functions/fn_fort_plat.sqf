@@ -29,8 +29,7 @@ _box addAction ["Pick up",{
 		_con = (_this select 3 select 0) createVehicle (position (_this select 0));
 		_con setPosASL getPosASL (_this select 0);
 		_con setDir getdir (_this select 0);
-		deleteVehicle (_this select 0);
+		[_con,(_this select 0)] remoteExec ["boxloader_fnc_alive",2];
 	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) ||(((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 } forEach _arr;
 true 
-// && (count ((position _target) nearObjects ['B_APC_Tracked_01_CRV_F',20])>0)
