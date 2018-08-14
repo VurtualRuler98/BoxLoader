@@ -22,6 +22,15 @@ class cfgVehicles {
 		transportFuel = 0;
 		ace_refuel_fuelcargo = 3406;
 	};
+	class Boxloader_BigPallet_Repair: Reammobox_F {
+		transportRepair = 0;
+		ace_repair_canRepair = 1;
+		class ACE_Actions: ACE_Actions {
+			class ACE_MainActions: ACE_MainActions {
+				distance = 5;
+			};
+		};
+	};
 	class Boxloader_Ammo_West: Reammobox_F {
 		class ACE_Actions: ACE_Actions {
 			class ACE_MainActions: ACE_MainActions {
