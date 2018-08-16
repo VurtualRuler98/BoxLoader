@@ -1,4 +1,4 @@
-_par = params [["_veh",objNull,[objNull]],["_mem","",[""]],["_basic",false,[false]],[_"retrofit","",[""]]]; 
+_par = params [["_veh",objNull,[objNull]],["_mem","",[""]],["_basic",false,[false]],["_retrofit","",[""]]]; 
 if (isNull _veh || _mem == "") exitWith {false}; 
 _memPoints = getArray (configFile >> "CfgVehicles" >> (typeOf _veh) >> "VehicleTransport" >> "Carrier" >> "cargoBayDimensions");  
 _bedheight = ((_veh selectionPosition [(_memPoints select 0),"Memory"]) select 2); 
