@@ -1,1 +1,4 @@
 *.blend1
+addons/a3/*
+old/*
+*.p3d

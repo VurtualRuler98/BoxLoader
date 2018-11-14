@@ -1,0 +1,1 @@
+["boxloader_fort_allow_floating","CHECKBOX",["Allow platform fortificaitons to float","When checked, platforms will not need to reach the ground to be built."],"Boxloader",false,true] call CBA_settings_fnc_init;
