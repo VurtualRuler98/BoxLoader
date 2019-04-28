@@ -1,4 +1,5 @@
 class Land_Boxloader_mem_quad: Boxloader_Pallet_Base {
+	ace_dragging_canDrag = 0;
 	model = "\boxloader_retrofit\mdl\boxloader_mem_quad.p3d";
 	class VehicleTransport: VehicleTransport {
 		class Cargo {
@@ -14,6 +15,7 @@ class Land_Boxloader_mem_quad: Boxloader_Pallet_Base {
 	slingLoadCargoMemoryPoints[] = {};
 };
 class Land_Boxloader_mem_quad_front: Boxloader_Pallet_Base {
+	ace_dragging_canDrag = 0;
 	model = "\boxloader_retrofit\mdl\boxloader_mem_quad_front.p3d";
 	class VehicleTransport: VehicleTransport {
 		class Cargo {
@@ -44,6 +46,7 @@ class Land_Boxloader_mem_idap: Boxloader_Pallet_Base {
 	
 };
 class Land_Boxloader_mem_offroad: Boxloader_Pallet_Base {
+	ace_dragging_canDrag = 0;
 	model = "\boxloader_retrofit\mdl\boxloader_mem_offroad.p3d";
 	class VehicleTransport: VehicleTransport {
 		class Cargo {
@@ -64,6 +67,7 @@ class Land_Boxloader_mem_kamaz: Land_Boxloader_membase_truck {
 	model = "\boxloader_retrofit\mdl\boxloader_mem_kamaz.p3d";
 };
 class Land_Boxloader_mem_boxer: Boxloader_Pallet_Base {
+	ace_dragging_canDrag = 0;
 	model = "\boxloader_retrofit\mdl\boxloader_mem_boxer.p3d";
 	class VehicleTransport: VehicleTransport {
 		class Cargo {
@@ -96,6 +100,18 @@ class Land_Boxloader_mem_prowler: Land_Boxloader_membase_truck {
 			disableHeightLimit          = 0;
 		};
 	};
+};
+class Land_Boxloader_Prowler_Net: Land_Boxloader_membase_truck {
+	model = "\boxloader_retrofit\mdl\boxloader_prowler_net.p3d";
+};
+class Boxloader_Bucket: Land_Boxloader_membase_truck {
+	model = "\boxloader_retrofit\mdl\boxloader_bucket.p3d";
+};
+class Land_Boxloader_Prowler_Roofnet: Land_Boxloader_membase_truck {
+	model = "\boxloader_retrofit\mdl\boxloader_prowler_roofnet.p3d";
+};
+class Land_Boxloader_Roofrack_1: Land_Boxloader_membase_truck {
+	model = "\boxloader_retrofit\mdl\boxloader_roofrack1.p3d";
 };
 
 class Land_Boxloader_mem_rhsural: Land_Boxloader_membase_truck {

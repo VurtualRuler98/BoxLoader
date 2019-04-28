@@ -25,7 +25,7 @@ class Boxloader_Flatrack_M7FRS: Boxloader_Flatrack_Base {
 	};
 	transportMaxBackpacks=16;
 };
-class Boxloader_BigPallet_Repair:  Reammobox_F {
+class Boxloader_BigPallet_Repair:  Slingload_Base_F {
 	ace_dragging_dragPosition[] = {0,2,0};
 	class VehicleTransport {
 		class Cargo {

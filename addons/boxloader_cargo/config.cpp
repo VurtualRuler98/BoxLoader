@@ -29,6 +29,7 @@ class CBA_Extended_EventHandlers_base;
 class CfgVehicles {
 	class Reammobox_F;
 	class Boxloader_Flatrack_Base;
+	class Slingload_Base_F;
 	#include "cfgAmmo.hpp"
 	#include "cfgCargo.hpp"
 	#include "cfgFuel.hpp"
