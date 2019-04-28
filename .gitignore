@@ -1,4 +1,6 @@
 *.blend1
 addons/a3/*
 old/*
+*.tga
 *.p3d
+*.paa

@@ -21,7 +21,7 @@ _ply addAction ["Load this in target",{_veh = (_this select 0 getVariable ["boxl
 */
 
 
-_ply addAction ["Unload object",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box;};},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10)"];
+_ply addAction ["Unload object",{_box = cursorObject; if ((!isNull isVehicleCargo _box) && (_box distance (_this select 0)<10)) then {objNull setVehicleCargo _box;};},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10) && (!boxloader_maxunload_enabled || [_this,cursorObject] call boxloader_fnc_getmaxlift)"];
 
 _ply addAction ["Hide cargo",{[vehicle (_this select 0),true] call boxloader_fnc_hide;},[],0,false,true,"","(boxloader_hidecargo_enabled) && !((vehicle _target) getVariable ['boxloader_cargohidden',false]) && (isClass (configFile >> 'CfgVehicles' >> (typeOf vehicle _target) >> 'vehicleTransport' >> 'Carrier') || ((vehicle _target) getVariable ['boxloader_rackinit',false]))"];
 _ply addAction ["Show cargo",{[vehicle (_this select 0),false] call boxloader_fnc_hide;},[],0,false,true,"","((vehicle _target) getVariable ['boxloader_cargohidden',false])"];
@@ -61,7 +61,7 @@ _ply addAction ["Precise Unload",{
 		_pos set [2,(_pos select 2) max (_bedHeight select 2)];
 		_box setPosASL _pos;
 	};
-},[],0,false,true,"","(vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10)"];
+},[],0,false,true,"","boxloader_preciseunload_enabled && (vehicle _this == _target || (vehicle _this getVariable ['boxloader_canload',false])) && (!isNull isVehicleCargo cursorObject) && (cursorObject distance _this<10) && (!boxloader_maxunload_enabled || [_this,cursorObject] call boxloader_fnc_getmaxlift)"];
 
 true
 

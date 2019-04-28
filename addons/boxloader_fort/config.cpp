@@ -46,7 +46,7 @@ class CfgFunctions {
 		tag = "boxloader_fort";
 		class boxloaderFunctions {
 			file = "\boxloader_fort\fnc";
-			
+			class init { postInit = 1 };
 			class iso {};
 			class iso_built {};
 			class tent {};

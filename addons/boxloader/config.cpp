@@ -128,6 +128,7 @@ class CfgVehicles {
 		};
 	};
 	class Land_Boxloader_membase_truck: Boxloader_Pallet_Base {
+		ace_dragging_canDrag = 0;
 		class VehicleTransport: VehicleTransport {
 			class Cargo {
 				canBeTransported            = 0;

@@ -30,7 +30,7 @@ class Boxloader_Ammo_West: Reammobox_F {
 		};
 	};
 	hiddenSelections[] = {"sign"};
-	hiddenSelectionsTextures[] = {"\boxloader\mdl\Data\explosives_sign_usmc_ca.paa"};
+	hiddenSelectionsTextures[] = {"\boxloader\tex\hazmat\explosive_ca.paa"};
 };
 
 class Boxloader_SmallPallet_Ammo: Reammobox_F {
