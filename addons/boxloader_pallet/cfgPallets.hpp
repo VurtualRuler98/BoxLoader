@@ -79,6 +79,7 @@ class Land_Boxloader_Pallet_1: Boxloader_Pallet_Base {
 	scope = 2;
 	model = "\boxloader_pallet\mdl\boxloader_pallet1.p3d";
 	displayName = "Boxloader Pallet Square";
+	editorSubcategory="EdSubCat_BoxloaderDeprecated";
 	class VehicleTransport: VehicleTransport {
 		class Carrier: Carrier {
 			maxLoadMass                 = 15000; //hectograms?
@@ -90,11 +91,13 @@ class Land_Boxloader_Pallet_2: Boxloader_Pallet_Base {
 	scope = 2;
 	model = "\boxloader_pallet\mdl\boxloader_pallet2.p3d";
 	displayName = "Boxloader EUR-1 Pallet";
+	editorSubcategory="EdSubCat_BoxloaderDeprecated";
 };
 class Land_Boxloader_Pallet_3: Boxloader_Pallet_Base {
 	scope = 2;
 	model = "\boxloader_pallet\mdl\boxloader_pallet3.p3d";
 	displayName = "Boxloader Pallet US";
+	editorSubcategory="EdSubCat_BoxloaderDeprecated";
 };
 class Land_Boxloader_Flatrack: Land_Boxloader_membase_truck {
 	model = "\boxloader_pallet\mdl\boxloader_pallet4.p3d";
@@ -131,6 +134,7 @@ class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
 	scope = 2;
 	model = "\boxloader_pallet\mdl\boxloader_pallet5.p3d";
 	displayName = "463L Master Pallet";
+	editorSubcategory="EdSubCat_BoxloaderDeprecated";
 	ace_dragging_dragPosition[] = {0,2.5,0};
 	class VehicleTransport: VehicleTransport {
 		class Cargo: Cargo {
@@ -147,7 +151,7 @@ class Land_Boxloader_Pallet_5: Boxloader_Pallet_Base {
 };
 class Boxloader_Container_Base: Boxloader_Pallet_Base {
 	class EventHandlers: EventHandlers {
-		init = "[_this select 0,'container'] call boxloader_fnc_pallet_init";
+		init = "_this call boxloader_fnc_pallet_cargonet;[_this select 0,'container'] call boxloader_fnc_pallet_init";
 		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
 	};
 	hiddenSelections[] = {"container"};
@@ -179,6 +183,11 @@ class Boxloader_Container_Base: Boxloader_Pallet_Base {
 			source = "user";
 			initPhase = 1;
 			animPeriod = 1;
+		};
+		class cargonet {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 0.1;
 		};
 	};
 	class UserActions {
@@ -254,4 +263,56 @@ MACRO_ISO20(sand,"Sand","sand");
 MACRO_ISO20(black,"Black","black");
 MACRO_ISO20(aid,"Red Crystal","aid");
 MACRO_ISO20(seabee,"Equipment","seabee");
+
+
+class Land_Boxloader_Pallet_5_Net: Boxloader_Pallet_Base {
+	scope = 2;
+	model = "\boxloader_pallet\mdl\boxloader_pallet5_net.p3d";
+	displayName = "463L Master Pallet (Cargo Net)";
+	ace_dragging_dragPosition[] = {0,2.5,0};
+	class VehicleTransport: VehicleTransport {
+		class Cargo: Cargo {
+			dimensions[]                = {"BBox_Base0", "BBox_Corner2"};
+		};
+		class Carrier: Carrier {
+			cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner2"};
+			cargoAlignment[]            = {"left","front"};
+			cargoSpacing[]              = {0,0,0};
+			maxLoadMass                 = 45000;
+			disableHeightLimit          = 0;
+		};
+	};
+	class EventHandlers: EventHandlers {
+		init = "_this call boxloader_fnc_pallet_cargonet; _this call boxloader_fnc_pallet_init";
+	};
+	class AnimationSources {
+		class cargonet {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 0.1;
+		};
+		class cargonet_size {
+			source = "user";
+			initPhase = 0;
+			animPeriod = 0.1;
+		};
+	};
+};
+/*
+class Land_Boxloader_Pallet_5_Net_Big: Land_Boxloader_Pallet_5_Net {
+	displayName = "463L Master Pallet (Cargo Net, Tall)";
+	class VehicleTransport: VehicleTransport {
+		class Cargo: Cargo {
+			dimensions[]                = {"BBox_Base0", "BBox_Corner3"};
+		};
+		class Carrier: Carrier {
+			cargoBayDimensions[]        = {"BBox_Base1", "BBox_Corner3"};
+		};
+	};
+	class AnimationSources: AnimationSources {
+		class cargonet_size: cargonet_size {
+			initPhase = 1;
+		};
+	};
+};*/
 

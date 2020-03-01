@@ -18,7 +18,8 @@ class CfgPatches {
 			MACRO_UNITS_ISO20(black)
 			MACRO_UNITS_ISO20(aid)
 			MACRO_UNITS_ISO20(seabee)
-			"Boxloader_Flatrack_M1077"
+			"Boxloader_Flatrack_M1077",
+			"land_boxloader_pallet_5_net"
 
 		};
 		weapons[] = {};

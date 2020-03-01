@@ -10,6 +10,7 @@ class CfgPatches {
 			"Land_Boxloader_Case_Aid",
 			"Land_Boxloader_Case_Tan",
 			"Land_Boxloader_Crate_1",
+			"Land_Boxloader_Case_Med",
 			"Boxloader_drumpallet_empty",
 			"Boxloader_drumpallet_fuel",
 			
@@ -18,7 +19,8 @@ class CfgPatches {
 			"boxloader_vehicleammo_west",
 			"Boxloader_sixcon_fuel",
 			"Boxloader_SmallPallet_Ammo",
-			"Boxloader_BigPallet_repair"
+			"Boxloader_BigPallet_repair",
+			"Boxloader_Ammo_Arsenal"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;

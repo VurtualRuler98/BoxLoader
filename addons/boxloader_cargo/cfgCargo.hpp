@@ -58,3 +58,12 @@ class Land_Boxloader_Case_Tan: Land_Boxloader_Case_Green {
 	displayName = "Military Case (Tan)";
 	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_case_tan_co.paa"};
 };
+class Land_Boxloader_Case_Med: Land_Boxloader_Case_Green {
+	displayName = "Military Medical Case";
+	hiddenSelectionsTextures[] = {"\boxloader\tex\boxloader_case_med_co.paa"};
+	attendant = 1;
+	class EventHandlers {
+		init = "(_this select 0) setVariable ['ace_medical_isMedicalFacility',true]";
+		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
+	};
+};

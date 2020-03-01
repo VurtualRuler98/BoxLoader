@@ -12,7 +12,7 @@ if (_hescoIsFilled==0) then {
 		_pos = getPosASL (_this select 0);
 		_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 		_con setPosASL _pos;
-		deleteVehicle (_this select 0);
+		[_con,(_this select 0)] call boxloader_fnc_persist;
 	},[_obj],0,false,true,"",[false,false] call boxloader_fort_fnc_buildcondition];
 };
 _fillText = "Fill Fortification";
@@ -23,7 +23,7 @@ _box addAction [_fillText,{
 		_con = (_this select 3 select 0) createVehicle (position (_this select 0));
 		_con setPosASL getPosASL (_this select 0);
 		_con setVectorDirAndUp [vectorDir (_this select 0),vectorUp (_this select 0)];
-		deleteVehicle (_this select 0);
+		[_con,(_this select 0)] call boxloader_fnc_persist;
 },[_fillObject],0,false,true,"",[false,true] call boxloader_fort_fnc_buildcondition];
 
 true 

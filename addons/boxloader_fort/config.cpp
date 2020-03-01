@@ -10,6 +10,7 @@ class CfgPatches {
 			"Land_Boxloader_Sandbag_Pile","Land_Boxloader_Sandbag_Fence","Land_Boxloader_Sandbag_Wall",
 			"Land_Boxloader_Fort_Wall_Flat","Land_Boxloader_Wall_2m","Land_Boxloader_Wall_1m",
 			"Land_Boxloader_Ramp_2m","Land_Boxloader_Ramp_1m",
+			"Land_Boxloader_Wall_2m_half","Land_Boxloader_Wall_1m_half",
 			"Land_Boxloader_Fort_Wire_Flat",
 			"Land_Boxloader_Fort_Wire_5m","Land_Boxloader_Fort_Wire_3m",
 			"Land_Boxloader_Walk_2m","Land_Boxloader_Rampart_1m","Land_Boxloader_Rampart_1m_frame",
@@ -34,7 +35,40 @@ class CfgPatches {
 			"Land_Boxloader_Fort_Tent_Flat_BrownHex","Land_Boxloader_Fort_Tent_Built_BrownHex",
 			"Land_Boxloader_Fort_Tent_Flat_GreenHex","Land_Boxloader_Fort_Tent_Built_GreenHex",
 			"Land_Boxloader_Fort_Tent_Flat_Digital","Land_Boxloader_Fort_Tent_Built_Digital",
-			"Land_Boxloader_Fort_Tent_Flat_White","Land_Boxloader_Fort_Tent_Built_White"
+			"Land_Boxloader_Fort_Tent_Flat_White","Land_Boxloader_Fort_Tent_Built_White",
+			
+			
+			"land_boxloader_temper_door_green","Land_Boxloader_Temper_Door_Flat_Green",
+			"land_boxloader_temper_window_green","Land_Boxloader_Temper_Window_Flat_Green",
+			"land_boxloader_temper_end_green","Land_Boxloader_Temper_End_Flat_Green",
+			"land_boxloader_temper_vestibule_green","land_boxloader_temper_vestibule_flat_green",
+			"land_boxloader_temper_vestible_f_green",
+			"land_boxloader_temper_door_f_green",
+			"land_boxloader_temper_window_f_green",
+			"land_boxloader_temper_end_f_green",
+			"land_boxloader_lme_flat_green","land_boxloader_lme_green","land_boxloader_lme_f_green",
+			
+			"land_boxloader_temper_door_tan","Land_Boxloader_Temper_Door_Flat_tan",
+			"land_boxloader_temper_window_tan","Land_Boxloader_Temper_Window_Flat_tan",
+			"land_boxloader_temper_end_tan","Land_Boxloader_Temper_End_Flat_tan",
+			"land_boxloader_temper_vestibule_tan","land_boxloader_temper_vestibule_flat_tan",
+			"land_boxloader_temper_vestible_f_tan",
+			"land_boxloader_temper_door_f_tan",
+			"land_boxloader_temper_window_f_tan",
+			"land_boxloader_temper_end_f_tan",
+			"land_boxloader_lme_flat_tan","land_boxloader_lme_tan","land_boxloader_lme_f_tan",
+			"Land_Boxloader_Temper_Divider","Land_Boxloader_Temper_Divider_Flat",
+			"Land_Boxloader_Temper_Lights","Land_Boxloader_Temper_Lights_Flat",
+			"Land_Boxloader_Temper_Medsign","Land_Boxloader_Temper_Medsign_Flat",
+			"Land_Boxloader_Temper_Medsign2",
+			"Land_Boxloader_Fort_Helipad_Tarp","Land_Boxloader_Fort_Helipad_Tarp_Mini",
+			"Land_Boxloader_Fort_Helipad_Tarp_Mid","Land_Boxloader_Fort_Helipad_Tarp_Flat",
+			"Land_Boxloader_Camonet_Green_Flat","Land_Boxloader_Camonet_Tan_Flat",
+			"land_boxloader_temper_camonet_green","land_boxloader_temper_camonet_tan",
+			"land_boxloader_camonet_low_green","land_boxloader_camonet_low_green",
+			
+			"Land_Boxloader_Sandbag_Pile2","Land_Boxloader_Sandbag_Wall2","Land_Boxloader_Sandbag_Pile2_Tall",
+			"Land_Boxloader_Sandbag_Floor","Land_Boxloader_Sandbag_Wall2_MG"
 		};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -57,6 +91,9 @@ class CfgFunctions {
 			class plat_built {};
 			class buildmenu {};
 			class buildcondition {};
+			class snap {};
+			class snap_editor {};
+			class helipad {};
 		};
 	};
 };

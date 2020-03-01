@@ -1,1 +1,2 @@
-["boxloader_fort_allow_floating","CHECKBOX",["Allow platform fortificaitons to float","When checked, platforms will not need to reach the ground to be built."],"Boxloader",false,true] call CBA_settings_fnc_init;
+["boxloader_fort_allow_floating","CHECKBOX",["Allow ground-based fortificaitons to float","When checked, ground-based fortifications will not need to reach the ground to be built."],"Boxloader",false,true] call CBA_settings_fnc_init;
+["boxloader_fort_snap_editor","CHECKBOX",["CLIENT: Auto-snap TEMPER tent","When checked, tents pieces will auto-snap together in the 3den interface."],"Boxloader",false,2] call CBA_settings_fnc_init;

@@ -57,7 +57,26 @@ class Boxloader_SmallPallet_Ammo: Reammobox_F {
 		};
 	};
 };
-
+class Boxloader_Ammo_Arsenal: Boxloader_Ammo_West {
+	displayName = "463L Master Pallet (Arsenal)";
+	transportAmmo = 1200;
+	secondaryExplosion = 8000;
+	class EventHandlers {
+		init = "if (isClass(configFile >> 'cfgPatches' >> 'ace_arsenal')) then {[(_this select 0),true] call ace_arsenal_fnc_initBox};";
+		class CBA_Extended_EventHandlers: CBA_Extended_EventHandlers_base {};
+	};
+	class UserActions {
+		class Door1_open {
+			displayName = "Arsenal";
+			position = "";
+			radius = 3;
+			onlyforplayer = true;
+			condition = "true";
+			statement = "['Open',true] spawn bis_fnc_arsenal";
+		};
+	};
+};
+	
 class Boxloader_VehicleAmmo_West: Boxloader_Ammo_West {
 	displayName = "463L Master Pallet (Vehicle Ammo)";
 	transportAmmo = 1200;

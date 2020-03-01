@@ -23,10 +23,14 @@ class CfgFunctions {
 			class addaction {};
 			class pallet_create {};
 			class pallet_init {};
+			class pallet_cargonet {};
 			class flatrack_init {};
 			class pls {};
 			class init_pls {};
 			class pallet_addmem {};
+
+			class persist {};
+			class alive {};
 			
 
 			class hide {};
@@ -37,6 +41,7 @@ class CfgFunctions {
 			class driveon {};
 			
 			class carry {};
+			class bulldoze {};
 		};
 	};
 };
@@ -111,7 +116,7 @@ class CfgVehicles {
 				loadingAngle                = 60;
 				disableHeightLimit          = 0;
 				parachuteClassDefault       = "B_Parachute_02_F";
-				parachuteHeightLimitDefault = 10000;
+				parachuteHeightLimitDefault = 15;
 			};
 		};
 		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
@@ -201,5 +206,8 @@ class CfgEditorSubcategories {
 	};
 	class EdSubCat_BoxloaderFortBuilt{
 		displayName = "Boxloader Fortifications (Built)";
+	};
+	class EdSubCat_BoxloaderDeprecated {
+		displayName = "Boxloader (DEPRECATED)";
 	};
 };
