@@ -1,5 +1,7 @@
 *.blend1
 addons/a3/*
+src_apl/*
+src/*
 old/*
 *.tga
 *.p3d
