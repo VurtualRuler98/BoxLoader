@@ -13,6 +13,7 @@ _pallet addAction ["Rotate "+_name,{
 	if ((((_veh canVehicleCargo _box) select 1) || (_veh isKindOf "Boxloader_Bucket")) && (_dir > 345 || _dir < 15)) then {
 		_box setDir floor(getDir _ply)
 	};
+	[_box] call boxloader_fnc_persist;
 },[],0,false,true,"","(vehicle _this == _this) && (isNull attachedTo _target) && !(isNull (_this getVariable ['boxloader_tgt',objNull])) && (((_this getVariable ['boxloader_tgt',objNull]) isKindOf 'Boxloader_Bucket') || (((_this getVariable ['boxloader_tgt',objNull]) canVehicleCargo _target) select 1)) && ((_this getVariable ['boxloader_tgt',objNull]) distance _target)<15 && ((getDir _this - getDir _target)>345 || (getDir _this - getDir _target)<15)",5];
 //};
 true

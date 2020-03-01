@@ -8,7 +8,7 @@ if (_hide) then {
 		_sub = (_this select 1);
 		waitUntil {sleep 1; ((isNull _obj) || (isNull attachedTo _obj) || !(isObjectHidden _obj) ||(_sub && !(isObjectHidden attachedTo _obj)))};
 		if (!(isNull _obj) && (isObjectHidden _obj)) then {
-			[_obj,false] remoteExec ["hideObjectGlobal",2];
+			_obj hideObjectGlobal false;
 		};
 	};
 };

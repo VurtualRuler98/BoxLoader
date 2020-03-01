@@ -4,3 +4,7 @@ old/*
 *.tga
 *.p3d
 *.paa
+*.blend
+bin/*
+temp/*
+Makefile

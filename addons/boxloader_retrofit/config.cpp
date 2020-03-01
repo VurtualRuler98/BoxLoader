@@ -55,7 +55,7 @@ class CfgVehicles {
 		};
 		slingLoadCargoMemoryPoints[] = { "SlingLoadCargo1","SlingLoadCargo2","SlingLoadCargo3","SlingLoadCargo4"};
 		editorCategory="EdCat_Supplies";
-		editorSubcategory="EdSubCat_Boxloader";
+		editorSubcategory="EdSubCat_BoxloaderDeprecated";
 		displayName = "Boxloader roof rack Box";
 		model = "\boxloader\mdl\boxloader_crate1.p3d";
 		icon = "iconObject_1x1";

@@ -25,7 +25,7 @@ if (_col==0) then {
 		_con setPosASL getPosASL (_this select 0);
 		_con setDir getdir (_this select 0);
 		[_con,typeOf (_this select 0)] call boxloader_fort_fnc_iso_built;
-		deleteVehicle (_this select 0);
+		[_con,(_this select 0)] call boxloader_fnc_persist;
 	},[_x select 0],0,false,true,"","(isNull attachedTo _target) && (_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 } forEach _arr;
 _box setVariable ["boxloader_bucketable",true];
@@ -37,6 +37,7 @@ _box addAction ["Rotate Container",{
 	if ((((_veh canVehicleCargo _box) select 1) || (_veh isKindOf "Boxloader_Bucket")) && (_dir > 345 || _dir < 15)) then {
 		_box setDir floor(getDir _ply)
 	};
+	[_box] call boxloader_fnc_persist;
 },[],0,false,true,"","(vehicle _this == _this) && !(isNull (_this getVariable ['boxloader_tgt',objNull])) && (((_this getVariable ['boxloader_tgt',objNull]) isKindOf 'Boxloader_Bucket') || (((_this getVariable ['boxloader_tgt',objNull]) canVehicleCargo _target) select 1)) && ((_this getVariable ['boxloader_tgt',objNull]) distance _target)<15 && ((getDir _this - getDir _target)>345 || (getDir _this - getDir _target)<15)",5];
 true 
 // && (count ((position _target) nearObjects ['B_APC_Tracked_01_CRV_F',20])>0)

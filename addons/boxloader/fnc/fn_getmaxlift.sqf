@@ -1,6 +1,7 @@
 params [["_ply",objNull,[objNull]],["_box",objNull,[objNull]]];
 if (isNull _ply || isNull _box) exitWith {false};
 _tgt = _ply getVariable ["boxloader_tgt",objNull];
+if (isNull _tgt) then {_tgt = _ply};
 _crane = _ply getVariable ["boxloader_crane",objNull];
 _mass = getMass _box;
 if (isNull _tgt || !(isClass (configFile >> 'CfgVehicles' >> (typeOf _tgt) >> 'vehicleTransport' >> 'Carrier'))) exitWith {false};

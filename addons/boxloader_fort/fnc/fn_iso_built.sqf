@@ -11,6 +11,6 @@ _box addAction ["Pack Structure",{
 	_pos = getPosASL (_this select 0);
 	_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 	_con setPosASL _pos;
-	deleteVehicle (_this select 0);
+	[_con,(_this select 0)] call boxloader_fnc_persist;
 },[_base],0,false,true,"","(_target getVariable ['BuildMenu',false]) && (({(!isObjectHidden _x)} count ((position _this) nearObjects ['Boxloader_Bucket',15])>0) || (vehicle _this getVariable ['boxloader_build_tools',false]) || (((_this getVariable ['boxloader_work_tgt',objNull]) getVariable ['boxloader_build_tools',false]) && ((_this getVariable ['boxloader_work_tgt',objNull]) distance _this)<15))"];
 true 

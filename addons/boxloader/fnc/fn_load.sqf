@@ -10,6 +10,7 @@ if (((_veh canVehicleCargo _box) select 0) && ((_box distance _veh)<15)) then {
 			(_this select 0) enableRopeAttach true;
 		};
 	};
+	//[_box] call boxloader_fnc_persist;
 	true
 } else {false}
 

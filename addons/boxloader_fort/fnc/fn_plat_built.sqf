@@ -9,6 +9,6 @@ _box addAction ["Disassemble Fortification",{
 	_pos = getPosASL (_this select 0);
 	_con setVehiclePosition [getPosATL _con,[],0,"CAN_COLLIDE"];
 	_con setPosASL _pos;
-	deleteVehicle (_this select 0);
+	[_con,(_this select 0)] call boxloader_fnc_persist;
 },[_obj],0,false,true,"",[true,false] call boxloader_fort_fnc_buildcondition];
 true 
